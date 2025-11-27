@@ -22,7 +22,12 @@ namespace boids_sim
         std::vector<int> next_;
 
     public:
-     flock(int numBoids, double maxX, double maxY);
+        flock(int numBoids, double maxX, double maxY);
+        int getcell(const Vector2D& position) const;
+        void step();
+        const std::vector<boid> &getBoids() const;
+        Vector2D computeAverageVelocity() const;
+        double computeAverageDistance() const;
     };
 
 }
