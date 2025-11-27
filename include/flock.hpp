@@ -1,24 +1,29 @@
 #ifndef FLOCK_HPP
 #define FLOCK_HPP
 
+#include "boid.hpp"
 #include <vector>
 
-#include "boid.hpp"
-#include "main.cpp"
-
 float l{0.f};
-namespace boids_sim {
-class flock {
- private:
-  std::vector<boid> boids_;
-  int numBoids_;
-  double maxX_;
-  double maxY_;
-  const std::vector<int> headers_;
+int factorx = 20;
+int factory = 20;
+int ncells = factorx * factory;
 
- public:
- 
-};
+namespace boids_sim
+{
+    class flock
+    {
+    private:
+        std::vector<boid> boids_;
+        int numBoids_;
+        double maxX_;
+        double maxY_;
+        std::vector<int> headers_;
+        std::vector<int> next_;
 
-}  // namespace boids_sim
+    public:
+     flock(int numBoids, double maxX, double maxY);
+    };
+
+}
 #endif
