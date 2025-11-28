@@ -20,6 +20,7 @@ namespace boids_sim
         double maxY_;
         std::vector<int> headers_;
         std::vector<int> next_;
+        std::vector<Vector2D> newvelocity_;
 
     public:
         flock(int numBoids, double maxX, double maxY);

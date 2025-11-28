@@ -12,7 +12,7 @@ namespace boids_sim
     {
         return {x - other.x, y - other.y};
     }
-    Vector2D Vector2D::operator*(double scalar) const
+    Vector2D Vector2D::operator*(float scalar) const
     {
         return {x * scalar, y * scalar};
     }
@@ -22,7 +22,7 @@ namespace boids_sim
         y += other.y;
         return *this;
     }
-    double Vector2D::norm2() const
+    float Vector2D::norm2() const
     {
         return x * x + y * y;
     }

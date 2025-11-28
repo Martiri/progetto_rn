@@ -1,49 +1,74 @@
 #include "flock.hpp"
+
+#include <cassert>
 #include <random>
 float hamplitudev = 100.f;
 float offsetv = 4.f;
-namespace boids_sim
-{
+float s = 0.15f;
+float a = 0.08f;
+float c = 0.01f;
+float d = 60.0f;
+float d2 = d * d;
+float ds = 20.0f;
+float ds2 = ds * ds;
+float timescale = 1.0f;
+namespace boids_sim {
 
-    flock::flock(int numBoids, double maxX, double maxY)
-        : numBoids_(numBoids), maxX_(maxX), maxY_(maxY)
-    {
-        boids_.clear();
-        boids_.reserve(static_cast<size_t>(numBoids_));
+flock::flock(int numBoids, double maxX, double maxY)
+    : numBoids_(numBoids), maxX_(maxX), maxY_(maxY) {
+  boids_.clear();
+  boids_.reserve(static_cast<size_t>(numBoids_));
 
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_real_distribution<double> distX(0.0, maxX_);
-        std::uniform_real_distribution<double> distY(0.0, maxY_);
-        std::uniform_real_distribution<double> distV(-hamplitudev + offsetv, hamplitudev + offsetv);
+  std::random_device rd;
+  std::mt19937 gen(rd());
+  std::uniform_real_distribution<float> distX(0.0f, maxX_);
+  std::uniform_real_distribution<float> distY(0.0f, maxY_);
+  std::uniform_real_distribution<float> distV(-hamplitudev + offsetv,
+                                              hamplitudev + offsetv);
 
-        for (int i = 0; i < numBoids_; ++i)
-        {
-            boids_.emplace_back(distX(gen), distY(gen), distV(gen), distV(gen));
-        }
-        headers_.resize(ncells, -1);
-        next_.resize(numBoids_, -1);
-    }
-    int flock::getcell(const Vector2D &position) const
-    {
-        return static_cast<int>(position.y / l) * factorx + static_cast<int>(position.x / l);
-    }
-    void flock::step()
-    {
-        for (int i = 0; i < numBoids_; ++i)
-        {
-            int cell = getcell(boids_[i].getPosition());
-            if (headers_[cell] != -1)
-            {
-                next_[i] = headers_[cell];
-            }
-
-            headers_[cell] = i;
-        }
-        for (int i = 0; i < numBoids_; ++i)
-        {
-            int cell = getcell(boids_[i].getPosition());
-            int a = headers_[cell];
-        }
-    }
+  for (int i = 0; i < numBoids_; ++i) {
+    boids_.emplace_back(distX(gen), distY(gen), distV(gen), distV(gen));
+  }
+  headers_.resize(ncells, -1);
+  next_.resize(numBoids_, -1);
 }
+int flock::getcell(const Vector2D& position) const {
+  return static_cast<int>(position.y / l) * factorx +
+         static_cast<int>(position.x / l);
+}
+void flock::step() {
+  for (int i = 0; i < numBoids_; ++i) {
+    int cell = getcell(boids_[i].getPosition());
+    if (headers_[cell] != -1) {
+      next_[i] = headers_[cell];
+    }
+
+    headers_[cell] = i;
+  }
+  for (int i = 0; i < numBoids_; ++i) {
+    Vector2D cm{0.f, 0.f};
+    Vector2D vm{0.f, 0.f};
+    Vector2D sv{0.f, 0.f};
+
+    int l{0};
+    int cell = getcell(boids_[i].getPosition());
+    for (int i = -1; i <= 1; i++)
+      for (int j = -1; j <= 1; j++) {
+        int& b = headers_[cell + i * factorx + j];
+        while (b != -1) {
+          const Vector2D& hposition = boids_[b].getPosition();
+          const Vector2D& hvelocity = boids_[b].getVelocity();
+          Vector2D dist = hposition - boids_[i].getPosition();
+          float dist2 = dist.norm2();
+          if (dist2 < d2) {
+            l += 1;
+            cm += hposition;
+            vm += hvelocity;
+            if (dist2 < ds2) sv += dist;
+          }
+          b = next_[b];
+        }
+      }
+  }
+}
+}  // namespace boids_sim

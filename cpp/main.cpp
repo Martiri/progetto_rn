@@ -8,14 +8,16 @@ int main()
 {
 
     int numBoids = 200;
-    double s = 0.15;
-    double a = 0.08;
-    double c = 0.01;
-    double d = 60.0;
-    double ds = 20.0;
+    float s = 0.15f;
+    float a = 0.08f;
+    float c = 0.01f;
+    float d = 60.0f;
+    float d2 = d*d;
+    float ds = 20.0f;
+    float ds2= ds*ds;
     int factorx = 20;
     int factory = 20;
-    int maxX = d * factorx;
-    int maxY = d * factory;
-    double timescale = 1.0;
+    float maxX = d * factorx;
+    float maxY = d * factory;
+    float timescale = 1.0f;
 }
