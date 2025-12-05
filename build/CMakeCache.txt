@@ -23,10 +23,8 @@ CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 //Path to a program.
 CMAKE_AR:FILEPATH=/usr/bin/ar
 
-//Semicolon separated list of supported configuration types, only
-// supports Debug, Release, MinSizeRel, and RelWithDebInfo, anything
-// else will be ignored.
-CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release;RelWithDebInfo
+//No help, variable specified on the command line.
+CMAKE_BUILD_TYPE:STRING=Debug
 
 //CXX compiler
 CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
@@ -72,8 +70,8 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 //Flags used by the linker during RELWITHDEBINFO builds.
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
-//Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
+//No help, variable specified on the command line.
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE
 
 //Value Computed by CMake.
 CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/martiri/progetto_rn/build/CMakeFiles/pkgRedirects
@@ -308,7 +306,7 @@ CMAKE_EXPORT_COMPILE_COMMANDS-ADVANCED:INTERNAL=1
 //Name of external makefile project generator.
 CMAKE_EXTRA_GENERATOR:INTERNAL=
 //Name of generator.
-CMAKE_GENERATOR:INTERNAL=Ninja Multi-Config
+CMAKE_GENERATOR:INTERNAL=Ninja
 //Generator instance identifier.
 CMAKE_GENERATOR_INSTANCE:INTERNAL=
 //Name of generator platform.

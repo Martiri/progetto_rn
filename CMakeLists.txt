@@ -65,7 +65,11 @@ add_custom_target(run
 if (BUILD_TESTING)
   file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/test/*.cpp")
   if (TEST_SOURCES)
-    add_executable(progetto.t ${TEST_SOURCES})
+    # Raccogliere i sorgenti dell'app (escludendo main.cpp) per linkare ai test
+    file(GLOB_RECURSE APP_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/cpp/*.cpp")
+    list(FILTER APP_SOURCES EXCLUDE REGEX ".*main\\.cpp$")
+    
+    add_executable(progetto.t ${TEST_SOURCES} ${APP_SOURCES})
     target_include_directories(progetto.t PRIVATE "${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}/test")
     if (SFML_FOUND)
       target_link_libraries(progetto.t PRIVATE sfml-graphics)

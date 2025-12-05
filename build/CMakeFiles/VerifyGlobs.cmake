@@ -12,6 +12,7 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # SOURCES_CPP at CMakeLists.txt:40 (file)
+# APP_SOURCES at CMakeLists.txt:69 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/martiri/progetto_rn/cpp/*.cpp")
 set(OLD_GLOB
   "/home/martiri/progetto_rn/cpp/boid.cpp"

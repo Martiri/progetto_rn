@@ -1,0 +1,24 @@
+Start testing: Dec 05 21:35 CET
+----------------------------------------------------------
+1/1 Testing: progetto.t
+1/1 Test: progetto.t
+Command: "/home/martiri/progetto_rn/build/progetto.t"
+Directory: /home/martiri/progetto_rn/build
+"progetto.t" start time: Dec 05 21:35 CET
+Output:
+----------------------------------------------------------
+[doctest] doctest version is "2.4.12"
+[doctest] run with "--help" for options
+===============================================================================
+[doctest] test cases:  5 |  5 passed | 0 failed | 0 skipped
+[doctest] assertions: 16 | 16 passed | 0 failed |
+[doctest] Status: SUCCESS!
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"progetto.t" end time: Dec 05 21:35 CET
+"progetto.t" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Dec 05 21:35 CET

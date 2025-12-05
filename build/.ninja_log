@@ -1,0 +1,11 @@
+# ninja log v5
+13	15600	1764967095489996891	build.ninja	f3e85d6b3675f377
+1	12	0	/home/martiri/progetto_rn/build/CMakeFiles/cmake.verify_globs	854959c9fa9e8b56
+12	6603	1764966927603931955	CMakeFiles/progetto.t.dir/test/test.t.cpp.o	2e44eb14f4d5424b
+12	413	1764966818683835879	CMakeFiles/progetto.dir/cpp/boid.cpp.o	d7f7cdf634e9bb92
+12	978	1764966819251502480	CMakeFiles/progetto.dir/cpp/main.cpp.o	91f3575540501e5b
+13	405	1764966921419932652	CMakeFiles/progetto.t.dir/cpp/boid.cpp.o	ea0d9d06e81f24b5
+6603	6920	1764966927931931920	progetto.t	9b61687c10cedb91
+12	1279	1764966819554835779	CMakeFiles/progetto.dir/cpp/flock.cpp.o	ea0abb651bfb0a89
+13	317	1764966847776652470	progetto	816b60f0751b8ed9
+13	1058	1764966922071932579	CMakeFiles/progetto.t.dir/cpp/flock.cpp.o	f917ab9d2c175d09
