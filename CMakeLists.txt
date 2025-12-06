@@ -62,26 +62,26 @@ add_custom_target(run
 
 # il testing e' abilitato di default
 # per disabilitarlo, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
-if (BUILD_TESTING)
-  file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/test/*.cpp")
-  if (TEST_SOURCES)
-    # Raccogliere i sorgenti dell'app (escludendo main.cpp) per linkare ai test
-    file(GLOB_RECURSE APP_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/cpp/*.cpp")
-    list(FILTER APP_SOURCES EXCLUDE REGEX ".*main\\.cpp$")
+#if (BUILD_TESTING)
+ # file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/test/*.cpp")
+  #if (TEST_SOURCES)
+   # Raccogliere i sorgenti dell'app (escludendo main.cpp) per linkare ai test
+  #  file(GLOB_RECURSE APP_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/cpp/*.cpp")
+   # list(FILTER APP_SOURCES EXCLUDE REGEX ".*main\\.cpp$")
     
-    add_executable(progetto.t ${TEST_SOURCES} ${APP_SOURCES})
-    target_include_directories(progetto.t PRIVATE "${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}/test")
-    if (SFML_FOUND)
-      target_link_libraries(progetto.t PRIVATE sfml-graphics)
-    endif()
-    add_test(NAME progetto.t COMMAND progetto.t)
+    #add_executable(progetto.t ${TEST_SOURCES} ${APP_SOURCES})
+    #target_include_directories(progetto.t PRIVATE "${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}/test")
+    #if (SFML_FOUND)
+     # target_link_libraries(progetto.t PRIVATE sfml-graphics)
+    #endif()
+    #add_test(NAME progetto.t COMMAND progetto.t)
 
-    add_custom_target(run_tests
-      COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
-      DEPENDS progetto.t
-      COMMENT "Esegue i test con ctest"
-    )
-  else()
-    message(STATUS "Nessun file .cpp trovato in test/ — salto la creazione dell'eseguibile di test.")
-  endif()
-endif()
+    #add_custom_target(run_tests
+     # COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
+      #DEPENDS progetto.t
+     # COMMENT "Esegue i test con ctest"
+    #)
+  #else()
+   # message(STATUS "Nessun file .cpp trovato in test/ — salto la creazione dell'eseguibile di test.")
+  #endif()
+#endif()

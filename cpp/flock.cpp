@@ -15,7 +15,10 @@ float timescale = 1.0f;
 namespace boids_sim {
 
 flock::flock(int numBoids, float maxX, float maxY)
-    : numBoids_(numBoids), maxX_(maxX), maxY_(maxY) {
+    : numBoids_(numBoids), maxX_(maxX), maxY_(maxY),
+      factorx_(20), factory_(20) {
+        if (factorx_ > 0)  l_ = maxX_ / factorx_;
+  ncells_ = factorx_ * factory_;
   boids_.clear();
   boids_.reserve(static_cast<size_t>(numBoids_));
 
@@ -29,15 +32,15 @@ flock::flock(int numBoids, float maxX, float maxY)
   for (int i = 0; i < numBoids_; ++i) {
     boids_.emplace_back(distX(gen), distY(gen), distV(gen), distV(gen));
   }
-  headers_.resize(ncells, -1);
+  headers_.resize(ncells_, -1);
   next_.resize(numBoids_, -1);
   newvelocity_.resize(numBoids_);
 }
 const std::vector<boid>& flock::getBoids() const { return boids_; }
 
 int flock::getcell(const Vector2D& position) const {
-  return static_cast<int>(position.y / l) * factorx +
-         static_cast<int>(position.x / l);
+  return static_cast<int>(position.y / l_) * factorx_ +
+         static_cast<int>(position.x / l_);
 }
 void flock::step(float dt, float factorx, float s, float a, float c, float d,
                  float ds) {
@@ -58,7 +61,7 @@ void flock::step(float dt, float factorx, float s, float a, float c, float d,
     int cell = getcell(boids_[i].getPosition());
     for (int i = -1; i <= 1; i++)
       for (int j = -1; j <= 1; j++) {
-        int b = headers_[cell + i * factorx + j];
+        int b = headers_[cell + i * static_cast<int>(factorx_) + j];
         while (b != -1) {
           const Vector2D& hposition = boids_[b].getPosition();
           const Vector2D& hvelocity = boids_[b].getVelocity();

@@ -5,11 +5,6 @@
 
 #include "boid.hpp"
 
-inline float l{0.f};
-inline int factorx = 20;
-inline int factory = 20;
-inline int ncells = factorx * factory;
-
 namespace boids_sim {
 class flock {
  private:
@@ -17,6 +12,10 @@ class flock {
   int numBoids_;
   float maxX_;
   float maxY_;
+  float l_;
+  int factorx_;
+  int factory_;
+  int ncells_;
   std::vector<int> headers_;
   std::vector<int> next_;
   std::vector<Vector2D> newvelocity_;

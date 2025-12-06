@@ -12,22 +12,11 @@ if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
 endif()
 
 # SOURCES_CPP at CMakeLists.txt:40 (file)
-# APP_SOURCES at CMakeLists.txt:69 (file)
 file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/martiri/progetto_rn/cpp/*.cpp")
 set(OLD_GLOB
   "/home/martiri/progetto_rn/cpp/boid.cpp"
   "/home/martiri/progetto_rn/cpp/flock.cpp"
   "/home/martiri/progetto_rn/cpp/main.cpp"
-  )
-if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
-  message("-- GLOB mismatch!")
-  file(TOUCH_NOCREATE "/home/martiri/progetto_rn/build/CMakeFiles/cmake.verify_globs")
-endif()
-
-# TEST_SOURCES at CMakeLists.txt:66 (file)
-file(GLOB_RECURSE NEW_GLOB LIST_DIRECTORIES false "/home/martiri/progetto_rn/test/*.cpp")
-set(OLD_GLOB
-  "/home/martiri/progetto_rn/test/test.t.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")
