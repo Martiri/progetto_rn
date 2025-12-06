@@ -11,18 +11,18 @@ int main() {
   float a = 0.08f;
   float c = 0.01f;
   float d = 60.0f;
-  float d2 = d * d;
+  // d2 and ds2 removed (unused)
   float ds = 20.0f;
-  float ds2 = ds * ds;
+  // ds2 removed
   int factorx = 20;
   int factory = 20;
   float maxX = d * factorx;
   float maxY = d * factory;
-  float dt = 0.0f;
+  // dt removed (shadowed)
   float timescale = 1.0f;
 
   boids_sim::flock flock(numBoids, maxX, maxY);
-  sf::RenderWindow window(sf::VideoMode(maxX, maxY), "Boids Simulation");
+  sf::RenderWindow window(sf::VideoMode(static_cast<unsigned int>(maxX), static_cast<unsigned int>(maxY)), "Boids Simulation");
   window.setFramerateLimit(60);
 
   sf::CircleShape boidShape(4.0f);
@@ -41,7 +41,7 @@ int main() {
     if (dt > 0.1) dt = 0.1;
     dt *= timescale;
 
-    flock.step(dt, factorx, s, a, c, d, ds);
+    flock.step(static_cast<float>(dt), static_cast<float>(factorx), s, a, c, d, ds);
     window.clear(sf::Color::Black);
 
     for (const auto& boid : flock.getBoids()) {
