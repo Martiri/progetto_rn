@@ -19,6 +19,8 @@ flock::flock(int numBoids, float maxX, float maxY)
   boids_.clear();
   boids_.reserve(static_cast<size_t>(numBoids_));
 
+  if (factorx > 0) l = maxX_ / factorx;
+
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_real_distribution<float> distX(0.0f, maxX_);
@@ -56,9 +58,11 @@ void flock::step(float dt, float factorx, float s, float a, float c, float d,
 
     int l{0};
     int cell = getcell(boids_[i].getPosition());
-    for (int i = -1; i <= 1; i++)
-      for (int j = -1; j <= 1; j++) {
-        int b = headers_[cell + i * factorx + j];
+    for (int dy = -1; dy <= 1; dy++)
+      for (int dx = -1; dx <= 1; dx++) {
+        int neighbor_cell = cell + dy * static_cast<int>(factorx) + dx;
+        if (neighbor_cell < 0 || neighbor_cell >= ncells) continue;
+        int b = headers_[neighbor_cell];
         while (b != -1) {
           const Vector2D& hposition = boids_[b].getPosition();
           const Vector2D& hvelocity = boids_[b].getVelocity();
