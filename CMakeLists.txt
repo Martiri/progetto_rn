@@ -33,44 +33,23 @@ endif()
 string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 
 # se usato, richiedi il componente graphics della libreria SFML (versione 2.6 in Ubuntu 24.04)
-find_package(SFML 2.6 COMPONENTS graphics)
+find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
 
-# raccolgo automaticamente i sorgenti nella cartella cpp/
-file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/cpp/*.cpp")
+# dichiara un eseguibile chiamato "progetto", prodotto a partire dai file sorgente indicati
+# sostituire "progetto" con il nome del proprio eseguibile e i file sorgente con i propri (con nomi sensati!)
+add_executable(progetto main.cpp flock.cpp boid.cpp)
+# nel caso si usi SFML. analogamente per eventuali altre librerie
+target_link_libraries(progetto PRIVATE sfml-graphics)
 
-if (NOT PROJECT_SOURCES)
-  message(FATAL_ERROR "Nessun sorgente trovato in ${CMAKE_SOURCE_DIR}/cpp/. Assicurati che i file .cpp siano presenti.")
-endif()
+# aggiungere eventuali altri eseguibili
 
-# crea l'eseguibile principale
-add_executable(progetto ${PROJECT_SOURCES})
-
-# includi la cartella include/ per gli header
-target_include_directories(progetto PRIVATE "${CMAKE_SOURCE_DIR}/include")
-
-# se SFML è stato trovato, collegalo al target
-if (SFML_FOUND)
-  target_link_libraries(progetto PRIVATE sfml-graphics)
-else()
-  message(STATUS "SFML non trovata: salto il linking con sfml-graphics.")
-endif()
-
-# Target di utilità per eseguire l'applicazione dalla build directory:
-# usa: `cmake --build build --target run` per compilare (se necessario) e lanciare
-add_custom_target(run
-  COMMAND $<TARGET_FILE:progetto>
-  DEPENDS progetto
-  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
-
-# Testing: cerca sorgenti di test in test/ e crea un eseguibile di test se presenti
+# il testing e' abilitato di default
+# per disabilitarlo, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
 if (BUILD_TESTING)
-  file(GLOB_RECURSE TEST_SOURCES CONFIGURE_DEPENDS "${CMAKE_SOURCE_DIR}/test/*.cpp")
-  if (TEST_SOURCES)
-    add_executable(tests ${TEST_SOURCES})
-    target_include_directories(tests PRIVATE "${CMAKE_SOURCE_DIR}/include" "${CMAKE_SOURCE_DIR}/test")
-    add_test(NAME tests COMMAND tests)
-  else()
-    message(STATUS "BUILD_TESTING=ON ma non sono stati trovati file di test in test/.")
-  endif()
+
+  # aggiungi l'eseguibile progetto.t
+  add_executable(progetto.t flock.cpp boid.cpp flock.t.cpp)
+  # aggiungi l'eseguibile progetto.t alla lista dei test
+  add_test(NAME progetto.t COMMAND progetto.t)
+
 endif()
