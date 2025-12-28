@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Site BuildName="Linux-c++"
-	BuildStamp="20251206-1220-Experimental"
+	BuildStamp="20251228-1514-Experimental"
 	Name="dimitri"
 	Generator="ctest-3.28.3"
 	CompilerName="/usr/bin/c++"
@@ -24,11 +24,11 @@
 	ProcessorClockFrequency="2918.4"
 	>
 	<Testing>
-		<StartDateTime>Dec 06 13:20 CET</StartDateTime>
-		<StartTestTime>1765023657</StartTestTime>
+		<StartDateTime>Dec 28 16:15 CET</StartDateTime>
+		<StartTestTime>1766934943</StartTestTime>
 		<TestList/>
-		<EndDateTime>Dec 06 13:20 CET</EndDateTime>
-		<EndTestTime>1765023657</EndTestTime>
+		<EndDateTime>Dec 28 16:15 CET</EndDateTime>
+		<EndTestTime>1766934943</EndTestTime>
 		<ElapsedMinutes>0</ElapsedMinutes>
 	</Testing>
 </Site>

@@ -67,8 +67,7 @@ include CMakeFiles/run.dir/compiler_depend.make
 include CMakeFiles/run.dir/progress.make
 
 CMakeFiles/run: progetto
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/martiri/progetto_rn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Esegue l'eseguibile progetto"
-	cd /home/martiri/progetto_rn && /home/martiri/progetto_rn/build/progetto
+	/home/martiri/progetto_rn/build/progetto
 
 run: CMakeFiles/run
 run: CMakeFiles/run.dir/build.make

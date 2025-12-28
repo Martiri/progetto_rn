@@ -5,6 +5,7 @@
 
 #include "boid.hpp"
 
+
 namespace boids_sim {
 class flock {
  private:
@@ -12,22 +13,20 @@ class flock {
   int numBoids_;
   float maxX_;
   float maxY_;
-  float l_;
-  int factorx_;
-  int factory_;
-  int ncells_;
   std::vector<int> headers_;
   std::vector<int> next_;
   std::vector<Vector2D> newvelocity_;
 
  public:
-  flock(int numBoids, float maxX, float maxY);
-  int getcell(const Vector2D& position) const;
-  void step(float dt, float factorx, float s, float a, float c, float d,
-            float ds);
-  const std::vector<boid>& getBoids() const;
+  flock(int numBoids, float maxX, float maxY, int ncells);
+  int getcell(const Vector2D &position, const int &factorx,
+              const float &length) const;
+  void step(float dt, float maxX, float maxY, int factorx, float s, float a,
+            float c, float d2, float ds2, float length, int ncells, float vmax2);
+  const std::vector<boid> &getBoids() const;
+  void reset_headers() {}
   Vector2D computeAverageVelocity() const;
   float computeAverageDistance() const;
 };
-};  // namespace boids_sim
+}; 
 #endif

@@ -2,6 +2,7 @@
 
 #include <cassert>
 #include <random>
+
 float hamplitudev = 100.f;
 float offsetv = 4.f;
 float s = 0.15f;
@@ -12,13 +13,11 @@ float d2 = d * d;
 float ds = 20.0f;
 float ds2 = ds * ds;
 float timescale = 1.0f;
+
 namespace boids_sim {
 
-flock::flock(int numBoids, float maxX, float maxY)
-    : numBoids_(numBoids), maxX_(maxX), maxY_(maxY),
-      factorx_(20), factory_(20) {
-        if (factorx_ > 0)  l_ = maxX_ / factorx_;
-  ncells_ = factorx_ * factory_;
+flock::flock(int numBoids, float maxX, float maxY, int ncells)
+    : numBoids_(numBoids), maxX_(maxX), maxY_(maxY) {
   boids_.clear();
   boids_.reserve(static_cast<size_t>(numBoids_));
 
@@ -32,24 +31,24 @@ flock::flock(int numBoids, float maxX, float maxY)
   for (int i = 0; i < numBoids_; ++i) {
     boids_.emplace_back(distX(gen), distY(gen), distV(gen), distV(gen));
   }
-  headers_.resize(ncells_, -1);
+  headers_.resize(ncells, -1);
   next_.resize(numBoids_, -1);
   newvelocity_.resize(numBoids_);
 }
-const std::vector<boid>& flock::getBoids() const { return boids_; }
+const std::vector<boid> &flock::getBoids() const { return boids_; }
 
-int flock::getcell(const Vector2D& position) const {
-  return static_cast<int>(position.y / l_) * factorx_ +
-         static_cast<int>(position.x / l_);
+int flock::getcell(const Vector2D &position, const int &factorx,
+                   const float &length) const {
+  return static_cast<int>(position.y / length) * factorx +
+         static_cast<int>(position.x / length);
 }
-void flock::step(float dt, float factorx, float s, float a, float c, float d,
-                 float ds) {
+void flock::step(float dt, float maxX, float maxY, int factorx, float s,
+                 float a, float c, float d2, float ds2, float length,
+                 int ncells, float vmax2) {
+  std::fill(headers_.begin(), headers_.end(), -1);
   for (int i = 0; i < numBoids_; ++i) {
-    int cell = getcell(boids_[i].getPosition());
-    if (headers_[cell] != -1) {
-      next_[i] = headers_[cell];
-    }
-
+    int cell = getcell(boids_[i].getPosition(), factorx, length);
+    next_[i] = headers_[cell];
     headers_[cell] = i;
   }
   for (int i = 0; i < numBoids_; ++i) {
@@ -58,30 +57,35 @@ void flock::step(float dt, float factorx, float s, float a, float c, float d,
     Vector2D accdist{0.f, 0.f};
 
     int l{0};
-    int cell = getcell(boids_[i].getPosition());
-    for (int i = -1; i <= 1; i++)
-      for (int j = -1; j <= 1; j++) {
-        int b = headers_[cell + i * static_cast<int>(factorx_) + j];
-        while (b != -1) {
-          const Vector2D& hposition = boids_[b].getPosition();
-          const Vector2D& hvelocity = boids_[b].getVelocity();
-          Vector2D dist = hposition - boids_[i].getPosition();
-          float dist2 = dist.norm2();
-          if (dist2 < d2) {
-            l += 1;
-            accpos += hposition;
-            accvel += hvelocity;
-            if (dist2 < ds2) accdist += dist;
+    int cell = getcell(boids_[i].getPosition(), factorx, length);
+    for (int j = -1; j <= 1; j++)
+      for (int k = -1; k <= 1; k++) {
+        int act_cell{cell + j * factorx + k};
+        if (act_cell >= 0 && act_cell < ncells) {
+          int b = headers_[act_cell];
+          while (b != -1) {
+            const Vector2D &hposition = boids_[b].getPosition();
+            const Vector2D &hvelocity = boids_[b].getVelocity();
+            Vector2D dist = hposition - boids_[i].getPosition();
+            float dist2 = dist.norm2();
+            if (dist2 < d2) {
+              l++;
+              accpos += hposition;
+              accvel += hvelocity;
+              if (dist2 < ds2) accdist += dist;
+            }
+            b = next_[b];
           }
-          b = next_[b];
         }
       }
-    Vector2D vs = accdist * (-s);
-    Vector2D va = (accvel * (1 / l) - boids_[i].getVelocity()) * a;
-    Vector2D vc = (accpos * (1 / l) - boids_[i].getPosition()) * c;
-    newvelocity_[i] = vs + va + vc;
-    boids_[i].updatevelocity(newvelocity_[i]);
-    boids_[i].updateposition(dt);
+    if (l != 0) {
+      Vector2D vs = accdist * (-s);
+      Vector2D va = (accvel * (1.f / l) - boids_[i].getVelocity()) * a;
+      Vector2D vc = (accpos * (1.f / l) - boids_[i].getPosition()) * c;
+      newvelocity_[i] = vs + va + vc;
+      boids_[i].updatevelocity(newvelocity_[i], vmax2);
+      boids_[i].updateposition(dt, maxX, maxY);
+    }
   }
 }
-}  // namespace boids_sim
+};  // namespace boids_sim

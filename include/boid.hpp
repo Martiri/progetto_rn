@@ -26,8 +26,8 @@ class boid {
 
   const Vector2D &getPosition() const;
   const Vector2D &getVelocity() const;
-  void updateposition(float dt);
-  void updatevelocity(const Vector2D &vel);
+  void updateposition(float dt, float maxX, float maxY);
+  void updatevelocity(const Vector2D &vel, float vmax2);
 };
 }  // namespace boids_sim
 #endif
