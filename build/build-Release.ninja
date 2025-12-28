@@ -64,9 +64,17 @@ build NightlyTest: phony NightlyTest$:Release
 
 build NightlyUpdate: phony NightlyUpdate$:Release
 
-build progetto: phony Release/progetto
+build boids_core: phony Release/libboids_core.a
 
-build progetto.t: phony Release/progetto.t
+build check: phony check$:Release
+
+build libboids_core.a: phony Release/libboids_core.a
+
+build progetto_run: phony Release/progetto_run
+
+build progetto_test: phony Release/progetto_test
+
+build run: phony run$:Release
 
 
 #############################################

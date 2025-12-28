@@ -64,9 +64,17 @@ build NightlyTest: phony NightlyTest$:RelWithDebInfo
 
 build NightlyUpdate: phony NightlyUpdate$:RelWithDebInfo
 
-build progetto: phony RelWithDebInfo/progetto
+build boids_core: phony RelWithDebInfo/libboids_core.a
 
-build progetto.t: phony RelWithDebInfo/progetto.t
+build check: phony check$:RelWithDebInfo
+
+build libboids_core.a: phony RelWithDebInfo/libboids_core.a
+
+build progetto_run: phony RelWithDebInfo/progetto_run
+
+build progetto_test: phony RelWithDebInfo/progetto_test
+
+build run: phony run$:RelWithDebInfo
 
 
 #############################################

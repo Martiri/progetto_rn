@@ -34,22 +34,35 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 
 # se usato, richiedi il componente graphics della libreria SFML (versione 2.6 in Ubuntu 24.04)
 find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
+#crea una libreria condivisa "boids_core" con i file sorgente della logica
+add_library(boids_core flock.cpp boid.cpp)
 
-# dichiara un eseguibile chiamato "progetto", prodotto a partire dai file sorgente indicati
-# sostituire "progetto" con il nome del proprio eseguibile e i file sorgente con i propri (con nomi sensati!)
-add_executable(progetto main.cpp flock.cpp boid.cpp)
-# nel caso si usi SFML. analogamente per eventuali altre librerie
-target_link_libraries(progetto PRIVATE sfml-graphics)
-
+# crea l'eseguibile principale progetto_run
+add_executable(progetto_run main.cpp)
+target_link_libraries(progetto_run PRIVATE boids_core sfml-graphics)
 # aggiungere eventuali altri eseguibili
-
+# Aggiunge un comando custom "run"
+add_custom_target(run
+    COMMAND progetto_run
+    DEPENDS progetto_run
+    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
+    COMMENT "Avvio la simulazione..."
+)
 # il testing e' abilitato di default
 # per disabilitarlo, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
 if (BUILD_TESTING)
 
-  # aggiungi l'eseguibile progetto.t
-  add_executable(progetto.t flock.cpp boid.cpp flock.t.cpp)
-  # aggiungi l'eseguibile progetto.t alla lista dei test
-  add_test(NAME progetto.t COMMAND progetto.t)
+  # aggiungi l'eseguibile progetto_test
+  add_executable(progetto_test flock.t.cpp)
+  target_link_libraries(progetto_test PRIVATE boids_core sfml-graphics)
+  # aggiungi l'eseguibile progetto_test alla lista dei test
+  add_test(NAME progetto_test COMMAND progetto_test)
 
+# Aggiunge un comando custom "check" per i test
+add_custom_target(check
+    COMMAND progetto_test
+    DEPENDS progetto_test
+    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
+    COMMENT "Esecuzione dei test..."
+)
 endif()

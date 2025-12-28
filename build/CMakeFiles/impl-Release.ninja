@@ -203,111 +203,132 @@ build ContinuousMemCheck$:Release: phony CMakeFiles/ContinuousMemCheck-Release
 build ContinuousSubmit$:Release: phony CMakeFiles/ContinuousSubmit-Release
 
 # =============================================================================
-# Object build statements for EXECUTABLE target progetto
+# Object build statements for STATIC_LIBRARY target boids_core
 
 
 #############################################
-# Order-only phony target for progetto
+# Order-only phony target for boids_core
 
-build cmake_object_order_depends_target_progetto_RELEASE: phony || CMakeFiles/progetto.dir
+build cmake_object_order_depends_target_boids_core_RELEASE: phony || CMakeFiles/boids_core.dir
 
-build CMakeFiles/progetto.dir/Release/main.cpp.o: CXX_COMPILER__progetto_unscanned_Release /home/martiri/progetto_rn/main.cpp || cmake_object_order_depends_target_progetto_RELEASE
+build CMakeFiles/boids_core.dir/Release/flock.cpp.o: CXX_COMPILER__boids_core_unscanned_Release /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_boids_core_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/progetto.dir/Release/main.cpp.o.d
+  DEP_FILE = CMakeFiles/boids_core.dir/Release/flock.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/Release
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Release/
-  TARGET_PDB = Release/progetto.pdb
+  OBJECT_DIR = CMakeFiles/boids_core.dir/Release
+  OBJECT_FILE_DIR = CMakeFiles/boids_core.dir/Release
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/Release/boids_core.pdb
+  TARGET_PDB = Release/libboids_core.pdb
 
-build CMakeFiles/progetto.dir/Release/flock.cpp.o: CXX_COMPILER__progetto_unscanned_Release /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_progetto_RELEASE
+build CMakeFiles/boids_core.dir/Release/boid.cpp.o: CXX_COMPILER__boids_core_unscanned_Release /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_boids_core_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/progetto.dir/Release/flock.cpp.o.d
+  DEP_FILE = CMakeFiles/boids_core.dir/Release/boid.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/Release
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Release/
-  TARGET_PDB = Release/progetto.pdb
-
-build CMakeFiles/progetto.dir/Release/boid.cpp.o: CXX_COMPILER__progetto_unscanned_Release /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_progetto_RELEASE
-  DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/progetto.dir/Release/boid.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/Release
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Release/
-  TARGET_PDB = Release/progetto.pdb
+  OBJECT_DIR = CMakeFiles/boids_core.dir/Release
+  OBJECT_FILE_DIR = CMakeFiles/boids_core.dir/Release
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/Release/boids_core.pdb
+  TARGET_PDB = Release/libboids_core.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target progetto
+# Link build statements for STATIC_LIBRARY target boids_core
 
 
 #############################################
-# Link the executable Release/progetto
+# Link the static library Release/libboids_core.a
 
-build Release/progetto: CXX_EXECUTABLE_LINKER__progetto_Release CMakeFiles/progetto.dir/Release/main.cpp.o CMakeFiles/progetto.dir/Release/flock.cpp.o CMakeFiles/progetto.dir/Release/boid.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG
-  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
-  OBJECT_DIR = CMakeFiles/progetto.dir/Release
+build Release/libboids_core.a: CXX_STATIC_LIBRARY_LINKER__boids_core_Release CMakeFiles/boids_core.dir/Release/flock.cpp.o CMakeFiles/boids_core.dir/Release/boid.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG
+  OBJECT_DIR = CMakeFiles/boids_core.dir/Release
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Release/
-  TARGET_FILE = Release/progetto
-  TARGET_PDB = Release/progetto.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/Release/boids_core.pdb
+  TARGET_FILE = Release/libboids_core.a
+  TARGET_PDB = Release/libboids_core.pdb
 
 # =============================================================================
-# Object build statements for EXECUTABLE target progetto.t
+# Object build statements for EXECUTABLE target progetto_run
 
 
 #############################################
-# Order-only phony target for progetto.t
+# Order-only phony target for progetto_run
 
-build cmake_object_order_depends_target_progetto.t_RELEASE: phony || CMakeFiles/progetto.t.dir
+build cmake_object_order_depends_target_progetto_run_RELEASE: phony || cmake_object_order_depends_target_boids_core_RELEASE
 
-build CMakeFiles/progetto.t.dir/Release/flock.cpp.o: CXX_COMPILER__progetto.2et_unscanned_Release /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_progetto.t_RELEASE
+build CMakeFiles/progetto_run.dir/Release/main.cpp.o: CXX_COMPILER__progetto_run_unscanned_Release /home/martiri/progetto_rn/main.cpp || cmake_object_order_depends_target_progetto_run_RELEASE
   DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/Release/flock.cpp.o.d
+  DEP_FILE = CMakeFiles/progetto_run.dir/Release/main.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/Release
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Release/
-  TARGET_PDB = Release/progetto.t.pdb
-
-build CMakeFiles/progetto.t.dir/Release/boid.cpp.o: CXX_COMPILER__progetto.2et_unscanned_Release /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_progetto.t_RELEASE
-  DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/Release/boid.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/Release
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Release/
-  TARGET_PDB = Release/progetto.t.pdb
-
-build CMakeFiles/progetto.t.dir/Release/flock.t.cpp.o: CXX_COMPILER__progetto.2et_unscanned_Release /home/martiri/progetto_rn/flock.t.cpp || cmake_object_order_depends_target_progetto.t_RELEASE
-  DEFINES = -DCMAKE_INTDIR=\"Release\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/Release/flock.t.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Release
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/Release
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Release/
-  TARGET_PDB = Release/progetto.t.pdb
+  OBJECT_DIR = CMakeFiles/progetto_run.dir/Release
+  OBJECT_FILE_DIR = CMakeFiles/progetto_run.dir/Release
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_run.dir/Release/
+  TARGET_PDB = Release/progetto_run.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target progetto.t
+# Link build statements for EXECUTABLE target progetto_run
 
 
 #############################################
-# Link the executable Release/progetto.t
+# Link the executable Release/progetto_run
 
-build Release/progetto.t: CXX_EXECUTABLE_LINKER__progetto.2et_Release CMakeFiles/progetto.t.dir/Release/flock.cpp.o CMakeFiles/progetto.t.dir/Release/boid.cpp.o CMakeFiles/progetto.t.dir/Release/flock.t.cpp.o
+build Release/progetto_run: CXX_EXECUTABLE_LINKER__progetto_run_Release CMakeFiles/progetto_run.dir/Release/main.cpp.o | Release/libboids_core.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 || Release/libboids_core.a
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Release
+  LINK_LIBRARIES = Release/libboids_core.a  /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+  OBJECT_DIR = CMakeFiles/progetto_run.dir/Release
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Release/
-  TARGET_FILE = Release/progetto.t
-  TARGET_PDB = Release/progetto.t.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_run.dir/Release/
+  TARGET_FILE = Release/progetto_run
+  TARGET_PDB = Release/progetto_run.pdb
+
+
+#############################################
+# Utility command for run
+
+build run$:Release: phony CMakeFiles/run-Release Release/progetto_run
+
+# =============================================================================
+# Object build statements for EXECUTABLE target progetto_test
+
+
+#############################################
+# Order-only phony target for progetto_test
+
+build cmake_object_order_depends_target_progetto_test_RELEASE: phony || cmake_object_order_depends_target_boids_core_RELEASE
+
+build CMakeFiles/progetto_test.dir/Release/flock.t.cpp.o: CXX_COMPILER__progetto_test_unscanned_Release /home/martiri/progetto_rn/flock.t.cpp || cmake_object_order_depends_target_progetto_test_RELEASE
+  DEFINES = -DCMAKE_INTDIR=\"Release\"
+  DEP_FILE = CMakeFiles/progetto_test.dir/Release/flock.t.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20
+  OBJECT_DIR = CMakeFiles/progetto_test.dir/Release
+  OBJECT_FILE_DIR = CMakeFiles/progetto_test.dir/Release
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_test.dir/Release/
+  TARGET_PDB = Release/progetto_test.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target progetto_test
+
+
+#############################################
+# Link the executable Release/progetto_test
+
+build Release/progetto_test: CXX_EXECUTABLE_LINKER__progetto_test_Release CMakeFiles/progetto_test.dir/Release/flock.t.cpp.o | Release/libboids_core.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 || Release/libboids_core.a
+  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG
+  LINK_LIBRARIES = Release/libboids_core.a  /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+  OBJECT_DIR = CMakeFiles/progetto_test.dir/Release
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_test.dir/Release/
+  TARGET_FILE = Release/progetto_test
+  TARGET_PDB = Release/progetto_test.pdb
+
+
+#############################################
+# Utility command for check
+
+build check$:Release: phony CMakeFiles/check-Release Release/progetto_test
 
 
 #############################################
@@ -533,15 +554,35 @@ build CMakeFiles/ContinuousSubmit-Release | ${cmake_ninja_workdir}CMakeFiles/Con
   COMMAND = cd /home/martiri/progetto_rn/build && /usr/bin/ctest -C Release -D ContinuousSubmit
   pool = console
 
-build progetto.t$:Release: phony Release/progetto.t
 
-build progetto$:Release: phony Release/progetto
+#############################################
+# Custom command for CMakeFiles/run-Release
+
+build CMakeFiles/run-Release | ${cmake_ninja_workdir}CMakeFiles/run-Release: CUSTOM_COMMAND Release/progetto_run || Release/libboids_core.a Release/progetto_run
+  COMMAND = cd /home/martiri/progetto_rn/build && /home/martiri/progetto_rn/build/Release/progetto_run
+  DESC = Avvio la simulazione...
+
+
+#############################################
+# Custom command for CMakeFiles/check-Release
+
+build CMakeFiles/check-Release | ${cmake_ninja_workdir}CMakeFiles/check-Release: CUSTOM_COMMAND Release/progetto_test || Release/libboids_core.a Release/progetto_test
+  COMMAND = cd /home/martiri/progetto_rn/build && /home/martiri/progetto_rn/build/Release/progetto_test
+  DESC = Esecuzione dei test...
+
+build boids_core$:Release: phony Release/libboids_core.a
+
+build libboids_core.a$:Release: phony Release/libboids_core.a
+
+build progetto_run$:Release: phony Release/progetto_run
+
+build progetto_test$:Release: phony Release/progetto_test
 
 
 #############################################
 # Folder: /home/martiri/progetto_rn/build
 
-build all$:Release: phony Release/progetto Release/progetto.t
+build all$:Release: phony Release/libboids_core.a Release/progetto_run Release/progetto_test
 
 
 #############################################

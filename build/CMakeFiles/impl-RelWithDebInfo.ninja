@@ -203,111 +203,132 @@ build ContinuousMemCheck$:RelWithDebInfo: phony CMakeFiles/ContinuousMemCheck-Re
 build ContinuousSubmit$:RelWithDebInfo: phony CMakeFiles/ContinuousSubmit-RelWithDebInfo
 
 # =============================================================================
-# Object build statements for EXECUTABLE target progetto
+# Object build statements for STATIC_LIBRARY target boids_core
 
 
 #############################################
-# Order-only phony target for progetto
+# Order-only phony target for boids_core
 
-build cmake_object_order_depends_target_progetto_RELWITHDEBINFO: phony || CMakeFiles/progetto.dir
+build cmake_object_order_depends_target_boids_core_RELWITHDEBINFO: phony || CMakeFiles/boids_core.dir
 
-build CMakeFiles/progetto.dir/RelWithDebInfo/main.cpp.o: CXX_COMPILER__progetto_unscanned_RelWithDebInfo /home/martiri/progetto_rn/main.cpp || cmake_object_order_depends_target_progetto_RELWITHDEBINFO
+build CMakeFiles/boids_core.dir/RelWithDebInfo/flock.cpp.o: CXX_COMPILER__boids_core_unscanned_RelWithDebInfo /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_boids_core_RELWITHDEBINFO
   DEFINES = -DCMAKE_INTDIR=\"RelWithDebInfo\"
-  DEP_FILE = CMakeFiles/progetto.dir/RelWithDebInfo/main.cpp.o.d
+  DEP_FILE = CMakeFiles/boids_core.dir/RelWithDebInfo/flock.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/RelWithDebInfo
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/RelWithDebInfo/
-  TARGET_PDB = RelWithDebInfo/progetto.pdb
+  OBJECT_DIR = CMakeFiles/boids_core.dir/RelWithDebInfo
+  OBJECT_FILE_DIR = CMakeFiles/boids_core.dir/RelWithDebInfo
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/RelWithDebInfo/boids_core.pdb
+  TARGET_PDB = RelWithDebInfo/libboids_core.pdb
 
-build CMakeFiles/progetto.dir/RelWithDebInfo/flock.cpp.o: CXX_COMPILER__progetto_unscanned_RelWithDebInfo /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_progetto_RELWITHDEBINFO
+build CMakeFiles/boids_core.dir/RelWithDebInfo/boid.cpp.o: CXX_COMPILER__boids_core_unscanned_RelWithDebInfo /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_boids_core_RELWITHDEBINFO
   DEFINES = -DCMAKE_INTDIR=\"RelWithDebInfo\"
-  DEP_FILE = CMakeFiles/progetto.dir/RelWithDebInfo/flock.cpp.o.d
+  DEP_FILE = CMakeFiles/boids_core.dir/RelWithDebInfo/boid.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/RelWithDebInfo
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/RelWithDebInfo/
-  TARGET_PDB = RelWithDebInfo/progetto.pdb
-
-build CMakeFiles/progetto.dir/RelWithDebInfo/boid.cpp.o: CXX_COMPILER__progetto_unscanned_RelWithDebInfo /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_progetto_RELWITHDEBINFO
-  DEFINES = -DCMAKE_INTDIR=\"RelWithDebInfo\"
-  DEP_FILE = CMakeFiles/progetto.dir/RelWithDebInfo/boid.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/RelWithDebInfo
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/RelWithDebInfo/
-  TARGET_PDB = RelWithDebInfo/progetto.pdb
+  OBJECT_DIR = CMakeFiles/boids_core.dir/RelWithDebInfo
+  OBJECT_FILE_DIR = CMakeFiles/boids_core.dir/RelWithDebInfo
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/RelWithDebInfo/boids_core.pdb
+  TARGET_PDB = RelWithDebInfo/libboids_core.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target progetto
+# Link build statements for STATIC_LIBRARY target boids_core
 
 
 #############################################
-# Link the executable RelWithDebInfo/progetto
+# Link the static library RelWithDebInfo/libboids_core.a
 
-build RelWithDebInfo/progetto: CXX_EXECUTABLE_LINKER__progetto_RelWithDebInfo CMakeFiles/progetto.dir/RelWithDebInfo/main.cpp.o CMakeFiles/progetto.dir/RelWithDebInfo/flock.cpp.o CMakeFiles/progetto.dir/RelWithDebInfo/boid.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG
-  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
-  OBJECT_DIR = CMakeFiles/progetto.dir/RelWithDebInfo
+build RelWithDebInfo/libboids_core.a: CXX_STATIC_LIBRARY_LINKER__boids_core_RelWithDebInfo CMakeFiles/boids_core.dir/RelWithDebInfo/flock.cpp.o CMakeFiles/boids_core.dir/RelWithDebInfo/boid.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG
+  OBJECT_DIR = CMakeFiles/boids_core.dir/RelWithDebInfo
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/RelWithDebInfo/
-  TARGET_FILE = RelWithDebInfo/progetto
-  TARGET_PDB = RelWithDebInfo/progetto.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/RelWithDebInfo/boids_core.pdb
+  TARGET_FILE = RelWithDebInfo/libboids_core.a
+  TARGET_PDB = RelWithDebInfo/libboids_core.pdb
 
 # =============================================================================
-# Object build statements for EXECUTABLE target progetto.t
+# Object build statements for EXECUTABLE target progetto_run
 
 
 #############################################
-# Order-only phony target for progetto.t
+# Order-only phony target for progetto_run
 
-build cmake_object_order_depends_target_progetto.t_RELWITHDEBINFO: phony || CMakeFiles/progetto.t.dir
+build cmake_object_order_depends_target_progetto_run_RELWITHDEBINFO: phony || cmake_object_order_depends_target_boids_core_RELWITHDEBINFO
 
-build CMakeFiles/progetto.t.dir/RelWithDebInfo/flock.cpp.o: CXX_COMPILER__progetto.2et_unscanned_RelWithDebInfo /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_progetto.t_RELWITHDEBINFO
+build CMakeFiles/progetto_run.dir/RelWithDebInfo/main.cpp.o: CXX_COMPILER__progetto_run_unscanned_RelWithDebInfo /home/martiri/progetto_rn/main.cpp || cmake_object_order_depends_target_progetto_run_RELWITHDEBINFO
   DEFINES = -DCMAKE_INTDIR=\"RelWithDebInfo\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/RelWithDebInfo/flock.cpp.o.d
+  DEP_FILE = CMakeFiles/progetto_run.dir/RelWithDebInfo/main.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/RelWithDebInfo
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/RelWithDebInfo/
-  TARGET_PDB = RelWithDebInfo/progetto.t.pdb
-
-build CMakeFiles/progetto.t.dir/RelWithDebInfo/boid.cpp.o: CXX_COMPILER__progetto.2et_unscanned_RelWithDebInfo /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_progetto.t_RELWITHDEBINFO
-  DEFINES = -DCMAKE_INTDIR=\"RelWithDebInfo\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/RelWithDebInfo/boid.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/RelWithDebInfo
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/RelWithDebInfo/
-  TARGET_PDB = RelWithDebInfo/progetto.t.pdb
-
-build CMakeFiles/progetto.t.dir/RelWithDebInfo/flock.t.cpp.o: CXX_COMPILER__progetto.2et_unscanned_RelWithDebInfo /home/martiri/progetto_rn/flock.t.cpp || cmake_object_order_depends_target_progetto.t_RELWITHDEBINFO
-  DEFINES = -DCMAKE_INTDIR=\"RelWithDebInfo\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/RelWithDebInfo/flock.t.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/RelWithDebInfo
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/RelWithDebInfo
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/RelWithDebInfo/
-  TARGET_PDB = RelWithDebInfo/progetto.t.pdb
+  OBJECT_DIR = CMakeFiles/progetto_run.dir/RelWithDebInfo
+  OBJECT_FILE_DIR = CMakeFiles/progetto_run.dir/RelWithDebInfo
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_run.dir/RelWithDebInfo/
+  TARGET_PDB = RelWithDebInfo/progetto_run.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target progetto.t
+# Link build statements for EXECUTABLE target progetto_run
 
 
 #############################################
-# Link the executable RelWithDebInfo/progetto.t
+# Link the executable RelWithDebInfo/progetto_run
 
-build RelWithDebInfo/progetto.t: CXX_EXECUTABLE_LINKER__progetto.2et_RelWithDebInfo CMakeFiles/progetto.t.dir/RelWithDebInfo/flock.cpp.o CMakeFiles/progetto.t.dir/RelWithDebInfo/boid.cpp.o CMakeFiles/progetto.t.dir/RelWithDebInfo/flock.t.cpp.o
+build RelWithDebInfo/progetto_run: CXX_EXECUTABLE_LINKER__progetto_run_RelWithDebInfo CMakeFiles/progetto_run.dir/RelWithDebInfo/main.cpp.o | RelWithDebInfo/libboids_core.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 || RelWithDebInfo/libboids_core.a
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/RelWithDebInfo
+  LINK_LIBRARIES = RelWithDebInfo/libboids_core.a  /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+  OBJECT_DIR = CMakeFiles/progetto_run.dir/RelWithDebInfo
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/RelWithDebInfo/
-  TARGET_FILE = RelWithDebInfo/progetto.t
-  TARGET_PDB = RelWithDebInfo/progetto.t.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_run.dir/RelWithDebInfo/
+  TARGET_FILE = RelWithDebInfo/progetto_run
+  TARGET_PDB = RelWithDebInfo/progetto_run.pdb
+
+
+#############################################
+# Utility command for run
+
+build run$:RelWithDebInfo: phony CMakeFiles/run-RelWithDebInfo RelWithDebInfo/progetto_run
+
+# =============================================================================
+# Object build statements for EXECUTABLE target progetto_test
+
+
+#############################################
+# Order-only phony target for progetto_test
+
+build cmake_object_order_depends_target_progetto_test_RELWITHDEBINFO: phony || cmake_object_order_depends_target_boids_core_RELWITHDEBINFO
+
+build CMakeFiles/progetto_test.dir/RelWithDebInfo/flock.t.cpp.o: CXX_COMPILER__progetto_test_unscanned_RelWithDebInfo /home/martiri/progetto_rn/flock.t.cpp || cmake_object_order_depends_target_progetto_test_RELWITHDEBINFO
+  DEFINES = -DCMAKE_INTDIR=\"RelWithDebInfo\"
+  DEP_FILE = CMakeFiles/progetto_test.dir/RelWithDebInfo/flock.t.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20
+  OBJECT_DIR = CMakeFiles/progetto_test.dir/RelWithDebInfo
+  OBJECT_FILE_DIR = CMakeFiles/progetto_test.dir/RelWithDebInfo
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_test.dir/RelWithDebInfo/
+  TARGET_PDB = RelWithDebInfo/progetto_test.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target progetto_test
+
+
+#############################################
+# Link the executable RelWithDebInfo/progetto_test
+
+build RelWithDebInfo/progetto_test: CXX_EXECUTABLE_LINKER__progetto_test_RelWithDebInfo CMakeFiles/progetto_test.dir/RelWithDebInfo/flock.t.cpp.o | RelWithDebInfo/libboids_core.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 || RelWithDebInfo/libboids_core.a
+  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG
+  LINK_LIBRARIES = RelWithDebInfo/libboids_core.a  /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+  OBJECT_DIR = CMakeFiles/progetto_test.dir/RelWithDebInfo
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_test.dir/RelWithDebInfo/
+  TARGET_FILE = RelWithDebInfo/progetto_test
+  TARGET_PDB = RelWithDebInfo/progetto_test.pdb
+
+
+#############################################
+# Utility command for check
+
+build check$:RelWithDebInfo: phony CMakeFiles/check-RelWithDebInfo RelWithDebInfo/progetto_test
 
 
 #############################################
@@ -533,15 +554,35 @@ build CMakeFiles/ContinuousSubmit-RelWithDebInfo | ${cmake_ninja_workdir}CMakeFi
   COMMAND = cd /home/martiri/progetto_rn/build && /usr/bin/ctest -C RelWithDebInfo -D ContinuousSubmit
   pool = console
 
-build progetto.t$:RelWithDebInfo: phony RelWithDebInfo/progetto.t
 
-build progetto$:RelWithDebInfo: phony RelWithDebInfo/progetto
+#############################################
+# Custom command for CMakeFiles/run-RelWithDebInfo
+
+build CMakeFiles/run-RelWithDebInfo | ${cmake_ninja_workdir}CMakeFiles/run-RelWithDebInfo: CUSTOM_COMMAND RelWithDebInfo/progetto_run || RelWithDebInfo/libboids_core.a RelWithDebInfo/progetto_run
+  COMMAND = cd /home/martiri/progetto_rn/build && /home/martiri/progetto_rn/build/RelWithDebInfo/progetto_run
+  DESC = Avvio la simulazione...
+
+
+#############################################
+# Custom command for CMakeFiles/check-RelWithDebInfo
+
+build CMakeFiles/check-RelWithDebInfo | ${cmake_ninja_workdir}CMakeFiles/check-RelWithDebInfo: CUSTOM_COMMAND RelWithDebInfo/progetto_test || RelWithDebInfo/libboids_core.a RelWithDebInfo/progetto_test
+  COMMAND = cd /home/martiri/progetto_rn/build && /home/martiri/progetto_rn/build/RelWithDebInfo/progetto_test
+  DESC = Esecuzione dei test...
+
+build boids_core$:RelWithDebInfo: phony RelWithDebInfo/libboids_core.a
+
+build libboids_core.a$:RelWithDebInfo: phony RelWithDebInfo/libboids_core.a
+
+build progetto_run$:RelWithDebInfo: phony RelWithDebInfo/progetto_run
+
+build progetto_test$:RelWithDebInfo: phony RelWithDebInfo/progetto_test
 
 
 #############################################
 # Folder: /home/martiri/progetto_rn/build
 
-build all$:RelWithDebInfo: phony RelWithDebInfo/progetto RelWithDebInfo/progetto.t
+build all$:RelWithDebInfo: phony RelWithDebInfo/libboids_core.a RelWithDebInfo/progetto_run RelWithDebInfo/progetto_test
 
 
 #############################################

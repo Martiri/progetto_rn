@@ -203,113 +203,134 @@ build ContinuousMemCheck$:Debug: phony CMakeFiles/ContinuousMemCheck-Debug
 build ContinuousSubmit$:Debug: phony CMakeFiles/ContinuousSubmit-Debug
 
 # =============================================================================
-# Object build statements for EXECUTABLE target progetto
+# Object build statements for STATIC_LIBRARY target boids_core
 
 
 #############################################
-# Order-only phony target for progetto
+# Order-only phony target for boids_core
 
-build cmake_object_order_depends_target_progetto_DEBUG: phony || CMakeFiles/progetto.dir
+build cmake_object_order_depends_target_boids_core_DEBUG: phony || CMakeFiles/boids_core.dir
 
-build CMakeFiles/progetto.dir/Debug/main.cpp.o: CXX_COMPILER__progetto_unscanned_Debug /home/martiri/progetto_rn/main.cpp || cmake_object_order_depends_target_progetto_DEBUG
+build CMakeFiles/boids_core.dir/Debug/flock.cpp.o: CXX_COMPILER__boids_core_unscanned_Debug /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_boids_core_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/progetto.dir/Debug/main.cpp.o.d
+  DEP_FILE = CMakeFiles/boids_core.dir/Debug/flock.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/Debug
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Debug/
-  TARGET_PDB = Debug/progetto.pdb
+  OBJECT_DIR = CMakeFiles/boids_core.dir/Debug
+  OBJECT_FILE_DIR = CMakeFiles/boids_core.dir/Debug
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/Debug/boids_core.pdb
+  TARGET_PDB = Debug/libboids_core.pdb
 
-build CMakeFiles/progetto.dir/Debug/flock.cpp.o: CXX_COMPILER__progetto_unscanned_Debug /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_progetto_DEBUG
+build CMakeFiles/boids_core.dir/Debug/boid.cpp.o: CXX_COMPILER__boids_core_unscanned_Debug /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_boids_core_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/progetto.dir/Debug/flock.cpp.o.d
+  DEP_FILE = CMakeFiles/boids_core.dir/Debug/boid.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/Debug
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Debug/
-  TARGET_PDB = Debug/progetto.pdb
-
-build CMakeFiles/progetto.dir/Debug/boid.cpp.o: CXX_COMPILER__progetto_unscanned_Debug /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_progetto_DEBUG
-  DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/progetto.dir/Debug/boid.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/progetto.dir/Debug
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Debug/
-  TARGET_PDB = Debug/progetto.pdb
+  OBJECT_DIR = CMakeFiles/boids_core.dir/Debug
+  OBJECT_FILE_DIR = CMakeFiles/boids_core.dir/Debug
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/Debug/boids_core.pdb
+  TARGET_PDB = Debug/libboids_core.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target progetto
+# Link build statements for STATIC_LIBRARY target boids_core
 
 
 #############################################
-# Link the executable Debug/progetto
+# Link the static library Debug/libboids_core.a
 
-build Debug/progetto: CXX_EXECUTABLE_LINKER__progetto_Debug CMakeFiles/progetto.dir/Debug/main.cpp.o CMakeFiles/progetto.dir/Debug/flock.cpp.o CMakeFiles/progetto.dir/Debug/boid.cpp.o | /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined
-  LINK_FLAGS = -fsanitize=address,undefined
-  LINK_LIBRARIES = /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
-  OBJECT_DIR = CMakeFiles/progetto.dir/Debug
+build Debug/libboids_core.a: CXX_STATIC_LIBRARY_LINKER__boids_core_Debug CMakeFiles/boids_core.dir/Debug/flock.cpp.o CMakeFiles/boids_core.dir/Debug/boid.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined
+  OBJECT_DIR = CMakeFiles/boids_core.dir/Debug
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.dir/Debug/
-  TARGET_FILE = Debug/progetto
-  TARGET_PDB = Debug/progetto.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/boids_core.dir/Debug/boids_core.pdb
+  TARGET_FILE = Debug/libboids_core.a
+  TARGET_PDB = Debug/libboids_core.pdb
 
 # =============================================================================
-# Object build statements for EXECUTABLE target progetto.t
+# Object build statements for EXECUTABLE target progetto_run
 
 
 #############################################
-# Order-only phony target for progetto.t
+# Order-only phony target for progetto_run
 
-build cmake_object_order_depends_target_progetto.t_DEBUG: phony || CMakeFiles/progetto.t.dir
+build cmake_object_order_depends_target_progetto_run_DEBUG: phony || cmake_object_order_depends_target_boids_core_DEBUG
 
-build CMakeFiles/progetto.t.dir/Debug/flock.cpp.o: CXX_COMPILER__progetto.2et_unscanned_Debug /home/martiri/progetto_rn/flock.cpp || cmake_object_order_depends_target_progetto.t_DEBUG
+build CMakeFiles/progetto_run.dir/Debug/main.cpp.o: CXX_COMPILER__progetto_run_unscanned_Debug /home/martiri/progetto_rn/main.cpp || cmake_object_order_depends_target_progetto_run_DEBUG
   DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/Debug/flock.cpp.o.d
+  DEP_FILE = CMakeFiles/progetto_run.dir/Debug/main.cpp.o.d
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/Debug
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Debug/
-  TARGET_PDB = Debug/progetto.t.pdb
-
-build CMakeFiles/progetto.t.dir/Debug/boid.cpp.o: CXX_COMPILER__progetto.2et_unscanned_Debug /home/martiri/progetto_rn/boid.cpp || cmake_object_order_depends_target_progetto.t_DEBUG
-  DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/Debug/boid.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/Debug
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Debug/
-  TARGET_PDB = Debug/progetto.t.pdb
-
-build CMakeFiles/progetto.t.dir/Debug/flock.t.cpp.o: CXX_COMPILER__progetto.2et_unscanned_Debug /home/martiri/progetto_rn/flock.t.cpp || cmake_object_order_depends_target_progetto.t_DEBUG
-  DEFINES = -DCMAKE_INTDIR=\"Debug\"
-  DEP_FILE = CMakeFiles/progetto.t.dir/Debug/flock.t.cpp.o.d
-  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Debug
-  OBJECT_FILE_DIR = CMakeFiles/progetto.t.dir/Debug
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Debug/
-  TARGET_PDB = Debug/progetto.t.pdb
+  OBJECT_DIR = CMakeFiles/progetto_run.dir/Debug
+  OBJECT_FILE_DIR = CMakeFiles/progetto_run.dir/Debug
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_run.dir/Debug/
+  TARGET_PDB = Debug/progetto_run.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target progetto.t
+# Link build statements for EXECUTABLE target progetto_run
 
 
 #############################################
-# Link the executable Debug/progetto.t
+# Link the executable Debug/progetto_run
 
-build Debug/progetto.t: CXX_EXECUTABLE_LINKER__progetto.2et_Debug CMakeFiles/progetto.t.dir/Debug/flock.cpp.o CMakeFiles/progetto.t.dir/Debug/boid.cpp.o CMakeFiles/progetto.t.dir/Debug/flock.t.cpp.o
+build Debug/progetto_run: CXX_EXECUTABLE_LINKER__progetto_run_Debug CMakeFiles/progetto_run.dir/Debug/main.cpp.o | Debug/libboids_core.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 || Debug/libboids_core.a
   FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined
   LINK_FLAGS = -fsanitize=address,undefined
-  OBJECT_DIR = CMakeFiles/progetto.t.dir/Debug
+  LINK_LIBRARIES = Debug/libboids_core.a  /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+  OBJECT_DIR = CMakeFiles/progetto_run.dir/Debug
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/progetto.t.dir/Debug/
-  TARGET_FILE = Debug/progetto.t
-  TARGET_PDB = Debug/progetto.t.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_run.dir/Debug/
+  TARGET_FILE = Debug/progetto_run
+  TARGET_PDB = Debug/progetto_run.pdb
+
+
+#############################################
+# Utility command for run
+
+build run$:Debug: phony CMakeFiles/run-Debug Debug/progetto_run
+
+# =============================================================================
+# Object build statements for EXECUTABLE target progetto_test
+
+
+#############################################
+# Order-only phony target for progetto_test
+
+build cmake_object_order_depends_target_progetto_test_DEBUG: phony || cmake_object_order_depends_target_boids_core_DEBUG
+
+build CMakeFiles/progetto_test.dir/Debug/flock.t.cpp.o: CXX_COMPILER__progetto_test_unscanned_Debug /home/martiri/progetto_rn/flock.t.cpp || cmake_object_order_depends_target_progetto_test_DEBUG
+  DEFINES = -DCMAKE_INTDIR=\"Debug\"
+  DEP_FILE = CMakeFiles/progetto_test.dir/Debug/flock.t.cpp.o.d
+  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20
+  OBJECT_DIR = CMakeFiles/progetto_test.dir/Debug
+  OBJECT_FILE_DIR = CMakeFiles/progetto_test.dir/Debug
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_test.dir/Debug/
+  TARGET_PDB = Debug/progetto_test.pdb
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target progetto_test
+
+
+#############################################
+# Link the executable Debug/progetto_test
+
+build Debug/progetto_test: CXX_EXECUTABLE_LINKER__progetto_test_Debug CMakeFiles/progetto_test.dir/Debug/flock.t.cpp.o | Debug/libboids_core.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 || Debug/libboids_core.a
+  FLAGS = -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined
+  LINK_FLAGS = -fsanitize=address,undefined
+  LINK_LIBRARIES = Debug/libboids_core.a  /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1  /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1
+  OBJECT_DIR = CMakeFiles/progetto_test.dir/Debug
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_COMPILE_PDB = CMakeFiles/progetto_test.dir/Debug/
+  TARGET_FILE = Debug/progetto_test
+  TARGET_PDB = Debug/progetto_test.pdb
+
+
+#############################################
+# Utility command for check
+
+build check$:Debug: phony CMakeFiles/check-Debug Debug/progetto_test
 
 
 #############################################
@@ -535,15 +556,35 @@ build CMakeFiles/ContinuousSubmit-Debug | ${cmake_ninja_workdir}CMakeFiles/Conti
   COMMAND = cd /home/martiri/progetto_rn/build && /usr/bin/ctest -C Debug -D ContinuousSubmit
   pool = console
 
-build progetto.t$:Debug: phony Debug/progetto.t
 
-build progetto$:Debug: phony Debug/progetto
+#############################################
+# Custom command for CMakeFiles/run-Debug
+
+build CMakeFiles/run-Debug | ${cmake_ninja_workdir}CMakeFiles/run-Debug: CUSTOM_COMMAND Debug/progetto_run || Debug/libboids_core.a Debug/progetto_run
+  COMMAND = cd /home/martiri/progetto_rn/build && /home/martiri/progetto_rn/build/Debug/progetto_run
+  DESC = Avvio la simulazione...
+
+
+#############################################
+# Custom command for CMakeFiles/check-Debug
+
+build CMakeFiles/check-Debug | ${cmake_ninja_workdir}CMakeFiles/check-Debug: CUSTOM_COMMAND Debug/progetto_test || Debug/libboids_core.a Debug/progetto_test
+  COMMAND = cd /home/martiri/progetto_rn/build && /home/martiri/progetto_rn/build/Debug/progetto_test
+  DESC = Esecuzione dei test...
+
+build boids_core$:Debug: phony Debug/libboids_core.a
+
+build libboids_core.a$:Debug: phony Debug/libboids_core.a
+
+build progetto_run$:Debug: phony Debug/progetto_run
+
+build progetto_test$:Debug: phony Debug/progetto_test
 
 
 #############################################
 # Folder: /home/martiri/progetto_rn/build
 
-build all$:Debug: phony Debug/progetto Debug/progetto.t
+build all$:Debug: phony Debug/libboids_core.a Debug/progetto_run Debug/progetto_test
 
 
 #############################################

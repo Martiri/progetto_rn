@@ -26,8 +26,11 @@
 /home/martiri/progetto_rn/build/CMakeFiles/ContinuousCoverage.dir
 /home/martiri/progetto_rn/build/CMakeFiles/ContinuousMemCheck.dir
 /home/martiri/progetto_rn/build/CMakeFiles/ContinuousSubmit.dir
-/home/martiri/progetto_rn/build/CMakeFiles/progetto.dir
-/home/martiri/progetto_rn/build/CMakeFiles/progetto.t.dir
+/home/martiri/progetto_rn/build/CMakeFiles/boids_core.dir
+/home/martiri/progetto_rn/build/CMakeFiles/progetto_run.dir
+/home/martiri/progetto_rn/build/CMakeFiles/run.dir
+/home/martiri/progetto_rn/build/CMakeFiles/progetto_test.dir
+/home/martiri/progetto_rn/build/CMakeFiles/check.dir
 /home/martiri/progetto_rn/build/CMakeFiles/test.dir
 /home/martiri/progetto_rn/build/CMakeFiles/edit_cache.dir
 /home/martiri/progetto_rn/build/CMakeFiles/rebuild_cache.dir

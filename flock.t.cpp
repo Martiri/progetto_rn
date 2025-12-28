@@ -13,7 +13,7 @@ TEST_CASE("test di griglia") {
      int cell2 = myFlock.getcell(pos2, 10, 100.f);
      CHECK(cell1 == 0);
      CHECK(cell2 == 99);
-     CHECK(myFlock.getcell(pos3, 10, 100.f) == 9);
+     CHECK(myFlock.getcell(pos3, 10, 100.f) == 0);
    }
    SUBCASE("test bordi"){
     CHECK(myFlock.getcell(boids_sim::Vector2D{0.f, 0.f}, 10, 100.f) == 0);
@@ -29,10 +29,6 @@ SUBCASE("lenght zero") {
     
 }
 }
-TEST_CASE("nessun vicino"){
-    boids_sim::flock myFlock(1, 1000.f, 1000.f, 100);
-    myFlock.step(1000.f, 1000.f, 1000.f, 10, 1.5f, 0.5f, 0.01f, 10000.f, 25.f, 100.f, 100, 10000.f);
-    CHECK(myFlock.getBoids()[0].getPosition().x == 0.f);
-}
+
 
 

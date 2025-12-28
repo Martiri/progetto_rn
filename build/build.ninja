@@ -65,9 +65,17 @@ build NightlyTest: phony NightlyTest$:Debug
 
 build NightlyUpdate: phony NightlyUpdate$:Debug
 
-build progetto: phony Debug/progetto
+build boids_core: phony Debug/libboids_core.a
 
-build progetto.t: phony Debug/progetto.t
+build check: phony check$:Debug
+
+build libboids_core.a: phony Debug/libboids_core.a
+
+build progetto_run: phony Debug/progetto_run
+
+build progetto_test: phony Debug/progetto_test
+
+build run: phony run$:Debug
 
 
 #############################################

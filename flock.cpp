@@ -1,7 +1,8 @@
 #include "flock.hpp"
-#include <stdexcept>
+
 #include <cassert>
 #include <random>
+#include <stdexcept>
 
 float hamplitudev = 100.f;
 float offsetv = 4.f;
@@ -50,8 +51,10 @@ void flock::step(float dt, float maxX, float maxY, int factorx, float s,
                  int ncells, float vmax2) {
   std::fill(headers_.begin(), headers_.end(), -1);
   for (int i = 0; i < numBoids_; ++i) {
-    int cell = getcell(boids_[static_cast<std::size_t>(i)].getPosition(), factorx, length);
-    next_[static_cast<std::size_t>(i)] = headers_[static_cast<std::size_t>(cell)];
+    int cell = getcell(boids_[static_cast<std::size_t>(i)].getPosition(),
+                       factorx, length);
+    next_[static_cast<std::size_t>(i)] =
+        headers_[static_cast<std::size_t>(cell)];
     headers_[static_cast<std::size_t>(cell)] = i;
   }
   for (int i = 0; i < numBoids_; ++i) {
@@ -60,16 +63,20 @@ void flock::step(float dt, float maxX, float maxY, int factorx, float s,
     Vector2D accdist{0.f, 0.f};
 
     int l{0};
-    int cell = getcell(boids_[static_cast<std::size_t>(i)].getPosition(), factorx, length);
+    int cell = getcell(boids_[static_cast<std::size_t>(i)].getPosition(),
+                       factorx, length);
     for (int j = -1; j <= 1; j++) {
       for (int k = -1; k <= 1; k++) {
         int act_cell{cell + j * factorx + k};
         if (act_cell >= 0 && act_cell < ncells) {
           int b = headers_[static_cast<std::size_t>(act_cell)];
           while (b != -1) {
-            const Vector2D &hposition = boids_[static_cast<std::size_t>(b)].getPosition();
-            const Vector2D &hvelocity = boids_[static_cast<std::size_t>(b)].getVelocity();
-            Vector2D dist = hposition - boids_[static_cast<std::size_t>(i)].getPosition();
+            const Vector2D &hposition =
+                boids_[static_cast<std::size_t>(b)].getPosition();
+            const Vector2D &hvelocity =
+                boids_[static_cast<std::size_t>(b)].getVelocity();
+            Vector2D dist =
+                hposition - boids_[static_cast<std::size_t>(i)].getPosition();
             float dist2 = dist.norm2();
             if (dist2 < d2) {
               l++;
@@ -82,15 +89,20 @@ void flock::step(float dt, float maxX, float maxY, int factorx, float s,
         }
       }
     }
-      if (l < 0) {
-        throw std::runtime_error{"l non deve essere negativo"};
-      }
+    if (l < 0) {
+      throw std::runtime_error{"l non deve essere negativo"};
+    }
     if (l != 0) {
       Vector2D vs = accdist * (-s);
-      Vector2D va = (accvel * (1.f / static_cast<float>(l)) - boids_[static_cast<std::size_t>(i)].getVelocity()) * a;
-      Vector2D vc = (accpos * (1.f / static_cast<float>(l)) - boids_[static_cast<std::size_t>(i)].getPosition()) * c;
+      Vector2D va = (accvel * (1.f / static_cast<float>(l)) -
+                     boids_[static_cast<std::size_t>(i)].getVelocity()) *
+                    a;
+      Vector2D vc = (accpos * (1.f / static_cast<float>(l)) -
+                     boids_[static_cast<std::size_t>(i)].getPosition()) *
+                    c;
       newvelocity_[static_cast<std::size_t>(i)] = vs + va + vc;
-      boids_[static_cast<std::size_t>(i)].updatevelocity(newvelocity_[static_cast<std::size_t>(i)], vmax2);
+      boids_[static_cast<std::size_t>(i)].updatevelocity(
+          newvelocity_[static_cast<std::size_t>(i)], vmax2);
       boids_[static_cast<std::size_t>(i)].updateposition(dt, maxX, maxY);
     }
   }
