@@ -16,3 +16,9 @@
 11261	11774	1766943820852100372	Debug/progetto_test	eaeb9a200b793dc1
 11775	11808	0	CMakeFiles/check-Debug	1ab49a1e27c0ecad
 11775	11808	0	/home/martiri/progetto_rn/build/CMakeFiles/check-Debug	1ab49a1e27c0ecad
+8	1606	1766944095958419388	CMakeFiles/progetto_run.dir/Debug/main.cpp.o	c7de2be0fb58f82e
+1607	2022	1766944096370419412	Debug/progetto_run	73f33f78242dcf08
+4	1588	1766944138774990462	CMakeFiles/progetto_run.dir/Debug/main.cpp.o	c7de2be0fb58f82e
+1588	2024	1766944139210990487	Debug/progetto_run	73f33f78242dcf08
+2024	69143	0	CMakeFiles/run-Debug	64f900a39c1b3939
+2024	69143	0	/home/martiri/progetto_rn/build/CMakeFiles/run-Debug	64f900a39c1b3939
