@@ -1,7 +1,5 @@
 #include "boid.hpp"
 #include "flock.hpp"
-#include "boid.cpp"
-#include "flock.cpp"
 
 #include <SFML/Graphics.hpp>
 
