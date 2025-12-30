@@ -1,0 +1,2 @@
+/usr/bin/ar qc libboids_core.a CMakeFiles/boids_core.dir/flock.cpp.o CMakeFiles/boids_core.dir/boid.cpp.o CMakeFiles/boids_core.dir/slider.cpp.o
+/usr/bin/ranlib libboids_core.a

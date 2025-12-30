@@ -12,11 +12,13 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+# copia il font nella directory di build
+configure_file(${CMAKE_SOURCE_DIR}/arial.ttf ${CMAKE_BINARY_DIR}/arial.ttf COPYONLY)
 # abilita warning
-string(APPEND CMAKE_CXX_FLAGS
-      " -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion"
-      " -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast"
-      " -fno-omit-frame-pointer")
+#string(APPEND CMAKE_CXX_FLAGS
+ #     " -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion"
+   # " -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast"
+  #  " -fno-omit-frame-pointer")
 
 # abilita asserzioni della standard library
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -35,7 +37,7 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 # se usato, richiedi il componente graphics della libreria SFML (versione 2.6 in Ubuntu 24.04)
 find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
 #crea una libreria condivisa "boids_core" con i file sorgente della logica
-add_library(boids_core flock.cpp boid.cpp)
+add_library(boids_core flock.cpp boid.cpp slider.cpp)
 
 # crea l'eseguibile principale progetto_run
 add_executable(progetto_run main.cpp)
@@ -60,9 +62,9 @@ if (BUILD_TESTING)
 
 # Aggiunge un comando custom "check" per i test
 add_custom_target(check
-    COMMAND progetto_test
-    DEPENDS progetto_test
-    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
-    COMMENT "Esecuzione dei test..."
+   COMMAND progetto_test
+  DEPENDS progetto_test
+  WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
+  COMMENT "Esecuzione dei test..."
 )
 endif()
