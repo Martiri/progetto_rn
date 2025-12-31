@@ -29,13 +29,13 @@ slider::slider(float x, float y, float width, float min, float max, float defaul
   // Etichetta descrittiva
   label.setFont(font);
   label.setString(labelName);
-  label.setCharacterSize(14);
+  label.setCharacterSize(11);
   label.setFillColor(sf::Color(180, 180, 180));
   label.setPosition(x, y - 22);
 
   // Valore numerico
   valueText.setFont(font);
-  valueText.setCharacterSize(14);
+  valueText.setCharacterSize(11);
   valueText.setFillColor(sf::Color::Cyan);
 
   updateUI();

@@ -531,23 +531,23 @@ int main() {
     float xPos = 50.0f;
     float yStart = 45.0f;
     float verticalSpacing = 35.0f;
-    sliders.emplace_back(xPos, yStart + 0 * verticalSpacing, 150.0f, 0.0f, s*2,
-                         s, font, "s");
+    sliders.emplace_back(xPos, yStart + 0 * verticalSpacing, 150.0f, 0.0f,
+                         s * 2, s, font, "s");
     sliders.back().setValue(s);
-    sliders.emplace_back(xPos, yStart + 1 * verticalSpacing, 150.0f, 0.0f, a*2,
-                         a, font, "a");
+    sliders.emplace_back(xPos, yStart + 1 * verticalSpacing, 150.0f, 0.0f,
+                         a * 2, a, font, "a");
     sliders.back().setValue(a);
-    sliders.emplace_back(xPos, yStart + 2 * verticalSpacing, 150.0f, 0.0f, c*2,
-                         c, font, "c");
+    sliders.emplace_back(xPos, yStart + 2 * verticalSpacing, 150.0f, 0.0f,
+                         c * 2, c, font, "c");
     sliders.back().setValue(c);
     sliders.emplace_back(xPos, yStart + 3 * verticalSpacing, 150.0f, 0.0f,
-                         d*2, d, font, "d");
+                         d * 2, d, font, "d");
     sliders.back().setValue(d);
     sliders.emplace_back(xPos, yStart + 4 * verticalSpacing, 150.0f, 0.0f,
-                         ds*2, ds, font, "ds");
+                         ds * 2, ds, font, "ds");
     sliders.back().setValue(ds);
     sliders.emplace_back(xPos, yStart + 5 * verticalSpacing, 150.0f, 0.0f,
-                         vmax*2, vmax, font, "vmax");
+                         vmax * 2, vmax, font, "vmax");
     sliders.back().setValue(vmax);
     sf::CircleShape boidShape(4.0f);
     boidShape.setFillColor(sf::Color::Blue);
