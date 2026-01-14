@@ -1,20 +1,16 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-
-#include "Vector2D.hpp"
-#include "SimValues.hpp"
-#include "boid.hpp"
+// ciao
 #include "flock.hpp"
+
+#include "SimValues.hpp"
+#include "Vector2D.hpp"
+#include "boid.hpp"
 #include "doctest.h"
 
-
 TEST_CASE("test di griglia") {
-  boids_sim::flock myFlock(
-      2, 1000.f, 1000.f, 100,
-      static_cast<float>(0.5f - 0.5f * (1.f / (2 * std::sqrt(2)))),
-      static_cast<float>(0.5f + 0.5f * (1.f / (2 * std::sqrt(2)))),
-      static_cast<float>(0.5f - 0.5f * (1.f / (2 * std::sqrt(2)))),
-      static_cast<float>(0.5f + 0.5f * (1.f / (2 * std::sqrt(2)))), 200.f,
-      70.f);
+  boids_sim::flock myFlock(boids_sim::SimValues(
+      500, 0.016f, 1.0f, 20.f, 2.f, 0.5f, 40.f, 5.f, 1600.f, 400.f, 20, 20,
+      100.f, 50.f, 10000.f, 2500.f, 0.15f, 1200, 1));
   SUBCASE("test getcell") {
     boids_sim::Vector2D pos1{50.f, 50.f};
     boids_sim::Vector2D pos2{950.f, 950.f};
@@ -38,4 +34,12 @@ TEST_CASE("test di griglia") {
     boids_sim::Vector2D pos{50.f, 50.f};
     CHECK_THROWS(myFlock.getcell(pos, 10, 0.f));
   }
+  /* SUBCASE("test neighbor cell wrapping") {
+    CHECK(boids_sim::flock::get_neighbor_cell_index(9, 5, 1, 0, 10, 10) == 50);
+    CHECK(boids_sim::flock::get_neighbor_cell_index(0, 5, -1, 0, 10, 10) == 59);
+    CHECK(boids_sim::flock::get_neighbor_cell_index(5, 0, 0, -1, 10, 10) == 95);
+    CHECK(boids_sim::flock::get_neighbor_cell_index(0, 0, -1, -1, 10, 10) ==
+          99);
+}
+*/  
 }

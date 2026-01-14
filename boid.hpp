@@ -13,7 +13,10 @@ class boid {
   Vector2D velocity_{0.f, 0.f};
   Vector2D acceleration_{0.f, 0.f};
   Vector2D random_acceleration_{0.f, 0.f};
+  Vector2D rythm_acceleration_{0.f, 0.f};
   int random_timer_{0};
+  int fatigue_{0};
+  int rush_{0};
 
   // int rush_{0};
   // int fatigue_{0};
@@ -30,6 +33,12 @@ class boid {
   void updatevelocity(const SimValues& sim_values);
   void updateacceleration(const Vector2D acc, const SimValues& sim_values);
   void updaterandombehaviour(const SimValues& sim_values);
+  void updatefatigue(const float fatigue_threshold_v2)
+  void updaterush(const float rush_threshold_v2, const float comeback_threshold_v2)
+  void updaterythmstate(const SimValues& sim_values)
+  void updatefatigueacceleration(const SimValues& sim_values);
+  void updaterushacceleration(const SimValues& sim_values);
+  void updaterythmacceleration(const SimValues& sim_values);
 };
 };  // namespace boids_sim
 

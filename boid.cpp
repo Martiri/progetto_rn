@@ -55,4 +55,37 @@ void boid::updaterandombehaviour(const SimValues& sim_values) {
   }
   random_timer_--;
 }
+void updatefatigue(const float fatigue_threshold_v2) {
+  if (velocity_.norm2() > fatigue_threshold_v2)
+    fatigue_++;
+  else if (fatigue_ > 0)
+    fatigue_--;
+}
+void updaterush(const float rush_threshold_v2,
+                const float comeback_threshold_v2) {
+  if (velocity_.norm2() < rush_threshold_v2)
+    rush_++;
+  else if (velocity_.norm2() > comeback_threshold_v2 && rush_ > 0)
+    rush_--;
+}
+void updaterythmstate(const SimValues& sim_values) {
+  updatefatigue(sim_values.fatigue_threshold_v2);
+  updaterush(sim_values.rush_threshold_v2, sim_values.comeback_threshold_v2);
+}
+void updatefatigueacceleration(const int stamina, const float fatigue_threshold_v2) {
+  if (fatigue_ >= stamina && velocity_.norm2() > fatigue_threshold_v2)
+    fatigue_acceleration_ = velocity_ * fatiguef;
+  else
+    fatigue_acceleration_ = {0.f, 0.f};
+}
+void updaterushacceleration(const int patience, const float comeback_threshold_v2) {
+    if (rush_ >= patience && velocity_.norm2() < comeback_threshold_v2)
+    rush_acceleration_ = velocity_ * rushf;
+  else
+    rush_acceleration_ = {0.f, 0.f};
+}
+void boid::updaterythmacceleration(const SimValues& sim_values) {
+  updatefatigueacceleration(sim_values.stamina, sim_values.fatigue_threshold_v2);
+  updaterushacceleration(sim_values.patience, sim_values.comeback_threshold_v2);
+}
 };  // namespace boids_sim

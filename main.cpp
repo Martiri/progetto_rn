@@ -44,7 +44,19 @@ int main() {
     sim_values.const_random_behaviour_duration = 1200;
     sim_values.var_random_behaviour_duration =
         sim_values.const_random_behaviour_duration + 1;
-
+    sim_values.rush_v_coeff = 0.3f;
+    sim_values.fatigue_v_coeff = 0.5f;
+    sim_values.recovered_v_coeff = 0.8f;
+    float rush_threshold_v = sim_values.vmax * sim_values.rush_v_coeff;
+    float recovered_threshold_v = sim_values.vmax * sim_values.recovered_v_coeff;
+    float fatigue_threshold_v = sim_values.vmax * sim_values.fatigue_v_coeff;
+    sim_values.rush_threshold_v2 = rush_threshold_v * rush_threshold_v;
+    sim_values.recovered_threshold_v2 = recovered_threshold_v * recovered_threshold_v;
+    sim_values.fatigue_threshold_v2 = fatigue_threshold_v * fatigue_threshold_v;
+    sim_values.fatigue_braking_coeff = -0.6f;
+    sim_values.rush_accelerating_coeff = 0.5f;
+    sim_values.patience = 50;
+    sim_values.stamina = 200;
     boids_sim::flock flock(sim_values);
     // float idealv2 = idealv * idealv;
     sf::RenderWindow window(sf::VideoMode(sim_values.maxX, sim_values.maxY),
@@ -61,8 +73,8 @@ int main() {
     float &ds = sim_values.ds;
     float &d2 = sim_values.d2;
     float &ds2 = sim_values.ds2;
-  //  float &dt = sim_values.dt;
-  //  float &timescale = sim_values.timescale;
+    //  float &dt = sim_values.dt;
+    //  float &timescale = sim_values.timescale;
     float &vmax = sim_values.vmax;
     float &accmax = sim_values.accmax;
     float &vmax2 = sim_values.vmax2;
@@ -122,9 +134,9 @@ int main() {
         for (auto &s : sliders) s.handleEvent(event, window);
       }
 
-    //  dt = clock.restart().asSeconds();
-    //  if (dt > 0.1) dt = 0.1;
-    //  dt *= timescale;
+      //  dt = clock.restart().asSeconds();
+      //  if (dt > 0.1) dt = 0.1;
+      //  dt *= timescale;
 
       for (auto &s : sliders) s.update(window);
 
