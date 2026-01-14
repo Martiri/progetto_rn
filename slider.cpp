@@ -9,15 +9,15 @@ void slider::updateUI() {
   valueText.setPosition(track.getPosition().x + track.getSize().x + 15,
                         track.getPosition().y - 5);
 }
-slider::slider(float x, float y, float width, float min, float max, float defaultvalue,
-               sf::Font& font, std::string labelName)
+slider::slider(float x, float y, float width, float min, float max,
+               float defaultvalue, sf::Font &font, std::string labelName)
     : minValue(min), maxValue(max), isDragging(false) {
   // Traccia (la linea di fondo)
   track.setSize(sf::Vector2f(width, 10));
   track.setFillColor(sf::Color(70, 70, 70));
   track.setPosition(x, y);
 
-  float percent =(defaultvalue - minValue) / (maxValue - minValue);
+  float percent = (defaultvalue - minValue) / (maxValue - minValue);
   float StartX = x + (percent * width);
 
   // Manopola (il cursore mobile)
@@ -29,19 +29,19 @@ slider::slider(float x, float y, float width, float min, float max, float defaul
   // Etichetta descrittiva
   label.setFont(font);
   label.setString(labelName);
-  label.setCharacterSize(11);
+  label.setCharacterSize(14);
   label.setFillColor(sf::Color(180, 180, 180));
   label.setPosition(x, y - 22);
 
   // Valore numerico
   valueText.setFont(font);
-  valueText.setCharacterSize(11);
+  valueText.setCharacterSize(14);
   valueText.setFillColor(sf::Color::Cyan);
 
   updateUI();
 }
 
-void slider::handleEvent(sf::Event& event, sf::RenderWindow& window) {
+void slider::handleEvent(sf::Event &event, sf::RenderWindow &window) {
   sf::Vector2f mousePos =
       window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
@@ -57,7 +57,7 @@ void slider::handleEvent(sf::Event& event, sf::RenderWindow& window) {
   }
 }
 
-void slider::update(sf::RenderWindow& window) {
+void slider::update(sf::RenderWindow &window) {
   if (isDragging) {
     sf::Vector2f mousePos =
         window.mapPixelToCoords(sf::Mouse::getPosition(window));
@@ -91,11 +91,11 @@ void slider::setValue(float value) {
   updateUI();
 }
 
-void slider::draw(sf::RenderWindow& window) {
+void slider::draw(sf::RenderWindow &window) {
   window.draw(track);
   window.draw(knob);
   window.draw(label);
   window.draw(valueText);
 }
 
-}  // namespace boids_sim
+};  // namespace boids_sim

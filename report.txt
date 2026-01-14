@@ -1,0 +1,340 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 54.41      7.36     7.36      897     8.21    14.65  boids_sim::flock::step(boids_sim::SimValues const&)
+ 22.77     10.44     3.08 424851554     0.00     0.00  boids_sim::Vector2D::operator-(boids_sim::Vector2D) const
+  6.80     11.36     0.92 151171476     0.00     0.00  boids_sim::Vector2D::cos_bigger_than_neg(float, boids_sim::Vector2D, float, float) const
+  3.99     11.90     0.54 855085108     0.00     0.00  boids_sim::boid::getPosition() const
+  3.92     12.43     0.53 430233554     0.00     0.00  boids_sim::Vector2D::norm2() const
+  1.63     12.65     0.22 428439554     0.00     0.00  boids_sim::boid::getVelocity() const
+  1.55     12.86     0.21 207252462     0.00     0.00  boids_sim::Vector2D::operator+=(boids_sim::Vector2D)
+  1.40     13.05     0.19     2000     0.10     0.10  boids_sim::boid::boid(float, float, float, float)
+  1.11     13.20     0.15  5382000     0.00     0.00  boids_sim::Vector2D::operator+(boids_sim::Vector2D) const
+  0.96     13.33     0.13                             boids_sim::Vector2D::operator*=(float)
+  0.59     13.41     0.08 12859214     0.00     0.00  boids_sim::Vector2D::operator*(float) const
+  0.52     13.48     0.07                             main
+  0.37     13.53     0.05  1794000     0.00     0.00  boids_sim::boid::updateposition(boids_sim::SimValues const&)
+  0.00     13.53     0.00  1794000     0.00     0.00  boids_sim::boid::updatevelocity(boids_sim::SimValues const&)
+  0.00     13.53     0.00  1794000     0.00     0.00  boids_sim::boid::updateacceleration(boids_sim::Vector2D, boids_sim::SimValues const&)
+  0.00     13.53     0.00  1794000     0.00     0.00  boids_sim::boid::updaterandombehaviour(boids_sim::SimValues const&)
+  0.00     13.53     0.00     6279     0.00     0.00  boids_sim::slider::draw(sf::RenderWindow&)
+  0.00     13.53     0.00     6279     0.00     0.00  boids_sim::slider::update(sf::RenderWindow&)
+  0.00     13.53     0.00     6279     0.00     0.00  boids_sim::slider::getValue() const
+  0.00     13.53     0.00      897     0.00     0.00  boids_sim::flock::getBoids() const
+  0.00     13.53     0.00      161     0.00     0.00  boids_sim::slider::handleEvent(sf::Event&, sf::RenderWindow&)
+  0.00     13.53     0.00       14     0.00     0.00  boids_sim::slider::updateUI()
+  0.00     13.53     0.00       13     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+  0.00     13.53     0.00        8     0.00     0.00  boids_sim::slider* std::__do_uninit_copy<boids_sim::slider const*, boids_sim::slider*>(boids_sim::slider const*, boids_sim::slider const*, boids_sim::slider*)
+  0.00     13.53     0.00        7     0.00     0.00  boids_sim::slider::setValue(float)
+  0.00     13.53     0.00        7     0.00     0.00  boids_sim::slider::slider(float, float, float, float, float, float, sf::Font&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+  0.00     13.53     0.00        4     0.00     0.00  frame_dummy
+  0.00     13.53     0.00        2     0.00     0.00  std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&)
+  0.00     13.53     0.00        1     0.00   190.04  boids_sim::flock::flock(boids_sim::SimValues const&)
+  0.00     13.53     0.00        1     0.00     0.00  boids_sim::flock::~flock()
+  0.00     13.53     0.00        1     0.00     0.00  void std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::_M_realloc_insert<float&, float, float, float, float, float&, sf::Font&, char const (&) [3]>(__gnu_cxx::__normal_iterator<boids_sim::slider*, std::vector<boids_sim::slider, std::allocator<boids_sim::slider> > >, float&, float&&, float&&, float&&, float&&, float&, sf::Font&, char const (&) [3])
+  0.00     13.53     0.00        1     0.00     0.00  std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::~vector()
+  0.00     13.53     0.00        1     0.00     0.00  std::vector<boids_sim::Vector2D, std::allocator<boids_sim::Vector2D> >::_M_default_append(unsigned long)
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2023 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.07% of 13.53 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     99.0    0.07   13.33                 main [1]
+                7.36    5.78     897/897         boids_sim::flock::step(boids_sim::SimValues const&) [2]
+                0.00    0.19       1/1           boids_sim::flock::flock(boids_sim::SimValues const&) [10]
+                0.00    0.00 1794000/430233554     boids_sim::Vector2D::norm2() const [6]
+                0.00    0.00 1794000/855085108     boids_sim::boid::getPosition() const [5]
+                0.00    0.00 1794000/428439554     boids_sim::boid::getVelocity() const [7]
+                0.00    0.00    6279/6279        boids_sim::slider::update(sf::RenderWindow&) [25]
+                0.00    0.00    6279/6279        boids_sim::slider::getValue() const [26]
+                0.00    0.00    6279/6279        boids_sim::slider::draw(sf::RenderWindow&) [24]
+                0.00    0.00     897/897         boids_sim::flock::getBoids() const [27]
+                0.00    0.00     161/161         boids_sim::slider::handleEvent(sf::Event&, sf::RenderWindow&) [28]
+                0.00    0.00       7/14          boids_sim::slider::updateUI() [29]
+                0.00    0.00       7/7           boids_sim::slider::setValue(float) [32]
+                0.00    0.00       4/4           frame_dummy [17]
+                0.00    0.00       2/7           boids_sim::slider::slider(float, float, float, float, float, float, sf::Font&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [33]
+                0.00    0.00       1/1           std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::~vector() [37]
+                0.00    0.00       1/1           boids_sim::flock::~flock() [35]
+                0.00    0.00       1/1           void std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::_M_realloc_insert<float&, float, float, float, float, float&, sf::Font&, char const (&) [3]>(__gnu_cxx::__normal_iterator<boids_sim::slider*, std::vector<boids_sim::slider, std::allocator<boids_sim::slider> > >, float&, float&&, float&&, float&&, float&&, float&, sf::Font&, char const (&) [3]) [36]
+-----------------------------------------------
+                7.36    5.78     897/897         main [1]
+[2]     97.1    7.36    5.78     897         boids_sim::flock::step(boids_sim::SimValues const&) [2]
+                3.08    0.00 424851554/424851554     boids_sim::Vector2D::operator-(boids_sim::Vector2D) const [3]
+                0.92    0.00 151171476/151171476     boids_sim::Vector2D::cos_bigger_than_neg(float, boids_sim::Vector2D, float, float) const [4]
+                0.54    0.00 853291108/855085108     boids_sim::boid::getPosition() const [5]
+                0.52    0.00 424851554/430233554     boids_sim::Vector2D::norm2() const [6]
+                0.22    0.00 426645554/428439554     boids_sim::boid::getVelocity() const [7]
+                0.21    0.00 203664462/207252462     boids_sim::Vector2D::operator+=(boids_sim::Vector2D) [8]
+                0.10    0.00 3588000/5382000     boids_sim::Vector2D::operator+(boids_sim::Vector2D) const [11]
+                0.00    0.07 1794000/1794000     boids_sim::boid::updatevelocity(boids_sim::SimValues const&) [14]
+                0.05    0.01 1794000/1794000     boids_sim::boid::updateposition(boids_sim::SimValues const&) [15]
+                0.06    0.00 8970000/12859214     boids_sim::Vector2D::operator*(float) const [13]
+                0.00    0.00 1794000/1794000     boids_sim::boid::updateacceleration(boids_sim::Vector2D, boids_sim::SimValues const&) [16]
+                0.00    0.00 1794000/1794000     boids_sim::boid::updaterandombehaviour(boids_sim::SimValues const&) [23]
+-----------------------------------------------
+                3.08    0.00 424851554/424851554     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[3]     22.8    3.08    0.00 424851554         boids_sim::Vector2D::operator-(boids_sim::Vector2D) const [3]
+-----------------------------------------------
+                0.92    0.00 151171476/151171476     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[4]      6.8    0.92    0.00 151171476         boids_sim::Vector2D::cos_bigger_than_neg(float, boids_sim::Vector2D, float, float) const [4]
+-----------------------------------------------
+                0.00    0.00 1794000/855085108     main [1]
+                0.54    0.00 853291108/855085108     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[5]      4.0    0.54    0.00 855085108         boids_sim::boid::getPosition() const [5]
+-----------------------------------------------
+                0.00    0.00 1794000/430233554     main [1]
+                0.00    0.00 1794000/430233554     boids_sim::boid::updateacceleration(boids_sim::Vector2D, boids_sim::SimValues const&) [16]
+                0.00    0.00 1794000/430233554     boids_sim::boid::updatevelocity(boids_sim::SimValues const&) [14]
+                0.52    0.00 424851554/430233554     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[6]      3.9    0.53    0.00 430233554         boids_sim::Vector2D::norm2() const [6]
+-----------------------------------------------
+                0.00    0.00 1794000/428439554     main [1]
+                0.22    0.00 426645554/428439554     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[7]      1.6    0.22    0.00 428439554         boids_sim::boid::getVelocity() const [7]
+-----------------------------------------------
+                0.00    0.00 1794000/207252462     boids_sim::boid::updateacceleration(boids_sim::Vector2D, boids_sim::SimValues const&) [16]
+                0.00    0.00 1794000/207252462     boids_sim::boid::updateposition(boids_sim::SimValues const&) [15]
+                0.21    0.00 203664462/207252462     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[8]      1.6    0.21    0.00 207252462         boids_sim::Vector2D::operator+=(boids_sim::Vector2D) [8]
+-----------------------------------------------
+                0.19    0.00    2000/2000        boids_sim::flock::flock(boids_sim::SimValues const&) [10]
+[9]      1.4    0.19    0.00    2000         boids_sim::boid::boid(float, float, float, float) [9]
+-----------------------------------------------
+                0.00    0.19       1/1           main [1]
+[10]     1.4    0.00    0.19       1         boids_sim::flock::flock(boids_sim::SimValues const&) [10]
+                0.19    0.00    2000/2000        boids_sim::boid::boid(float, float, float, float) [9]
+                0.00    0.00      13/13          std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [30]
+                0.00    0.00       2/2           std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&) [34]
+                0.00    0.00       1/1           std::vector<boids_sim::Vector2D, std::allocator<boids_sim::Vector2D> >::_M_default_append(unsigned long) [38]
+-----------------------------------------------
+                0.05    0.00 1794000/5382000     boids_sim::boid::updatevelocity(boids_sim::SimValues const&) [14]
+                0.10    0.00 3588000/5382000     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[11]     1.1    0.15    0.00 5382000         boids_sim::Vector2D::operator+(boids_sim::Vector2D) const [11]
+-----------------------------------------------
+                                                 <spontaneous>
+[12]     1.0    0.13    0.00                 boids_sim::Vector2D::operator*=(float) [12]
+-----------------------------------------------
+                0.00    0.00    5356/12859214     boids_sim::boid::updateacceleration(boids_sim::Vector2D, boids_sim::SimValues const&) [16]
+                0.01    0.00 1794000/12859214     boids_sim::boid::updateposition(boids_sim::SimValues const&) [15]
+                0.01    0.00 2089858/12859214     boids_sim::boid::updatevelocity(boids_sim::SimValues const&) [14]
+                0.06    0.00 8970000/12859214     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[13]     0.6    0.08    0.00 12859214         boids_sim::Vector2D::operator*(float) const [13]
+-----------------------------------------------
+                0.00    0.07 1794000/1794000     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[14]     0.5    0.00    0.07 1794000         boids_sim::boid::updatevelocity(boids_sim::SimValues const&) [14]
+                0.05    0.00 1794000/5382000     boids_sim::Vector2D::operator+(boids_sim::Vector2D) const [11]
+                0.01    0.00 2089858/12859214     boids_sim::Vector2D::operator*(float) const [13]
+                0.00    0.00 1794000/430233554     boids_sim::Vector2D::norm2() const [6]
+-----------------------------------------------
+                0.05    0.01 1794000/1794000     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[15]     0.5    0.05    0.01 1794000         boids_sim::boid::updateposition(boids_sim::SimValues const&) [15]
+                0.01    0.00 1794000/12859214     boids_sim::Vector2D::operator*(float) const [13]
+                0.00    0.00 1794000/207252462     boids_sim::Vector2D::operator+=(boids_sim::Vector2D) [8]
+-----------------------------------------------
+                0.00    0.00 1794000/1794000     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[16]     0.0    0.00    0.00 1794000         boids_sim::boid::updateacceleration(boids_sim::Vector2D, boids_sim::SimValues const&) [16]
+                0.00    0.00 1794000/430233554     boids_sim::Vector2D::norm2() const [6]
+                0.00    0.00 1794000/207252462     boids_sim::Vector2D::operator+=(boids_sim::Vector2D) [8]
+                0.00    0.00    5356/12859214     boids_sim::Vector2D::operator*(float) const [13]
+-----------------------------------------------
+                0.00    0.00       4/4           main [1]
+[17]     0.0    0.00    0.00       4         frame_dummy [17]
+                0.00    0.00       6/8           boids_sim::slider* std::__do_uninit_copy<boids_sim::slider const*, boids_sim::slider*>(boids_sim::slider const*, boids_sim::slider const*, boids_sim::slider*) [31]
+                0.00    0.00       4/7           boids_sim::slider::slider(float, float, float, float, float, float, sf::Font&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [33]
+-----------------------------------------------
+                0.00    0.00 1794000/1794000     boids_sim::flock::step(boids_sim::SimValues const&) [2]
+[23]     0.0    0.00    0.00 1794000         boids_sim::boid::updaterandombehaviour(boids_sim::SimValues const&) [23]
+-----------------------------------------------
+                0.00    0.00    6279/6279        main [1]
+[24]     0.0    0.00    0.00    6279         boids_sim::slider::draw(sf::RenderWindow&) [24]
+-----------------------------------------------
+                0.00    0.00    6279/6279        main [1]
+[25]     0.0    0.00    0.00    6279         boids_sim::slider::update(sf::RenderWindow&) [25]
+-----------------------------------------------
+                0.00    0.00    6279/6279        main [1]
+[26]     0.0    0.00    0.00    6279         boids_sim::slider::getValue() const [26]
+-----------------------------------------------
+                0.00    0.00     897/897         main [1]
+[27]     0.0    0.00    0.00     897         boids_sim::flock::getBoids() const [27]
+-----------------------------------------------
+                0.00    0.00     161/161         main [1]
+[28]     0.0    0.00    0.00     161         boids_sim::slider::handleEvent(sf::Event&, sf::RenderWindow&) [28]
+-----------------------------------------------
+                0.00    0.00       7/14          main [1]
+                0.00    0.00       7/14          boids_sim::slider::slider(float, float, float, float, float, float, sf::Font&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [33]
+[29]     0.0    0.00    0.00      14         boids_sim::slider::updateUI() [29]
+-----------------------------------------------
+                0.00    0.00      13/13          boids_sim::flock::flock(boids_sim::SimValues const&) [10]
+[30]     0.0    0.00    0.00      13         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand() [30]
+-----------------------------------------------
+                0.00    0.00       2/8           void std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::_M_realloc_insert<float&, float, float, float, float, float&, sf::Font&, char const (&) [3]>(__gnu_cxx::__normal_iterator<boids_sim::slider*, std::vector<boids_sim::slider, std::allocator<boids_sim::slider> > >, float&, float&&, float&&, float&&, float&&, float&, sf::Font&, char const (&) [3]) [36]
+                0.00    0.00       6/8           frame_dummy [17]
+[31]     0.0    0.00    0.00       8         boids_sim::slider* std::__do_uninit_copy<boids_sim::slider const*, boids_sim::slider*>(boids_sim::slider const*, boids_sim::slider const*, boids_sim::slider*) [31]
+-----------------------------------------------
+                0.00    0.00       7/7           main [1]
+[32]     0.0    0.00    0.00       7         boids_sim::slider::setValue(float) [32]
+-----------------------------------------------
+                0.00    0.00       1/7           void std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::_M_realloc_insert<float&, float, float, float, float, float&, sf::Font&, char const (&) [3]>(__gnu_cxx::__normal_iterator<boids_sim::slider*, std::vector<boids_sim::slider, std::allocator<boids_sim::slider> > >, float&, float&&, float&&, float&&, float&&, float&, sf::Font&, char const (&) [3]) [36]
+                0.00    0.00       2/7           main [1]
+                0.00    0.00       4/7           frame_dummy [17]
+[33]     0.0    0.00    0.00       7         boids_sim::slider::slider(float, float, float, float, float, float, sf::Font&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [33]
+                0.00    0.00       7/14          boids_sim::slider::updateUI() [29]
+-----------------------------------------------
+                0.00    0.00       2/2           boids_sim::flock::flock(boids_sim::SimValues const&) [10]
+[34]     0.0    0.00    0.00       2         std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&) [34]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[35]     0.0    0.00    0.00       1         boids_sim::flock::~flock() [35]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[36]     0.0    0.00    0.00       1         void std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::_M_realloc_insert<float&, float, float, float, float, float&, sf::Font&, char const (&) [3]>(__gnu_cxx::__normal_iterator<boids_sim::slider*, std::vector<boids_sim::slider, std::allocator<boids_sim::slider> > >, float&, float&&, float&&, float&&, float&&, float&, sf::Font&, char const (&) [3]) [36]
+                0.00    0.00       2/8           boids_sim::slider* std::__do_uninit_copy<boids_sim::slider const*, boids_sim::slider*>(boids_sim::slider const*, boids_sim::slider const*, boids_sim::slider*) [31]
+                0.00    0.00       1/7           boids_sim::slider::slider(float, float, float, float, float, float, sf::Font&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [33]
+-----------------------------------------------
+                0.00    0.00       1/1           main [1]
+[37]     0.0    0.00    0.00       1         std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::~vector() [37]
+-----------------------------------------------
+                0.00    0.00       1/1           boids_sim::flock::flock(boids_sim::SimValues const&) [10]
+[38]     0.0    0.00    0.00       1         std::vector<boids_sim::Vector2D, std::allocator<boids_sim::Vector2D> >::_M_default_append(unsigned long) [38]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2023 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [15] boids_sim::boid::updateposition(boids_sim::SimValues const&) [32] boids_sim::slider::setValue(float) [3] boids_sim::Vector2D::operator-(boids_sim::Vector2D) const
+  [14] boids_sim::boid::updatevelocity(boids_sim::SimValues const&) [29] boids_sim::slider::updateUI() [13] boids_sim::Vector2D::operator*(float) const
+  [16] boids_sim::boid::updateacceleration(boids_sim::Vector2D, boids_sim::SimValues const&) [33] boids_sim::slider::slider(float, float, float, float, float, float, sf::Font&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [11] boids_sim::Vector2D::operator+(boids_sim::Vector2D) const
+  [23] boids_sim::boid::updaterandombehaviour(boids_sim::SimValues const&) [12] boids_sim::Vector2D::operator*=(float) [30] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::_M_gen_rand()
+   [9] boids_sim::boid::boid(float, float, float, float) [8] boids_sim::Vector2D::operator+=(boids_sim::Vector2D) [36] void std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::_M_realloc_insert<float&, float, float, float, float, float&, sf::Font&, char const (&) [3]>(__gnu_cxx::__normal_iterator<boids_sim::slider*, std::vector<boids_sim::slider, std::allocator<boids_sim::slider> > >, float&, float&&, float&&, float&&, float&&, float&, sf::Font&, char const (&) [3])
+   [2] boids_sim::flock::step(boids_sim::SimValues const&) [5] boids_sim::boid::getPosition() const [37] std::vector<boids_sim::slider, std::allocator<boids_sim::slider> >::~vector()
+  [10] boids_sim::flock::flock(boids_sim::SimValues const&) [7] boids_sim::boid::getVelocity() const [38] std::vector<boids_sim::Vector2D, std::allocator<boids_sim::Vector2D> >::_M_default_append(unsigned long)
+  [35] boids_sim::flock::~flock() [27] boids_sim::flock::getBoids() const [34] std::vector<int, std::allocator<int> >::_M_fill_insert(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, unsigned long, int const&)
+  [28] boids_sim::slider::handleEvent(sf::Event&, sf::RenderWindow&) [26] boids_sim::slider::getValue() const [31] boids_sim::slider* std::__do_uninit_copy<boids_sim::slider const*, boids_sim::slider*>(boids_sim::slider const*, boids_sim::slider const*, boids_sim::slider*)
+  [24] boids_sim::slider::draw(sf::RenderWindow&) [4] boids_sim::Vector2D::cos_bigger_than_neg(float, boids_sim::Vector2D, float, float) const [17] frame_dummy
+  [25] boids_sim::slider::update(sf::RenderWindow&) [6] boids_sim::Vector2D::norm2() const [1] main
