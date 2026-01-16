@@ -1,5 +1,7 @@
 #include "Vector2D.hpp"
 
+#include <cmath>
+
 namespace boids_sim {
 Vector2D Vector2D::operator+(const Vector2D other) const {
   return {x + other.x, y + other.y};
@@ -39,5 +41,11 @@ bool Vector2D::cos_bigger_than_neg(const float max_cos2, const Vector2D other,
     else
       return false;
   }
+}
+Vector2D Vector2D::scale_to(const float wanted_norm) const {
+  // float scaling_factor = 0.f;
+  // if (norm2() > 0) 
+  float scaling_factor = (1.f / std::sqrt(norm2())) * wanted_norm;
+  return *this * scaling_factor;
 }
 };  // namespace boids_sim

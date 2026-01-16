@@ -7,11 +7,13 @@
 #include "Vector2D.hpp"
 #include "SimValues.hpp"
 #include "boid.hpp"
+#include "predator.hpp"
 
 namespace boids_sim {
 class flock {
  private:
   std::vector<boid> boids_;
+  predator predator_;
   int numBoids_;
   // togliere?
   float maxX_;
@@ -28,6 +30,7 @@ class flock {
   int getYcoord(const Vector2D& position, const float d) const;
   void step(const SimValues& sim_values);
   const std::vector<boid>& getBoids() const;
+  const predator& getPredator() const;
   void reset_headers() {}
   Vector2D computeAverageVelocity() const;
   float computeAverageDistance() const;

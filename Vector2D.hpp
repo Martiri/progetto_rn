@@ -17,6 +17,7 @@ struct Vector2D {
   bool cos_bigger_than_neg(const float max_cos2, const Vector2D other,
                            const float this_norm2,
                            const float other_norm2) const;
+  Vector2D scale_to(const float wanted_norm) const;
 };
 };  // namespace boids_sim
 

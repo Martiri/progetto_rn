@@ -8,15 +8,12 @@
 
 namespace boids_sim {
 class boid {
- private:
+ protected:
   Vector2D position_{0.f, 0.f};
   Vector2D velocity_{0.f, 0.f};
   Vector2D acceleration_{0.f, 0.f};
   Vector2D random_acceleration_{0.f, 0.f};
-  Vector2D rythm_acceleration_{0.f, 0.f};
   int random_timer_{0};
-  int fatigue_{0};
-  int rush_{0};
 
   // int rush_{0};
   // int fatigue_{0};
@@ -28,17 +25,14 @@ class boid {
   const Vector2D &getPosition() const;
   const Vector2D &getVelocity() const;
   const Vector2D &getAcceleration() const;
+
+  const Vector2D tuneacceleration(const Vector2D desired_velocity, const float accmax);
+
   // void velocityalignmentacceleration(const float idealv2);
-  void updateposition(const SimValues& sim_values);
-  void updatevelocity(const SimValues& sim_values);
-  void updateacceleration(const Vector2D acc, const SimValues& sim_values);
+  void updateposition(const float dt, const float maxX, const float maxY);
+  void updatevelocity(const float dt, const float vmax);
+  void updateacceleration(const Vector2D acc/*, const SimValues& sim_values*/);
   void updaterandombehaviour(const SimValues& sim_values);
-  void updatefatigue(const float fatigue_threshold_v2)
-  void updaterush(const float rush_threshold_v2, const float comeback_threshold_v2)
-  void updaterythmstate(const SimValues& sim_values)
-  void updatefatigueacceleration(const SimValues& sim_values);
-  void updaterushacceleration(const SimValues& sim_values);
-  void updaterythmacceleration(const SimValues& sim_values);
 };
 };  // namespace boids_sim
 

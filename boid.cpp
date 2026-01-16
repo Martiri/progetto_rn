@@ -13,36 +13,39 @@ boid::boid(const float x, const float y, const float vx, const float vy)
 const Vector2D& boid::getPosition() const { return position_; }
 const Vector2D& boid::getVelocity() const { return velocity_; }
 const Vector2D& boid::getAcceleration() const { return acceleration_; }
-void boid::updateacceleration(const Vector2D acc, const SimValues& sim_values) {
-  const float acc_norm2 = acc.norm2();
-  if (acc_norm2 <= sim_values.accmax2)
-    acceleration_ = acc;
-  else
-    acceleration_ = acc * (1.f / std::sqrt(acc_norm2)) * sim_values.accmax;
-  acceleration_ += random_acceleration_;
+void boid::updateacceleration(
+    const Vector2D acc /*, const SimValues& sim_values*/) {
+  /* const float acc_norm2 = acc.norm2();
+  if (acc_norm2 <= sim_values.accmax2) */
+  acceleration_ = acc;
+  // else
+  //   acceleration_ = acc * (1.f / std::sqrt(acc_norm2)) * sim_values.accmax;
+  // acceleration_ += random_acceleration_;
 }
-void boid::updatevelocity(const SimValues& sim_values) {
-  Vector2D v_new = velocity_ + acceleration_ * sim_values.dt;
-  const float v_new_norm2 = v_new.norm2();
-  if (v_new_norm2 <= sim_values.vmax2)
-    velocity_ = v_new;
-  else
-    velocity_ = v_new * (1.f / std::sqrt(v_new_norm2)) * sim_values.vmax;
+void boid::updatevelocity(const float dt, const float vmax) {
+  velocity_+=acceleration_*dt;
+  if (velocity_.norm2() > vmax * vmax) velocity_ = velocity_.scale_to(vmax);
 }
-void boid::updateposition(const SimValues& sim_values) {
-  position_ += velocity_ * sim_values.dt;
+void boid::updateposition(const float dt, const float maxX, const float maxY) {
+  position_ += velocity_ * dt;
   if (position_.x < 0) {
-    position_.x += sim_values.maxX;
-  } else if (position_.x > sim_values.maxX) {
-    position_.x -= sim_values.maxX;
+    position_.x += maxX;
+  } else if (position_.x > maxX) {
+    position_.x -= maxX;
   }
   if (position_.y < 0) {
-    position_.y += sim_values.maxY;
-  } else if (position_.y > sim_values.maxY) {
-    position_.y -= sim_values.maxY;
+    position_.y += maxY;
+  } else if (position_.y > maxY) {
+    position_.y -= maxY;
   }
 }
-void boid::updaterandombehaviour(const SimValues& sim_values) {
+const Vector2D boid::tuneacceleration(const Vector2D desired_velocity,
+                                       const float accmax) {
+  Vector2D acceleration = desired_velocity - velocity_;
+  if (acceleration.norm2() > accmax * accmax) acceleration = acceleration.scale_to(accmax);
+  return acceleration;
+}
+/* void boid::updaterandombehaviour(const SimValues& sim_values) {
   if (random_timer_ <= 0) {
     float acc_magnitude =
         sim_values.random_behaviour_intensity_coeff * sim_values.accmax;
@@ -54,38 +57,5 @@ void boid::updaterandombehaviour(const SimValues& sim_values) {
     // std::cout << "changed random!!!!!!" << std::endl;
   }
   random_timer_--;
-}
-void updatefatigue(const float fatigue_threshold_v2) {
-  if (velocity_.norm2() > fatigue_threshold_v2)
-    fatigue_++;
-  else if (fatigue_ > 0)
-    fatigue_--;
-}
-void updaterush(const float rush_threshold_v2,
-                const float comeback_threshold_v2) {
-  if (velocity_.norm2() < rush_threshold_v2)
-    rush_++;
-  else if (velocity_.norm2() > comeback_threshold_v2 && rush_ > 0)
-    rush_--;
-}
-void updaterythmstate(const SimValues& sim_values) {
-  updatefatigue(sim_values.fatigue_threshold_v2);
-  updaterush(sim_values.rush_threshold_v2, sim_values.comeback_threshold_v2);
-}
-void updatefatigueacceleration(const int stamina, const float fatigue_threshold_v2) {
-  if (fatigue_ >= stamina && velocity_.norm2() > fatigue_threshold_v2)
-    fatigue_acceleration_ = velocity_ * fatiguef;
-  else
-    fatigue_acceleration_ = {0.f, 0.f};
-}
-void updaterushacceleration(const int patience, const float comeback_threshold_v2) {
-    if (rush_ >= patience && velocity_.norm2() < comeback_threshold_v2)
-    rush_acceleration_ = velocity_ * rushf;
-  else
-    rush_acceleration_ = {0.f, 0.f};
-}
-void boid::updaterythmacceleration(const SimValues& sim_values) {
-  updatefatigueacceleration(sim_values.stamina, sim_values.fatigue_threshold_v2);
-  updaterushacceleration(sim_values.patience, sim_values.comeback_threshold_v2);
-}
+} */
 };  // namespace boids_sim
