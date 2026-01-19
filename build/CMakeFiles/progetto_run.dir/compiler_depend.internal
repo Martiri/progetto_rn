@@ -3,8 +3,11 @@
 
 CMakeFiles/progetto_run.dir/main.cpp.o
  /home/martiri/progetto_rn/main.cpp
+ /home/martiri/progetto_rn/SimValues.hpp
+ /home/martiri/progetto_rn/Vector2D.hpp
  /home/martiri/progetto_rn/boid.hpp
  /home/martiri/progetto_rn/flock.hpp
+ /home/martiri/progetto_rn/predator.hpp
  /home/martiri/progetto_rn/slider.hpp
  /usr/include/SFML/Config.hpp
  /usr/include/SFML/Graphics.hpp

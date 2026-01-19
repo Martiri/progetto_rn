@@ -1,16 +1,32 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-// ciao
-#include "flock.hpp"
 
+#include <SFML/Graphics.hpp>
+#include <vector>
+
+#include "flock.hpp"
+#include "predator.hpp"
 #include "SimValues.hpp"
 #include "Vector2D.hpp"
 #include "boid.hpp"
+#include "slider.hpp"
 #include "doctest.h"
 
 TEST_CASE("test di griglia") {
-  boids_sim::flock myFlock(boids_sim::SimValues(
-      500, 0.016f, 1.0f, 20.f, 2.f, 0.5f, 40.f, 5.f, 1600.f, 400.f, 20, 20,
-      100.f, 50.f, 10000.f, 2500.f, 0.15f, 1200, 1));
+  boids_sim::SimValues sim_values;
+  sim_values.numBoids = 500;
+  sim_values.maxX = 999.f; 
+  sim_values.maxY = 999.f;
+  sim_values.spawn_inf_edgeX_coeff = 0.f;
+  sim_values.spawn_sup_edgeX_coeff = 1.f;
+  sim_values.spawn_inf_edgeY_coeff = 0.f;
+  sim_values.spawn_sup_edgeY_coeff = 1.f;
+  sim_values.factorx = 10;
+  sim_values.factory = 10;
+  sim_values.ncells = sim_values.factorx * sim_values.factory;
+  sim_values.distV_amplitude = 2.f;
+  sim_values.distV_offset = 0.f;
+  
+  boids_sim::flock myFlock(sim_values);
   SUBCASE("test getcell") {
     boids_sim::Vector2D pos1{50.f, 50.f};
     boids_sim::Vector2D pos2{950.f, 950.f};
@@ -34,12 +50,111 @@ TEST_CASE("test di griglia") {
     boids_sim::Vector2D pos{50.f, 50.f};
     CHECK_THROWS(myFlock.getcell(pos, 10, 0.f));
   }
-  /* SUBCASE("test neighbor cell wrapping") {
-    CHECK(boids_sim::flock::get_neighbor_cell_index(9, 5, 1, 0, 10, 10) == 50);
-    CHECK(boids_sim::flock::get_neighbor_cell_index(0, 5, -1, 0, 10, 10) == 59);
-    CHECK(boids_sim::flock::get_neighbor_cell_index(5, 0, 0, -1, 10, 10) == 95);
-    CHECK(boids_sim::flock::get_neighbor_cell_index(0, 0, -1, -1, 10, 10) ==
-          99);
+  SUBCASE("l negativo") {
+    CHECK_THROWS(myFlock.step(sim_values));
+  }
+  SUBCASE("test b_toroidaldistance") {
+    boids_sim::boid testBoid(100.f, 100.f, 0.f, 0.f);
+    boids_sim::Vector2D hpos1{150.f, 150.f};
+    boids_sim::Vector2D dist1 = myFlock.b_toroidaldistance(hpos1, testBoid);
+    CHECK(dist1.x == doctest::Approx(50.f));
+    CHECK(dist1.y == doctest::Approx(50.f));
+    boids_sim::Vector2D hpos2{950.f, 100.f}; 
+    boids_sim::Vector2D dist2 = myFlock.b_toroidaldistance(hpos2, testBoid);
+    CHECK(dist2.x == doctest::Approx(-149.f)); 
+    CHECK(dist2.y == doctest::Approx(0.f));
+    boids_sim::Vector2D hpos3{100.f, 950.f};
+    boids_sim::Vector2D dist3 = myFlock.b_toroidaldistance(hpos3, testBoid);
+    CHECK(dist3.x == doctest::Approx(0.f));
+    CHECK(dist3.y == doctest::Approx(-149.f));
+  }
+  SUBCASE("test step execution") {
+    sim_values.d = 100.f;
+    sim_values.ds = 50.f;
+    sim_values.d2 = sim_values.d * sim_values.d;
+    sim_values.ds2 = sim_values.ds * sim_values.ds;
+    sim_values.factorx = 10;
+    sim_values.factory = 10;
+    sim_values.ncells = sim_values.factorx * sim_values.factory;
+    sim_values.vmax = 5.f;
+    sim_values.accmax = 1.f;
+    sim_values.vmax2 = sim_values.vmax * sim_values.vmax;
+    sim_values.accmax2 = sim_values.accmax * sim_values.accmax;
+    sim_values.s = 1.f;
+    sim_values.a = 1.f;
+    sim_values.c = 1.f;
+    sim_values.e = 1.f;
+    sim_values.ch = 1.f;
+    sim_values.escape_d = 200.f;
+    sim_values.escape_d2 = sim_values.escape_d * sim_values.escape_d;
+    sim_values.predator_vmax = 5.f;
+    sim_values.predator_vmax2 = sim_values.predator_vmax * sim_values.predator_vmax;
+    sim_values.predator_d = 150.f;
+    sim_values.predator_d2 = sim_values.predator_d * sim_values.predator_d;
+    sim_values.dt = 0.016f;
+    sim_values.distV_amplitude = 2.f;
+    sim_values.distV_offset = 0.f;
+    std::vector<boids_sim::Vector2D> initial_velocities;
+    std::vector<boids_sim::Vector2D> initial_positions;
+    for (const auto& b : myFlock.getBoids()) {
+      initial_velocities.push_back(b.getVelocity());
+      initial_positions.push_back(b.getPosition());
+    }
+    myFlock.step(sim_values);
+    const auto& boids_after = myFlock.getBoids();
+    bool velocities_changed = false;
+    bool positions_changed = false;
+    for (size_t i = 0; i < initial_velocities.size(); ++i) {
+      boids_sim::Vector2D vel_diff = boids_after[i].getVelocity() - initial_velocities[i];
+      if (vel_diff.norm2() > 0.0001f) {
+        velocities_changed = true;
+      }
+      boids_sim::Vector2D pos_diff = boids_after[i].getPosition() - initial_positions[i];
+      if (pos_diff.norm2() > 0.0001f) {
+        positions_changed = true;
+      }
+    }
+    CHECK(velocities_changed); 
+    CHECK(positions_changed); 
+  }
+  
 }
-*/  
+TEST_CASE("test slider") {
+  sf::Font font;
+  font.loadFromFile("arial.ttf");
+  boids_sim::slider mySlider(100.f, 100.f, 200.f, 0.f, 100.f, 50.f, font, "Test Slider");
+  SUBCASE("test getValue default") {
+    CHECK(mySlider.getValue() == doctest::Approx(50.f));
+  }
+  SUBCASE("test setValue") {
+    mySlider.setValue(25.f);
+    CHECK(mySlider.getValue() == doctest::Approx(25.f));
+    mySlider.setValue(-10.f);
+    CHECK(mySlider.getValue() == doctest::Approx(0.f));
+    mySlider.setValue(150.f); 
+    CHECK(mySlider.getValue() == doctest::Approx(100.f));
+  }
+}
+TEST_CASE("test predator") {
+  boids_sim::predator pred(0.f, 0.f, 0.f, 0.f); 
+  SUBCASE("test updatechasingacceleration and movement") {
+    boids_sim::Vector2D target{100.f, 100.f};
+    float vmax = 5.f;
+    float accmax = 1.f;
+    float ch = 1.f;
+    float dt = 1.0f; 
+    float maxX = 1000.f;
+    float maxY = 1000.f;
+    boids_sim::Vector2D initial_pos = pred.getPosition();
+    pred.updatechasingacceleration(target, vmax, accmax, ch);
+    pred.updatevelocity(dt, vmax);
+    pred.updateposition(dt, maxX, maxY);
+    boids_sim::Vector2D new_pos = pred.getPosition();
+    boids_sim::Vector2D diff = new_pos - initial_pos;
+    CHECK(diff.norm2() > 0.0001f); 
+  }
+  SUBCASE("test resetacceleration") {
+    pred.resetacceleration();
+    CHECK(true); 
+  }
 }

@@ -53,9 +53,11 @@ Vector2D flock::b_toroidaldistance(const Vector2D &hpos, const boid &b) const {
   return dist;
 }
 int flock::getXcoord(const Vector2D &position, const float d) const {
+  if (d <= 0.f) throw std::runtime_error("d must be positive");
   return static_cast<int>(position.x / d);
 }
 int flock::getYcoord(const Vector2D &position, const float d) const {
+  if (d <= 0.f) throw std::runtime_error("d must be positive");
   return static_cast<int>(position.y / d);
 }
 int flock::getcell(const Vector2D &position, const int factorx,
@@ -113,6 +115,9 @@ void flock::step(const SimValues &sim_values) {
             // cumpos += hposition;
             cumdist += dist;
             cumvel += hvelocity;
+            if (l <= 0){
+              throw std::runtime_error("l is non-positive");
+            }
             if (dist2 < sim_values.ds2 && dist2 != 0)
               cum_weighted_shortdist += dist * (1.f / dist2);
           }

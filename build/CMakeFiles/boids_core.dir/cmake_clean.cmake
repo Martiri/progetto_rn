@@ -1,8 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/boids_core.dir/Vector2D.cpp.o"
+  "CMakeFiles/boids_core.dir/Vector2D.cpp.o.d"
   "CMakeFiles/boids_core.dir/boid.cpp.o"
   "CMakeFiles/boids_core.dir/boid.cpp.o.d"
   "CMakeFiles/boids_core.dir/flock.cpp.o"
   "CMakeFiles/boids_core.dir/flock.cpp.o.d"
+  "CMakeFiles/boids_core.dir/predator.cpp.o"
+  "CMakeFiles/boids_core.dir/predator.cpp.o.d"
   "CMakeFiles/boids_core.dir/slider.cpp.o"
   "CMakeFiles/boids_core.dir/slider.cpp.o.d"
   "libboids_core.a"

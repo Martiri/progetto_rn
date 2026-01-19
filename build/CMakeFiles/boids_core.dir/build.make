@@ -111,11 +111,41 @@ CMakeFiles/boids_core.dir/slider.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/boids_core.dir/slider.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martiri/progetto_rn/slider.cpp -o CMakeFiles/boids_core.dir/slider.cpp.s
 
+CMakeFiles/boids_core.dir/predator.cpp.o: CMakeFiles/boids_core.dir/flags.make
+CMakeFiles/boids_core.dir/predator.cpp.o: /home/martiri/progetto_rn/predator.cpp
+CMakeFiles/boids_core.dir/predator.cpp.o: CMakeFiles/boids_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/martiri/progetto_rn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/boids_core.dir/predator.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boids_core.dir/predator.cpp.o -MF CMakeFiles/boids_core.dir/predator.cpp.o.d -o CMakeFiles/boids_core.dir/predator.cpp.o -c /home/martiri/progetto_rn/predator.cpp
+
+CMakeFiles/boids_core.dir/predator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/boids_core.dir/predator.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martiri/progetto_rn/predator.cpp > CMakeFiles/boids_core.dir/predator.cpp.i
+
+CMakeFiles/boids_core.dir/predator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/boids_core.dir/predator.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martiri/progetto_rn/predator.cpp -o CMakeFiles/boids_core.dir/predator.cpp.s
+
+CMakeFiles/boids_core.dir/Vector2D.cpp.o: CMakeFiles/boids_core.dir/flags.make
+CMakeFiles/boids_core.dir/Vector2D.cpp.o: /home/martiri/progetto_rn/Vector2D.cpp
+CMakeFiles/boids_core.dir/Vector2D.cpp.o: CMakeFiles/boids_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/martiri/progetto_rn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/boids_core.dir/Vector2D.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/boids_core.dir/Vector2D.cpp.o -MF CMakeFiles/boids_core.dir/Vector2D.cpp.o.d -o CMakeFiles/boids_core.dir/Vector2D.cpp.o -c /home/martiri/progetto_rn/Vector2D.cpp
+
+CMakeFiles/boids_core.dir/Vector2D.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/boids_core.dir/Vector2D.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/martiri/progetto_rn/Vector2D.cpp > CMakeFiles/boids_core.dir/Vector2D.cpp.i
+
+CMakeFiles/boids_core.dir/Vector2D.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/boids_core.dir/Vector2D.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/martiri/progetto_rn/Vector2D.cpp -o CMakeFiles/boids_core.dir/Vector2D.cpp.s
+
 # Object files for target boids_core
 boids_core_OBJECTS = \
 "CMakeFiles/boids_core.dir/flock.cpp.o" \
 "CMakeFiles/boids_core.dir/boid.cpp.o" \
-"CMakeFiles/boids_core.dir/slider.cpp.o"
+"CMakeFiles/boids_core.dir/slider.cpp.o" \
+"CMakeFiles/boids_core.dir/predator.cpp.o" \
+"CMakeFiles/boids_core.dir/Vector2D.cpp.o"
 
 # External object files for target boids_core
 boids_core_EXTERNAL_OBJECTS =
@@ -123,9 +153,11 @@ boids_core_EXTERNAL_OBJECTS =
 libboids_core.a: CMakeFiles/boids_core.dir/flock.cpp.o
 libboids_core.a: CMakeFiles/boids_core.dir/boid.cpp.o
 libboids_core.a: CMakeFiles/boids_core.dir/slider.cpp.o
+libboids_core.a: CMakeFiles/boids_core.dir/predator.cpp.o
+libboids_core.a: CMakeFiles/boids_core.dir/Vector2D.cpp.o
 libboids_core.a: CMakeFiles/boids_core.dir/build.make
 libboids_core.a: CMakeFiles/boids_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/martiri/progetto_rn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libboids_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/martiri/progetto_rn/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libboids_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/boids_core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/boids_core.dir/link.txt --verbose=$(VERBOSE)
 

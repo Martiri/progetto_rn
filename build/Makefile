@@ -555,6 +555,30 @@ check/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/check.dir/build.make CMakeFiles/check.dir/build
 .PHONY : check/fast
 
+Vector2D.o: Vector2D.cpp.o
+.PHONY : Vector2D.o
+
+# target to build an object file
+Vector2D.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/boids_core.dir/build.make CMakeFiles/boids_core.dir/Vector2D.cpp.o
+.PHONY : Vector2D.cpp.o
+
+Vector2D.i: Vector2D.cpp.i
+.PHONY : Vector2D.i
+
+# target to preprocess a source file
+Vector2D.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/boids_core.dir/build.make CMakeFiles/boids_core.dir/Vector2D.cpp.i
+.PHONY : Vector2D.cpp.i
+
+Vector2D.s: Vector2D.cpp.s
+.PHONY : Vector2D.s
+
+# target to generate assembly for a file
+Vector2D.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/boids_core.dir/build.make CMakeFiles/boids_core.dir/Vector2D.cpp.s
+.PHONY : Vector2D.cpp.s
+
 boid.o: boid.cpp.o
 .PHONY : boid.o
 
@@ -651,6 +675,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/progetto_run.dir/build.make CMakeFiles/progetto_run.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+predator.o: predator.cpp.o
+.PHONY : predator.o
+
+# target to build an object file
+predator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/boids_core.dir/build.make CMakeFiles/boids_core.dir/predator.cpp.o
+.PHONY : predator.cpp.o
+
+predator.i: predator.cpp.i
+.PHONY : predator.i
+
+# target to preprocess a source file
+predator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/boids_core.dir/build.make CMakeFiles/boids_core.dir/predator.cpp.i
+.PHONY : predator.cpp.i
+
+predator.s: predator.cpp.s
+.PHONY : predator.s
+
+# target to generate assembly for a file
+predator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/boids_core.dir/build.make CMakeFiles/boids_core.dir/predator.cpp.s
+.PHONY : predator.cpp.s
+
 slider.o: slider.cpp.o
 .PHONY : slider.o
 
@@ -717,6 +765,9 @@ help:
 	@echo "... boids_core"
 	@echo "... progetto_run"
 	@echo "... progetto_test"
+	@echo "... Vector2D.o"
+	@echo "... Vector2D.i"
+	@echo "... Vector2D.s"
 	@echo "... boid.o"
 	@echo "... boid.i"
 	@echo "... boid.s"
@@ -729,6 +780,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... predator.o"
+	@echo "... predator.i"
+	@echo "... predator.s"
 	@echo "... slider.o"
 	@echo "... slider.i"
 	@echo "... slider.s"

@@ -37,7 +37,7 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 # se usato, richiedi il componente graphics della libreria SFML (versione 2.6 in Ubuntu 24.04)
 find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
 #crea una libreria condivisa "boids_core" con i file sorgente della logica
-add_library(boids_core flock.cpp boid.cpp slider.cpp)
+add_library(boids_core flock.cpp boid.cpp slider.cpp predator.cpp Vector2D.cpp)
 
 # crea l'eseguibile principale progetto_run
 add_executable(progetto_run main.cpp)
