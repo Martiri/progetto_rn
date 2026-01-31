@@ -22,29 +22,23 @@ Vector2D &Vector2D::operator*=(const float scalar) {
   y *= scalar;
   return *this;
 }
-
-float Vector2D::norm2() const { return x * x + y * y; }
-/* float Vector2D::dot(const Vector2D &other) const {
-  return x * other.x + y * other.y;
-} */
-bool Vector2D::cos_bigger_than_neg(const float max_cos2, const Vector2D other,
-                                   const float this_norm2,
-                                   const float other_norm2) const {
-  float dot = x * other.x + y * other.y;
-  if (dot >= 0)
-    return true;
-  else {
-    float dot2 = dot * dot;
-    float min_unacc_dot2 = max_cos2 * this_norm2 * other_norm2;
-    if (dot2 < min_unacc_dot2)
-      return true;
-    else
-      return false;
-  }
+Vector2D Vector2D::toroidal_minus(const Vector2D &other, const float &maxX,
+                                  const float &maxY) const {
+  Vector2D dist = *this - other;
+  if (dist.x > maxX * 0.5f)
+    dist.x -= maxX;
+  else if (dist.x < -maxX * 0.5f)
+    dist.x += maxX;
+  if (dist.y > maxY * 0.5f)
+    dist.y -= maxY;
+  else if (dist.y < -maxY * 0.5f)
+    dist.y += maxY;
+  return dist;
 }
+float Vector2D::norm2() const { return x * x + y * y; }
 Vector2D Vector2D::scale_to(const float wanted_norm) const {
   // float scaling_factor = 0.f;
-  // if (norm2() > 0) 
+  // if (norm2() > 0)
   float scaling_factor = (1.f / std::sqrt(norm2())) * wanted_norm;
   return *this * scaling_factor;
 }

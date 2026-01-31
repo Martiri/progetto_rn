@@ -1,199 +1,183 @@
 #include "flock.hpp"
 
+#include <SFML/Graphics.hpp>
+#include <algorithm>
 #include <cassert>
+#include <execution>
 #include <random>
 #include <stdexcept>
 
-#include "SimValues.hpp"
 #include "Vector2D.hpp"
 #include "boid.hpp"
 #include "predator.hpp"
+#include "simvalues.hpp"
 
 namespace boids_sim {
 
-flock::flock(const SimValues &sim_values)
-    : predator_(sim_values.maxX / 2, sim_values.maxY / 2, 1.f, 1.f),
-      numBoids_(sim_values.numBoids),
-      maxX_(sim_values.maxX),
-      maxY_(sim_values.maxY) {
+flock::flock(const SimValues &sv)
+    : predator_(sv.maxX / 2, sv.maxY / 2, 1.f, 1.f), boids_num_(sv.boids_num) {
   boids_.clear();
-  boids_.reserve(static_cast<size_t>(numBoids_));
+  boids_.reserve(static_cast<size_t>(boids_num_));
 
   std::random_device rd;
   std::mt19937 gen(rd());
   std::uniform_real_distribution<float> distX(
-      maxX_ * sim_values.spawn_inf_edgeX_coeff,
-      maxX_ * sim_values.spawn_sup_edgeX_coeff);
+      sv.maxX * sv.spawn_inf_edgeX_coeff, sv.maxX * sv.spawn_sup_edgeX_coeff);
   std::uniform_real_distribution<float> distY(
-      maxY_ * sim_values.spawn_inf_edgeY_coeff,
-      maxY_ * sim_values.spawn_sup_edgeY_coeff);
+      sv.maxY * sv.spawn_inf_edgeY_coeff, sv.maxY * sv.spawn_sup_edgeY_coeff);
   std::uniform_real_distribution<float> distV(
-      -sim_values.distV_amplitude + sim_values.distV_offset,
-      sim_values.distV_amplitude + sim_values.distV_offset);
+      -sv.distV_amplitude + sv.distV_offset,
+      sv.distV_amplitude + sv.distV_offset);
 
-  for (int i = 0; i < numBoids_; ++i) {
+  for (int i = 0; i < boids_num_; ++i) {
     boids_.emplace_back(distX(gen), distY(gen), distV(gen), distV(gen));
   }
-  headers_.resize(sim_values.ncells, -1);
-  next_.resize(numBoids_, -1);
-  newaccelerations_.resize(numBoids_);
+  headers_.resize(sv.ncells, -1);
+  next_.resize(boids_num_, -1);
+  newaccelerations_.resize(boids_num_);
+ /* boids_vertices_.resize(boids_num_ * 3);
+  boids_vertices_.setPrimitiveType(sf::Triangles);
+  predator_shape_.setFillColor(sf::Color::Red);
+  predator_shape_.setPointCount(3);
+  predator_shape_.setPoint(0, sf::Vector2f(9.9f, 0.f));
+  predator_shape_.setPoint(1, sf::Vector2f(-9.9f, -6.6f));
+  predator_shape_.setPoint(2, sf::Vector2f(-9.9f, 6.6f));
+  predator_shape_.setOrigin(0.f, 0.f); */
 }
 const std::vector<boid> &flock::getBoids() const { return boids_; }
+int flock::get_boids_num() const { return boids_num_; }
 const predator &flock::getPredator() const { return predator_; }
-Vector2D flock::b_toroidaldistance(const Vector2D &hpos, const boid &b) const {
-  Vector2D dist = hpos - b.getPosition();
-  if (dist.x > maxX_ * 0.5f)
-    dist.x -= maxX_;
-  else if (dist.x < -maxX_ * 0.5f)
-    dist.x += maxX_;
-  if (dist.y > maxY_ * 0.5f)
-    dist.y -= maxY_;
-  else if (dist.y < -maxY_ * 0.5f)
-    dist.y += maxY_;
-  return dist;
-}
+void flock::reset_headers() { std::fill(headers_.begin(), headers_.end(), -1); }
 int flock::getXcoord(const Vector2D &position, const float d) const {
-  if (d <= 0.f) throw std::runtime_error("d must be positive");
   return static_cast<int>(position.x / d);
 }
 int flock::getYcoord(const Vector2D &position, const float d) const {
-  if (d <= 0.f) throw std::runtime_error("d must be positive");
   return static_cast<int>(position.y / d);
 }
 int flock::getcell(const Vector2D &position, const int factorx,
                    const float d) const {
   return getYcoord(position, d) * factorx + getXcoord(position, d);
 }
-void flock::step(const SimValues &sim_values) {
-  std::fill(headers_.begin(), headers_.end(), -1);
-  for (int i = 0; i < numBoids_; ++i) {
-    // int cell = getcell(boids_[i].getPosition(), factorx, d);
-    float cy = getYcoord(boids_[i].getPosition(), sim_values.d);
-    float cx = getXcoord(boids_[i].getPosition(), sim_values.d);
-    /* if (cx < 0) cx = 0;
-    if (cy < 0) cy = 0;
-
-    // 2. Evita indici troppo grandi (Overflow) - PREVIENE CRASH FUTURI
-    if (cx >= sim_values.factorx) cx = sim_values.factorx - 1;
-    if (cy >= sim_values.factory) cy = sim_values.factory - 1; */
-    int cell = cy * sim_values.factorx + cx;
+void flock::sort_boids_vector(const float factorx, const float d) {
+  std::sort(boids_.begin(), boids_.end(), [&](const boid &b1, const boid &b2) {
+    return getcell(b1.getPosition(), factorx, d) <
+           getcell(b2.getPosition(), factorx, d);
+  });
+}
+int flock::get_boid_index(const boid &b) { return &b - &boids_[0]; }
+void flock::populate_grid(const float d, const float factorx) {
+  std::for_each(boids_.begin(), boids_.end(), [&](const boid &b) {
+    size_t i = get_boid_index(b);
+    float cy = getYcoord(b.getPosition(), d);
+    float cx = getXcoord(b.getPosition(), d);
+    int cell = cy * factorx + cx;
     next_[i] = headers_[cell];
     headers_[cell] = i;
-  }
-  for (int i = 0; i < numBoids_; ++i) {
-    // Vector2D cumpos{0.f, 0.f};
-    Vector2D cumvel{0.f, 0.f};
-    Vector2D cumdist{0.f, 0.f};
-    Vector2D cum_weighted_shortdist{0.f, 0.f};
-    // Vector2D velocity = boids_[i].getVelocity();
-    // float velocity_norm2 = velocity.norm2();
-    int l{0};
-    // int cell = getcell(boids_[i].getPosition(), factorx, d);
-    int cx = getXcoord(boids_[i].getPosition(), sim_values.d);
-    int cy = getYcoord(boids_[i].getPosition(), sim_values.d);
-    /*if (cx >= sim_values.factorx) cx = sim_values.factorx - 1;
-    if (cy >= sim_values.factory) cy = sim_values.factory - 1;
-    if (cx < 0) cx = 0;
-    if (cy < 0) cy = 0; */
-    for (int j = -1; j <= 1; j++)
-      for (int k = -1; k <= 1; k++) {
-        int act_cell{((cx + k + sim_values.factorx) % sim_values.factorx) +
-                     ((cy + j + sim_values.factory) % sim_values.factory) *
-                         sim_values.factorx};
-        // if (act_cell >= 0 && act_cell < ncells) {
-        int b = headers_[act_cell];
-        while (b != -1) {
-          const Vector2D &hposition = boids_[b].getPosition();
-          const Vector2D &hvelocity = boids_[b].getVelocity();
-          // Vector2D dist = hposition - boids_[i].getPosition();
-          Vector2D dist = b_toroidaldistance(hposition, boids_[i]);
-          float dist2 = dist.norm2();
-          if (dist2 < sim_values.d2 /*&&
-               velocity.cos_bigger_than_neg(sim_values.max_cos2_of_view, dist,
-                                           velocity_norm2, dist2)*/) {
-            l++;
-            // cumpos += hposition;
-            cumdist += dist;
-            cumvel += hvelocity;
-            if (l <= 0){
-              throw std::runtime_error("l is non-positive");
+  });
+}
+void flock::step(const SimValues &sv) {
+  // grid&boids_ preparation
+  // if (sv.steps_counter % 180 == 0) sort_boids_vector(sv.factorx, sv.d);
+  reset_headers();
+  populate_grid(sv.d, sv.factorx);
+  // collection of information
+  std::for_each(
+      std::execution::par, boids_.begin(), boids_.end(),
+      [&](const boid &current_boid) {
+        size_t current_boid_idx = &current_boid - &boids_[0];
+        Vector2D cumvel{0.f, 0.f};
+        Vector2D cumdist{0.f, 0.f};
+        Vector2D cum_weighted_shortdist{0.f, 0.f};
+        int act_cell = 0;
+        int neighbours_count{0};
+        int cx = getXcoord(current_boid.getPosition(), sv.d);
+        int cy = getYcoord(current_boid.getPosition(), sv.d);
+        for (int j = -1; j <= 1; j++)
+          for (int k = -1; k <= 1; k++) {
+            act_cell = ((cx + k + sv.factorx) % sv.factorx) +
+                       ((cy + j + sv.factory) % sv.factory) * sv.factorx;
+            int b = headers_[act_cell];
+            while (b != -1) {
+              current_boid.collect_infos(
+                  boids_[b].getPosition(), boids_[b].getVelocity(), sv.maxX,
+                  sv.maxY, sv.d2, sv.ds2, neighbours_count, cumdist, cumvel,
+                  cum_weighted_shortdist);
+              b = next_[b];
             }
-            if (dist2 < sim_values.ds2 && dist2 != 0)
-              cum_weighted_shortdist += dist * (1.f / dist2);
           }
-          b = next_[b];
+        // update of boids' acceleration
+        Vector2D acce = current_boid.calculate_escaping_acceleration(
+            predator_.getPosition(), sv.e, sv.escape_d2, sv.vmax, sv.accmax,
+            sv.maxX, sv.maxY);
+        Vector2D accs{0.f, 0.f};
+        Vector2D acca{0.f, 0.f};
+        Vector2D accc{0.f, 0.f};
+        if (neighbours_count != 0) {
+          float inv_neighbours_count = 1.f / neighbours_count;
+          accs = current_boid.calculate_separation_acceleration(
+              cum_weighted_shortdist, sv.s, sv.vmax, sv.accmax);
+          acca = current_boid.calculate_alignment_acceleration(
+              cumvel, inv_neighbours_count, sv.a, sv.vmax, sv.accmax);
+          accc = current_boid.calculate_cohesion_acceleration(
+              cumdist, inv_neighbours_count, sv.c, sv.vmax, sv.accmax);
         }
-      }
-    Vector2D acce{0.f, 0.f};
-    Vector2D predator_dist =
-        b_toroidaldistance(boids_[i].getPosition(), predator_);
-    float predator_dist_norm2 = predator_dist.norm2();
-    if (predator_dist_norm2 < sim_values.escape_d2) {
-      Vector2D e_desired_velocity{0.f, 0.f};
-      if (predator_dist_norm2 > 0.1f)
-        e_desired_velocity = predator_dist.scale_to(sim_values.vmax) *
-                             std::sqrt(sim_values.escape_d2 /
-                                       std::max(predator_dist_norm2, 1.f));
-      acce = boids_[i].tuneacceleration(e_desired_velocity, sim_values.accmax) *
-             sim_values.e;
-    }
-    Vector2D accs{0.f, 0.f};
-    Vector2D acca{0.f, 0.f};
-    Vector2D accc{0.f, 0.f};
-    if (l != 0) {
-      float inv_l = 1.f / l;
-      Vector2D s_desired_velocity{0.f, 0.f};
-      if (cum_weighted_shortdist.norm2() > 0)
-        s_desired_velocity = cum_weighted_shortdist.scale_to(sim_values.vmax);
-      Vector2D unweighted_accs =
-          boids_[i].tuneacceleration(s_desired_velocity, sim_values.accmax);
-      Vector2D neighbours_AV = cumvel * inv_l;
-      Vector2D a_desired_velocity{0.f, 0.f};
-      if (neighbours_AV.norm2() > 0)
-        a_desired_velocity = neighbours_AV.scale_to(sim_values.vmax);
-      Vector2D unweighted_acca =
-          boids_[i].tuneacceleration(a_desired_velocity, sim_values.accmax);
-      Vector2D neighbours_MC_dist = cumdist * inv_l;
-      Vector2D c_desired_velocity{0.f, 0.f};
-      if (neighbours_MC_dist.norm2() > 0)
-        c_desired_velocity = neighbours_MC_dist.scale_to(sim_values.vmax);
-      Vector2D unweighted_accc =
-          boids_[i].tuneacceleration(c_desired_velocity, sim_values.accmax);
-
-      accs = unweighted_accs * (-sim_values.s);
-      acca = unweighted_acca * sim_values.a;
-      accc = unweighted_accc * sim_values.c;
-    }
-    newaccelerations_[i] = accs + acca + accc + acce;
-  }
-  // predator update
+        newaccelerations_[current_boid_idx] = accs + acca + accc + acce;
+      });
+  //
   Vector2D cumdist{0.f, 0.f};
-  int l{0};
-  for (const boid &b : boids_) {
-    Vector2D dist = b_toroidaldistance(b.getPosition(), predator_);
-    if (dist.norm2() < sim_values.predator_d2) {
-      cumdist += dist;
-      l++;
-    }
-  }
-  if (l != 0) {
-    Vector2D visible_MC_dist = cumdist * (1.f / l);
-    predator_.updatechasingacceleration(
-        visible_MC_dist, sim_values.predator_vmax, sim_values.predator_accmax,
-        sim_values.ch);
-    predator_.updatevelocity(sim_values.dt, sim_values.predator_vmax);
-    predator_.updateposition(sim_values.dt, sim_values.maxX, sim_values.maxY);
+  int neighbours_count{0};
+  std::for_each(boids_.begin(), boids_.end(), [&](const boid &b) {
+    predator_.collect_predator_infos(b.getPosition(), sv.predator_d2, sv.maxX,
+                                     sv.maxY, cumdist, neighbours_count);
+  });
+  if (neighbours_count != 0) {
+    Vector2D visible_MC_dist = cumdist * (1.f / neighbours_count);
+    predator_.updatechasingacceleration(visible_MC_dist, sv.predator_vmax,
+                                        sv.predator_accmax, sv.ch);
+    predator_.updatevelocity(sv.dt, sv.predator_vmax);
+    predator_.updateposition(sv.dt, sv.maxX, sv.maxY);
   }
   predator_.resetacceleration();
 
-  for (int i = 0; i < numBoids_; i++) {
-    boid &b = boids_[i];
-    // b.updaterandombehaviour(sim_values);
-    b.updateacceleration(newaccelerations_[i]);
-    b.updatevelocity(sim_values.dt, sim_values.vmax);
-    b.updateposition(sim_values.dt, sim_values.maxX, sim_values.maxY);
-    // boids_[i].updatefatigue(fatigue_threshold_v2_);
-    // boids_[i].updaterush(rush_threshold_v2_, comeback_threshold_v2_);
-  }
+  std::for_each(std::execution::par, boids_.begin(), boids_.end(),
+                [&](boid &b) {
+                  size_t i = &b - &boids_[0];
+                  boids_[i].updateacceleration(newaccelerations_[i]);
+                  boids_[i].updatevelocity(sv.dt, sv.vmax);
+                  boids_[i].updateposition(sv.dt, sv.maxX, sv.maxY);
+                });
 }
+/*
+void flock::update_vertices() {
+  std::for_each(std::execution::par, boids_.begin(), boids_.end(),
+                [this](const boid &boid) {
+                  size_t i = &boid - &boids_[0];
+                  size_t vtx_i = i * 3;
+                  Vector2D pos = boid.getPosition();
+                  Vector2D vel = boid.getVelocity();
+                  float vel_norm = std::sqrt(vel.norm2());
+                  float inv_vel_norm;
+                  if (vel_norm != 0)
+                    inv_vel_norm = 1.f / vel_norm;
+                  else
+                    return;
+                  float sin = vel.y * inv_vel_norm;
+                  float cos = vel.x * inv_vel_norm;
+                  float size = boid_size_;
+                  boids_vertices_[vtx_i].position =
+                      sf::Vector2f(pos.x + cos * size, pos.y + sin * size);
+                  // Retro-sinistra
+                  boids_vertices_[vtx_i + 1].position =
+                      sf::Vector2f(pos.x + (-5.1f * cos + 3.4f * sin),
+                                   pos.y + (-5.1f * sin - 3.4f * cos));
+                  // Retro-destra
+                  boids_vertices_[vtx_i + 2].position =
+                      sf::Vector2f(pos.x + (-5.1f * cos - 3.4f * sin),
+                                   pos.y + (-5.1f * sin + 3.4f * cos));
+                });
+  Vector2D pos = predator_.getPosition();
+  Vector2D vel = predator_.getVelocity();
+  predator_shape_.setPosition(pos.x, vel.y);
+  predator_shape_.setRotation(std::atan2(vel.y, vel.x) * 57.2958f);
+} */
 };  // namespace boids_sim
