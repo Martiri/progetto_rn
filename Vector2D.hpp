@@ -12,11 +12,9 @@ struct Vector2D {
   Vector2D operator*(const float scalar) const;
   Vector2D &operator+=(const Vector2D other);
   Vector2D &operator*=(const float scalar);
+  Vector2D toroidal_minus(const Vector2D &other, const float &maxX,
+                                    const float &maxY) const;
   float norm2() const;
-  // float dot(const Vector2D &other) const;
-  bool cos_bigger_than_neg(const float max_cos2, const Vector2D other,
-                           const float this_norm2,
-                           const float other_norm2) const;
   Vector2D scale_to(const float wanted_norm) const;
 };
 };  // namespace boids_sim
