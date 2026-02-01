@@ -36,8 +36,11 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 
 # se usato, richiedi il componente graphics della libreria SFML (versione 2.6 in Ubuntu 24.04)
 find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
+find_package(TBB REQUIRED)
 #crea una libreria condivisa "boids_core" con i file sorgente della logica
-add_library(boids_core flock.cpp boid.cpp slider.cpp predator.cpp Vector2D.cpp)
+add_library(boids_core flock.cpp boid.cpp slider.cpp predator.cpp simgraphics.cpp simvalues.cpp Vector2D.cpp)
+target_link_libraries(boids_core PRIVATE TBB::tbb)
+
 
 # crea l'eseguibile principale progetto_run
 add_executable(progetto_run main.cpp)
@@ -68,3 +71,6 @@ add_custom_target(check
   COMMENT "Esecuzione dei test..."
 )
 endif()
+
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -flto -march=native -Wall -Wextra")
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -flto")

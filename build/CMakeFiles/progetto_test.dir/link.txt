@@ -1,1 +1,0 @@
-/usr/bin/c++  -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined  -fsanitize=address,undefined CMakeFiles/progetto_test.dir/flock.t.cpp.o -o progetto_test  libboids_core.a /usr/lib/x86_64-linux-gnu/libsfml-graphics.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-window.so.2.6.1 /usr/lib/x86_64-linux-gnu/libsfml-system.so.2.6.1 

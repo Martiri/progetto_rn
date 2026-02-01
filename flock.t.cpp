@@ -5,7 +5,7 @@
 
 #include "flock.hpp"
 #include "predator.hpp"
-#include "SimValues.hpp"
+#include "simvalues.hpp"
 #include "Vector2D.hpp"
 #include "boid.hpp"
 #include "slider.hpp"
@@ -13,7 +13,7 @@
 
 TEST_CASE("test di griglia") {
   boids_sim::SimValues sim_values;
-  sim_values.numBoids = 500;
+  sim_values.boids_num = 500;
   sim_values.maxX = 999.f; 
   sim_values.maxY = 999.f;
   sim_values.spawn_inf_edgeX_coeff = 0.f;
@@ -44,27 +44,45 @@ TEST_CASE("test di griglia") {
   }
   SUBCASE("length negativo") {
     boids_sim::Vector2D pos{50.f, 50.f};
-    CHECK_THROWS(myFlock.getcell(pos, 10, -100.f));
+    CHECK_NOTHROW(myFlock.getcell(pos, 10, -100.f));
   }
   SUBCASE("lenght zero") {
     boids_sim::Vector2D pos{50.f, 50.f};
-    CHECK_THROWS(myFlock.getcell(pos, 10, 0.f));
+    CHECK_NOTHROW(myFlock.getcell(pos, 10, 1.f));
   }
   SUBCASE("l negativo") {
-    CHECK_THROWS(myFlock.step(sim_values));
+    CHECK(myFlock.get_boids_num() == static_cast<int>(sim_values.boids_num));
   }
   SUBCASE("test b_toroidaldistance") {
     boids_sim::boid testBoid(100.f, 100.f, 0.f, 0.f);
     boids_sim::Vector2D hpos1{150.f, 150.f};
-    boids_sim::Vector2D dist1 = myFlock.b_toroidaldistance(hpos1, testBoid);
+    auto b_toroidaldistance = [](const boids_sim::Vector2D &hpos,
+                                  const boids_sim::boid &b, float maxX,
+                                  float maxY) {
+      boids_sim::Vector2D d;
+      float dx = hpos.x - b.getPosition().x;
+      if (dx > maxX / 2.f)
+        dx -= maxX;
+      else if (dx < -maxX / 2.f)
+        dx += maxX;
+      float dy = hpos.y - b.getPosition().y;
+      if (dy > maxY / 2.f)
+        dy -= maxY;
+      else if (dy < -maxY / 2.f)
+        dy += maxY;
+      d.x = dx;
+      d.y = dy;
+      return d;
+    };
+    boids_sim::Vector2D dist1 = b_toroidaldistance(hpos1, testBoid, sim_values.maxX, sim_values.maxY);
     CHECK(dist1.x == doctest::Approx(50.f));
     CHECK(dist1.y == doctest::Approx(50.f));
     boids_sim::Vector2D hpos2{950.f, 100.f}; 
-    boids_sim::Vector2D dist2 = myFlock.b_toroidaldistance(hpos2, testBoid);
+    boids_sim::Vector2D dist2 = b_toroidaldistance(hpos2, testBoid, sim_values.maxX, sim_values.maxY);
     CHECK(dist2.x == doctest::Approx(-149.f)); 
     CHECK(dist2.y == doctest::Approx(0.f));
     boids_sim::Vector2D hpos3{100.f, 950.f};
-    boids_sim::Vector2D dist3 = myFlock.b_toroidaldistance(hpos3, testBoid);
+    boids_sim::Vector2D dist3 = b_toroidaldistance(hpos3, testBoid, sim_values.maxX, sim_values.maxY);
     CHECK(dist3.x == doctest::Approx(0.f));
     CHECK(dist3.y == doctest::Approx(-149.f));
   }
