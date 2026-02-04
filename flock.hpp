@@ -1,11 +1,8 @@
 #ifndef FLOCK_HPP
 #define FLOCK_HPP
-
-#include <cmath>
-#include <vector>
-
 #include "Vector2D.hpp"
-#include "boid.hpp"
+#include <cstddef>
+#include "flockconfiguration.hpp"
 #include "predator.hpp"
 #include "simvalues.hpp"
 
@@ -14,30 +11,33 @@ class flock {
  private:
   std::vector<boid> boids_;
   predator predator_;
-  int boids_num_;
-  float boid_size_;
   std::vector<int> headers_;
   std::vector<int> next_;
-  std::vector<Vector2D> newaccelerations_;
-  /* sf::VertexArray boids_vertices_;
-  sf::ConvexShape predator_shape_; */
+  std::vector<Vector2D> new_accelerations_;
+  int grid_columns_num_;
+  int grid_rows_num_;
+
  public:
-  flock(const SimValues& sv);
-  int getcell(const Vector2D& position, const int factorx, const float d) const;
-  void sort_boids_vector(const float factorx, const float d);
-  int getXcoord(const Vector2D& position, const float d) const;
-  int getYcoord(const Vector2D& position, const float d) const;
-  int get_boid_index(const boid& b);
-  void reset_headers();
-  void populate_grid(const float d, const float factorx);
-  void step(const SimValues& sv);
-  void update_vertices();
-  void set_boids_color();
+  flock(FlockConfiguration& fc, const SimValues& sv);
+
   const std::vector<boid>& getBoids() const;
-  int get_boids_num() const;
   const predator& getPredator() const;
-  Vector2D computeAverageVelocity() const;
-  float computeAverageDistance() const;
+  size_t get_boid_index(const boid& boid) const;
+  int getXcoord(const Vector2D position, const float d) const;
+  int getYcoord(const Vector2D position, const float d) const;
+  int getcell(const Vector2D position, const float d) const;
+  void reset_headers();
+  void populate_grid(const float d, const float maxX, const float maxY);
+  void compute_boids_accelerations(const SimValues& sv);
+  void predator_step(const SimValues& sv);
+  void boids_step(const float vmax, const float dt, const float maxX,
+                  const float maxY);
+  void step(const SimValues& sv);
+  void update_grid(const float new_d, const float maxX, const float maxY);
+  void resettleX(const float old_maxX, const float new_maxX);
+  void resettleY(const float old_maxY, const float new_maxY);
+  // Vector2D computeAverageVelocity() const;
+  // float computeAverageDistance() const;
 };
 };  // namespace boids_sim
 
