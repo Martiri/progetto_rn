@@ -37,7 +37,7 @@ flock::flock(FlockConfiguration &fc, const SimValues &sv)
 const std::vector<boid> &flock::getBoids() const { return boids_; }
 const predator &flock::getPredator() const { return predator_; }
 size_t flock::get_boid_index(const boid &boid) const {
-  return &boid - &boids_[0];
+  return static_cast<size_t>(&boid - &boids_[0]);
 }
 void flock::reset_headers() { std::fill(headers_.begin(), headers_.end(), -1); }
 int flock::getXcoord(const Vector2D position, const float d) const {
@@ -57,8 +57,8 @@ void flock::populate_grid(const float d, const float maxX, const float maxY) {
                   //    if (boid_position.x < maxX && boid_position.y < maxY) {
                   size_t i{get_boid_index(boid)};
                   int cell{getcell(boid_position, d)};
-                  next_[i] = headers_[cell];
-                  headers_[cell] = i;
+                  next_[i] = headers_[static_cast<size_t>(cell)];
+                  headers_[static_cast<size_t>(cell)] = static_cast<int>(i);
                   //    }
                 });
 }
@@ -76,12 +76,12 @@ void flock::compute_boids_accelerations(const SimValues &sv) {
             current_cell = ((cx + k + grid_columns_num_) % grid_columns_num_) +
                            ((cy + j + grid_rows_num_) % grid_rows_num_) *
                                grid_columns_num_;
-            int b{headers_[current_cell]};
+            int b{headers_[static_cast<size_t>(current_cell)]};
             while (b != -1) {
-              current_boid.collect_infos(boids_[b].getPosition(),
-                                         boids_[b].getVelocity(), sv,
+              current_boid.collect_infos(boids_[static_cast<size_t>(b)].getPosition(),
+                                         boids_[static_cast<size_t>(b)].getVelocity(), sv,
                                          current_boid_infos);
-              b = next_[b];
+              b = next_[static_cast<size_t>(b)];
             }
           }
         Vector2D e_acc{current_boid.calculate_escaping_acceleration(
@@ -90,7 +90,7 @@ void flock::compute_boids_accelerations(const SimValues &sv) {
         Vector2D a_acc{0.f, 0.f};
         Vector2D c_acc{0.f, 0.f};
         if (current_boid_infos.neighbors_count > 0) {
-          float inv_neighbors_count = 1.f / current_boid_infos.neighbors_count;
+          float inv_neighbors_count = 1.f / static_cast<float>(current_boid_infos.neighbors_count);
           s_acc = current_boid.calculate_separation_acceleration(
               current_boid_infos.cum_weighted_shortdist, sv.s, sv.vmax,
               sv.accmax);
@@ -116,7 +116,7 @@ void flock::predator_step(const SimValues &sv) {
   Vector2D ch_acc{0.f, 0.f};
   if (predator_infos.neighbors_count > 0) {
     Vector2D vector_to_visible_mc{predator_infos.cumdist /
-                                  predator_infos.neighbors_count};
+                                  static_cast<float>(predator_infos.neighbors_count)};
     ch_acc = predator_.calculate_chasing_acceleration(
         vector_to_visible_mc, sv.predator_vmax, sv.predator_accmax, sv.ch);
   }
@@ -145,7 +145,7 @@ void flock::update_grid(const float new_d, const float new_maxX,
   if (new_columns_num != grid_columns_num_ || new_rows_num != grid_rows_num_) {
     grid_columns_num_ = new_columns_num;
     grid_rows_num_ = new_rows_num;
-    headers_.resize(grid_columns_num_ * grid_rows_num_);
+    headers_.resize(static_cast<size_t>(grid_columns_num_ * grid_rows_num_));
   }
 }
 void flock::resettleX(const float old_maxX, const float new_maxX) {

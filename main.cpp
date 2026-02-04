@@ -11,7 +11,7 @@
 
 int main() {
   try {
-    int boids_num = 400;
+    int boids_num = 6000;
     float dt = 1.f;
     boids_sim::SimValues sv = boids_sim::SimValues::StdValues(dt);
     boids_sim::FlockConfiguration fc =
@@ -20,7 +20,8 @@ int main() {
     boids_sim::SimGraphics sg(flock, 5.1f, 9.9f);
     sg.set_boids_color(sf::Color::White);
     sg.set_predator_color(sf::Color::Red);
-    sf::RenderWindow window(sf::VideoMode(sv.maxX, sv.maxY),
+    sf::RenderWindow window(sf::VideoMode(static_cast<unsigned int>(sv.maxX),
+                                          static_cast<unsigned int>(sv.maxY)),
                             "Boids Simulation");
     sf::Font font;
     if (!font.loadFromFile("arial.ttf")) {

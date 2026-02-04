@@ -11,14 +11,27 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+function(applica_ottimizzazioni_release target_name)
+  set_target_properties(${target_name} PROPERTIES
+        INTERPROCEDURAL_OPTIMIZATION_RELEASE TRUE
+    )
+    target_compile_options(${target_name} PRIVATE
+            $<$<CONFIG:Release>:
+                -march=native>
+        )
+        target_compile_definitions(${target_name} PRIVATE
+        $<$<CONFIG:Release>:NDEBUG>
+    )
+endfunction()
+  
 
 # copia il font nella directory di build
 configure_file(${CMAKE_SOURCE_DIR}/arial.ttf ${CMAKE_BINARY_DIR}/arial.ttf COPYONLY)
 # abilita warning
-#string(APPEND CMAKE_CXX_FLAGS
- #     " -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion"
-   # " -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast"
-  #  " -fno-omit-frame-pointer")
+string(APPEND CMAKE_CXX_FLAGS
+      " -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion"
+      " -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast"
+     " -fno-omit-frame-pointer")
 
 # abilita asserzioni della standard library
 if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
@@ -38,7 +51,7 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
 find_package(TBB REQUIRED)
 #crea una libreria condivisa "boids_core" con i file sorgente della logica
-add_library(boids_core flock.cpp boid.cpp slider.cpp predator.cpp simgraphics.cpp simvalues.cpp Vector2D.cpp)
+add_library(boids_core flock.cpp boid.cpp slider.cpp predator.cpp simgraphics.cpp flockconfiguration.cpp simvalues.cpp Vector2D.cpp)
 target_link_libraries(boids_core PRIVATE TBB::tbb)
 
 
@@ -48,10 +61,10 @@ target_link_libraries(progetto_run PRIVATE boids_core sfml-graphics)
 # aggiungere eventuali altri eseguibili
 # Aggiunge un comando custom "run"
 add_custom_target(run
-    COMMAND progetto_run
-    DEPENDS progetto_run
-    WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
-    COMMENT "Avvio la simulazione..."
+  COMMAND $<TARGET_FILE:progetto_run>
+  DEPENDS progetto_run
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  COMMENT "Avvio la simulazione..."
 )
 # il testing e' abilitato di default
 # per disabilitarlo, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
@@ -65,12 +78,9 @@ if (BUILD_TESTING)
 
 # Aggiunge un comando custom "check" per i test
 add_custom_target(check
-   COMMAND progetto_test
+   COMMAND $<TARGET_FILE:progetto_test>
   DEPENDS progetto_test
-  WORKING_DIRECTORY ${CMAKE_PROJECT_DIR}
+  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
   COMMENT "Esecuzione dei test..."
 )
 endif()
-
-set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -flto -march=native -Wall -Wextra")
-set(CMAKE_EXE_LINKER_FLAGS_RELEASE "${CMAKE_EXE_LINKER_FLAGS_RELEASE} -flto")

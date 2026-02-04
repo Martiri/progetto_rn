@@ -12,12 +12,12 @@ FlockConfiguration FlockConfiguration::StdConfig(const int boids_number, const f
   fc.distV_offset = 0.f;
   float spawn_spacing_coeff = 0.5f;
   fc.spawn_inf_edgeX_coeff =
-      0.5f - spawn_spacing_coeff * (1.f / (2 * std::sqrt(2)));
+      0.5f - spawn_spacing_coeff * (1.f / (2.f * static_cast<float>(std::sqrt(2.))));
   fc.spawn_sup_edgeX_coeff =
-      0.5f + spawn_spacing_coeff * (1.f / (2 * std::sqrt(2)));
+      0.5f + spawn_spacing_coeff * (1.f / (2.f * static_cast<float>(std::sqrt(2.))));
   fc.spawn_inf_edgeY_coeff = fc.spawn_inf_edgeX_coeff;
   fc.spawn_sup_edgeY_coeff = fc.spawn_sup_edgeX_coeff;
-  fc.predator_starting_position = {maxX / 2, maxY / 2};
+  fc.predator_starting_position = {maxX / 2.f, maxY / 2.f};
   fc.predator_starting_velocity = {0.f, 0.f};
   return fc;
 }
