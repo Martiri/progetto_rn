@@ -39,7 +39,7 @@ int main() {
     sg.set_predator_color(sf::Color::Red);
     sf::RenderWindow window(sf::VideoMode(static_cast<unsigned int>(sv.maxX),
                                           static_cast<unsigned int>(sv.maxY)),
-                            "Boids Simulation");
+                          "Boids Simulation");
     sf::Font font;
     if (!font.loadFromFile("arial.ttf")) {
       throw std::runtime_error("Impossibile caricare il font arial.ttf");
