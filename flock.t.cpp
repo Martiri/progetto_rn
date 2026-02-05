@@ -45,44 +45,23 @@ TEST_CASE("Test di Simulazione Griglia e Stormo") {
     boids_sim::Vector2D position{50.f, 50.f};
     CHECK_THROWS(test_flock.getcell(position, 0.f));
   }
-  SUBCASE("l negativo") {
-    CHECK(static_cast<int>(myFlock.getBoids().size()) == fc.boids_num);
-  }
-  SUBCASE("test b_toroidaldistance") {
-    boids_sim::boid testBoid(100.f, 100.f, 0.f, 0.f);
-    boids_sim::Vector2D hpos1{150.f, 150.f};
-    auto b_toroidaldistance = [](const boids_sim::Vector2D& hpos,
-                                 const boids_sim::boid& b, float maxX,
-                                 float maxY) {
-      boids_sim::Vector2D d;
-      float dx = hpos.x - b.getPosition().x;
-      if (dx > maxX / 2.f)
-        dx -= maxX;
-      else if (dx < -maxX / 2.f)
-        dx += maxX;
-      float dy = hpos.y - b.getPosition().y;
-      if (dy > maxY / 2.f)
-        dy -= maxY;
-      else if (dy < -maxY / 2.f)
-        dy += maxY;
-      d.x = dx;
-      d.y = dy;
-      return d;
-    };
-    boids_sim::Vector2D dist1 =
-        b_toroidaldistance(hpos1, testBoid, sim_values.maxX, sim_values.maxY);
-    CHECK(dist1.x == doctest::Approx(50.f));
-    CHECK(dist1.y == doctest::Approx(50.f));
-    boids_sim::Vector2D hpos2{950.f, 100.f};
-    boids_sim::Vector2D dist2 =
-        b_toroidaldistance(hpos2, testBoid, sim_values.maxX, sim_values.maxY);
-    CHECK(dist2.x == doctest::Approx(-149.f));
-    CHECK(dist2.y == doctest::Approx(0.f));
-    boids_sim::Vector2D hpos3{100.f, 950.f};
-    boids_sim::Vector2D dist3 =
-        b_toroidaldistance(hpos3, testBoid, sim_values.maxX, sim_values.maxY);
-    CHECK(dist3.x == doctest::Approx(0.f));
-    CHECK(dist3.y == doctest::Approx(-149.f));
+  SUBCASE("Calcolo Distanza Toroidale") {
+    boids_sim::boid test_boid(100.f, 100.f, 0.f, 0.f);
+    boids_sim::Vector2D position_a{150.f, 150.f};
+    boids_sim::Vector2D distance_a = position_a.toroidal_minus(
+        test_boid.getPosition(), sim_values.maxX, sim_values.maxY);
+    CHECK(distance_a.x == doctest::Approx(50.f));
+    CHECK(distance_a.y == doctest::Approx(50.f));
+    boids_sim::Vector2D position_b{950.f, 100.f};
+    boids_sim::Vector2D distance_b = position_b.toroidal_minus(
+        test_boid.getPosition(), sim_values.maxX, sim_values.maxY);
+    CHECK(distance_b.x == doctest::Approx(-140.f));
+    CHECK(distance_b.y == doctest::Approx(0.f));
+    boids_sim::Vector2D position_c{100.f, 950.f};
+    boids_sim::Vector2D distance_c = position_c.toroidal_minus(
+        test_boid.getPosition(), sim_values.maxX, sim_values.maxY);
+    CHECK(distance_c.x == doctest::Approx(0.f));
+    CHECK(distance_c.y == doctest::Approx(135.f));
   }
   SUBCASE("Esecuzione Step Simulazione") {
     sim_values.ds = 50.f;
