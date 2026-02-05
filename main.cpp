@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <limits>
+#include <sstream>
 #include "flock.hpp"
 #include "flockconfiguration.hpp"
 #include "simgraphics.hpp"
@@ -13,10 +14,19 @@ int main() {
   try {
     std::cout << "Numero iniziale dei boids:" << std::endl;
     int boids_num;
-    while(!(std::cin >> boids_num) || boids_num <= 0) {
+    std::string line;
+    while (true) {
+      if (!std::getline(std::cin, line)) {
+        if (std::cin.eof()) throw std::runtime_error("Input stream closed.");
+        std::cin.clear();
+        continue;
+      }
+      std::stringstream ss(line);
+      char c;
+      if (ss >> boids_num && boids_num > 0 && !(ss >> c)) {
+        break;
+      }
       std::cout << "Per favore inserisca un numero intero valido" << std::endl;
-      std::cin.clear();
-      std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
       std::cout << "Riprovi:" << std::endl;
     }
     float dt = 1.f;
