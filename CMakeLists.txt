@@ -11,19 +11,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-function(applica_ottimizzazioni_release target_name)
-  set_target_properties(${target_name} PROPERTIES
-        INTERPROCEDURAL_OPTIMIZATION_RELEASE TRUE
-    )
-    target_compile_options(${target_name} PRIVATE
-            $<$<CONFIG:Release>:
-                -march=native>
-        )
-        target_compile_definitions(${target_name} PRIVATE
-        $<$<CONFIG:Release>:NDEBUG>
-    )
-endfunction()
-  
+
 
 # copia il font nella directory di build
 configure_file(${CMAKE_SOURCE_DIR}/arial.ttf ${CMAKE_BINARY_DIR}/arial.ttf COPYONLY)
