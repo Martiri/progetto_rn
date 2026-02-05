@@ -1,7 +1,5 @@
 #include <algorithm>
-#include <cstdlib>
 #include <limits>
-#include <stdexcept>
 #include "flock.hpp"
 #include "flockconfiguration.hpp"
 #include "simgraphics.hpp"
