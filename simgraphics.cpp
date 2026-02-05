@@ -1,7 +1,6 @@
 #include "simgraphics.hpp"
 #include <cmath>
 #include <algorithm>
-#include <execution>
 
 namespace boids_sim {
 

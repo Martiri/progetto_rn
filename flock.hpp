@@ -1,7 +1,8 @@
 #ifndef FLOCK_HPP
 #define FLOCK_HPP
-#include "Vector2D.hpp"
+#include "vector2d.hpp"
 #include <cstddef>
+#include <vector>
 #include "flockconfiguration.hpp"
 #include "predator.hpp"
 #include "simvalues.hpp"
@@ -33,11 +34,6 @@ class flock {
   void boids_step(const float vmax, const float dt, const float maxX,
                   const float maxY);
   void step(const SimValues& sv);
-  void update_grid(const float new_d, const float maxX, const float maxY);
-  void resettleX(const float old_maxX, const float new_maxX);
-  void resettleY(const float old_maxY, const float new_maxY);
-  // Vector2D computeAverageVelocity() const;
-  // float computeAverageDistance() const;
 };
 };  // namespace boids_sim
 

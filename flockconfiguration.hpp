@@ -1,7 +1,7 @@
 #ifndef FLOCKCONFIGURATION_HPP
 #define FLOCKCONFIGURATION_HPP
 
-#include "Vector2D.hpp"
+#include "vector2d.hpp"
 
 namespace boids_sim {
 

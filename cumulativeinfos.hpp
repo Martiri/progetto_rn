@@ -1,7 +1,7 @@
 #ifndef COLLECTIVEINFOS_HPP
 #define COLLECTIVEINFOS_HPP
 
-#include "Vector2D.hpp"
+#include "vector2d.hpp"
 
 namespace boids_sim {
 struct CumulativeInfos {

@@ -51,7 +51,7 @@ string(APPEND CMAKE_EXE_LINKER_FLAGS_DEBUG " -fsanitize=address,undefined")
 find_package(SFML 2.6 COMPONENTS graphics REQUIRED)
 find_package(TBB REQUIRED)
 #crea una libreria condivisa "boids_core" con i file sorgente della logica
-add_library(boids_core flock.cpp boid.cpp slider.cpp predator.cpp simgraphics.cpp flockconfiguration.cpp simvalues.cpp Vector2D.cpp)
+add_library(boids_core flock.cpp boid.cpp slider.cpp predator.cpp simgraphics.cpp flockconfiguration.cpp simvalues.cpp vector2d.cpp)
 target_link_libraries(boids_core PRIVATE TBB::tbb)
 
 
@@ -64,7 +64,8 @@ add_custom_target(run
   COMMAND $<TARGET_FILE:progetto_run>
   DEPENDS progetto_run
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-  COMMENT "Avvio la simulazione..."
+  USES_TERMINAL
+  COMMENT "Esecuzione del programma..."
 )
 # il testing e' abilitato di default
 # per disabilitarlo, passare -DBUILD_TESTING=OFF a cmake durante la fase di configurazione
@@ -81,6 +82,7 @@ add_custom_target(check
    COMMAND $<TARGET_FILE:progetto_test>
   DEPENDS progetto_test
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+  USES_TERMINAL
   COMMENT "Esecuzione dei test..."
 )
 endif()

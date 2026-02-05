@@ -1,7 +1,7 @@
 #ifndef BOID_HPP
 #define BOID_HPP
 
-#include "Vector2D.hpp"
+#include "vector2d.hpp"
 #include "cumulativeinfos.hpp"
 #include "simvalues.hpp"
 
@@ -37,8 +37,6 @@ class boid {
       const float accmax) const;
   void update_position(const float dt, const float maxX, const float maxY);
   void update_velocity(const Vector2D acc, const float dt, const float vmax);
-  void resettleX(const float old_maxX, const float new_maxX);
-  void resettleY(const float old_maxY, const float new_maxX);
 };
 };  // namespace boids_sim
 

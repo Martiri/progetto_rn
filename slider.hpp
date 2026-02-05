@@ -1,11 +1,7 @@
 #ifndef SLIDER_HPP
 #define SLIDER_HPP
 #include <SFML/Graphics.hpp>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
 #include <string>
-#include <vector>
 
 namespace boids_sim {
 

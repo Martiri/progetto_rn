@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <execution>
 #include <random>
-#include <ranges>
+#include <vector>
 
 namespace boids_sim {
 
@@ -47,6 +47,9 @@ int flock::getYcoord(const Vector2D position, const float d) const {
   return static_cast<int>(position.y / d);
 }
 int flock::getcell(const Vector2D position, const float d) const {
+  if (d <= 0.f){
+    throw std::runtime_error("la dimensione della cella deve essere positiva");
+  }
   return getYcoord(position, d) * grid_columns_num_ + getXcoord(position, d);
 }
 void flock::populate_grid(const float d, const float maxX, const float maxY) {
@@ -138,26 +141,5 @@ void flock::step(const SimValues &sv) {
   predator_step(sv);
   boids_step(sv.vmax, sv.dt, sv.maxX, sv.maxY);
 }
-void flock::update_grid(const float new_d, const float new_maxX,
-                        const float new_maxY) {
-  int new_columns_num{static_cast<int>(new_maxX / new_d) + 1};
-  int new_rows_num{static_cast<int>(new_maxY / new_d) + 1};
-  if (new_columns_num != grid_columns_num_ || new_rows_num != grid_rows_num_) {
-    grid_columns_num_ = new_columns_num;
-    grid_rows_num_ = new_rows_num;
-    headers_.resize(static_cast<size_t>(grid_columns_num_ * grid_rows_num_));
-  }
-}
-void flock::resettleX(const float old_maxX, const float new_maxX) {
-  std::for_each(boids_.begin(), boids_.end(), [old_maxX, new_maxX](boid &boid) {
-    boid.resettleX(old_maxX, new_maxX);
-  });
-  predator_.resettleX(old_maxX, new_maxX);
-}
-void flock::resettleY(const float old_maxY, const float new_maxY) {
-  std::for_each(boids_.begin(), boids_.end(), [old_maxY, new_maxY](boid &boid) {
-    boid.resettleY(old_maxY, new_maxY);
-  });
-  predator_.resettleY(old_maxY, new_maxY);
-}
+
 };  // namespace boids_sim
