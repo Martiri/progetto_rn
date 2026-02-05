@@ -56,7 +56,7 @@ TEST_CASE("test di griglia") {
     boids_sim::Vector2D pos{50.f, 50.f};
     CHECK_NOTHROW(myFlock.getcell(pos, 1.f));
   }
-  SUBCASE("l negativo") {
+  SUBCASE("neighbors count negativo") {
     CHECK(static_cast<int>(myFlock.getBoids().size()) == fc.boids_num);
   }
   SUBCASE("test b_toroidaldistance") {
