@@ -1,0 +1,14 @@
+# ninja log v5
+2	74	1770392161429911563	CMakeFiles/boids_core.dir/Release/predator.cpp.o	3240512ca82754b0
+2	349	1770392161700265851	CMakeFiles/boids_core.dir/Release/vector2d.cpp.o	ff217450103fe1d8
+1	383	1770392161737132345	CMakeFiles/boids_core.dir/Release/boid.cpp.o	2803e3b8f99dc8c1
+2	498	1770392161855924381	CMakeFiles/boids_core.dir/Release/simvalues.cpp.o	b1040cb036dd11f4
+2	876	1770392162228685595	CMakeFiles/boids_core.dir/Release/flockconfiguration.cpp.o	c8e20853d36b4e95
+2	1048	1770392162400729233	CMakeFiles/boids_core.dir/Release/simgraphics.cpp.o	37bfd62bd91a6a67
+1	1055	1770392162408921787	CMakeFiles/boids_core.dir/Release/slider.cpp.o	ac248ab80c2d6518
+3	1230	1770392162585061702	CMakeFiles/progetto_run.dir/Release/main.cpp.o	18ce4c78e870a9cb
+0	2186	1770392163539494265	CMakeFiles/boids_core.dir/Release/flock.cpp.o	d99bd096ce790e33
+2186	2211	1770392163568168205	Release/libboids_core.a	7ffbf22fa863d6cc
+2211	2340	1770392163695152795	Release/progetto_run	5d857155e1cec918
+3	787043	0	CMakeFiles/run-Release	16d592c8efc6c82d
+3	787043	0	/home/jojo/progetto_locale/gitpull/progetto_rn/build/CMakeFiles/run-Release	16d592c8efc6c82d

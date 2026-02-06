@@ -1,0 +1,182 @@
+[
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/flock.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flock.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flock.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/flock.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/boid.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/boid.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/boid.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/boid.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/slider.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/slider.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/slider.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/slider.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/predator.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/predator.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/predator.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/predator.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/simgraphics.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/simgraphics.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/simgraphics.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/simgraphics.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/flockconfiguration.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flockconfiguration.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flockconfiguration.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/flockconfiguration.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/simvalues.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/simvalues.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/simvalues.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/simvalues.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DTBB_USE_DEBUG -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/boids_core.dir/Debug/vector2d.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/vector2d.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/vector2d.cpp",
+  "output": "CMakeFiles/boids_core.dir/Debug/vector2d.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/flock.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flock.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flock.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/flock.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/boid.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/boid.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/boid.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/boid.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/slider.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/slider.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/slider.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/slider.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/predator.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/predator.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/predator.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/predator.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/simgraphics.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/simgraphics.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/simgraphics.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/simgraphics.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/flockconfiguration.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flockconfiguration.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flockconfiguration.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/flockconfiguration.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/simvalues.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/simvalues.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/simvalues.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/simvalues.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/Release/vector2d.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/vector2d.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/vector2d.cpp",
+  "output": "CMakeFiles/boids_core.dir/Release/vector2d.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/flock.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flock.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flock.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/flock.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/boid.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/boid.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/boid.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/boid.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/slider.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/slider.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/slider.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/slider.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/predator.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/predator.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/predator.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/predator.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/simgraphics.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/simgraphics.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/simgraphics.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/simgraphics.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/flockconfiguration.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flockconfiguration.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flockconfiguration.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/flockconfiguration.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/simvalues.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/simvalues.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/simvalues.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/simvalues.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/boids_core.dir/RelWithDebInfo/vector2d.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/vector2d.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/vector2d.cpp",
+  "output": "CMakeFiles/boids_core.dir/RelWithDebInfo/vector2d.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/progetto_run.dir/Debug/main.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/main.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/main.cpp",
+  "output": "CMakeFiles/progetto_run.dir/Debug/main.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/progetto_run.dir/Release/main.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/main.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/main.cpp",
+  "output": "CMakeFiles/progetto_run.dir/Release/main.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/progetto_run.dir/RelWithDebInfo/main.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/main.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/main.cpp",
+  "output": "CMakeFiles/progetto_run.dir/RelWithDebInfo/main.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Debug\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -g -fsanitize=address,undefined -std=c++20 -o CMakeFiles/progetto_test.dir/Debug/flock.t.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flock.t.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flock.t.cpp",
+  "output": "CMakeFiles/progetto_test.dir/Debug/flock.t.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"Release\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O3 -DNDEBUG -std=c++20 -o CMakeFiles/progetto_test.dir/Release/flock.t.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flock.t.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flock.t.cpp",
+  "output": "CMakeFiles/progetto_test.dir/Release/flock.t.cpp.o"
+},
+{
+  "directory": "/home/jojo/progetto_locale/gitpull/progetto_rn/build",
+  "command": "/usr/bin/c++ -DCMAKE_INTDIR=\\\"RelWithDebInfo\\\"  -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wimplicit-fallthrough -Wextra-semi -Wold-style-cast -fno-omit-frame-pointer -D_GLIBCXX_ASSERTIONS -D_GLIBCXX_SANITIZE_STD_ALLOCATOR -O2 -g -DNDEBUG -std=c++20 -o CMakeFiles/progetto_test.dir/RelWithDebInfo/flock.t.cpp.o -c /home/jojo/progetto_locale/gitpull/progetto_rn/flock.t.cpp",
+  "file": "/home/jojo/progetto_locale/gitpull/progetto_rn/flock.t.cpp",
+  "output": "CMakeFiles/progetto_test.dir/RelWithDebInfo/flock.t.cpp.o"
+}
+]

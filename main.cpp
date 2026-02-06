@@ -9,7 +9,7 @@
 
 int main() {
   try {
-    std::cout << "Numero iniziale dei boids(valore intero positivo maggiore di 1):" << std::endl;
+    std::cout << "Numero iniziale dei boids (valore intero positivo maggiore di 1):" << std::endl;
     int boids_num = boids_sim::get_valid_boids_number(std::cin);
     boids_sim::SimValues sv = boids_sim::SimValues::StdValues();
     boids_sim::FlockConfiguration fc =
