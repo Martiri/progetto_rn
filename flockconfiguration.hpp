@@ -3,6 +3,8 @@
 
 #include "vector2d.hpp"
 
+#include <iostream>
+
 namespace boids_sim {
 
 struct FlockConfiguration {
@@ -17,6 +19,8 @@ struct FlockConfiguration {
 
   void constrain(const float maxX, const float maxY, const float vmax);
 };
+
+int get_valid_boids_number(std::istream& is, std::ostream& os);
 
 };  // namespace boids_sim
 

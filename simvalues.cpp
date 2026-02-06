@@ -9,7 +9,7 @@ namespace boids_sim {
 SimValues SimValues::StdValues() {
   SimValues sv{};
   sv.dt = 1.f;
-  sv.s = 1.9;
+  sv.s = 1.9f;
   sv.a = 0.8f;
   sv.c = 0.7f;
   sv.e = 2.5f;

@@ -4,7 +4,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
-
+#include <sstream> 
 #include "boid.hpp"
 #include "doctest.h"
 #include "flockconfiguration.hpp"
@@ -22,7 +22,6 @@ TEST_CASE("Test di Simulazione Griglia e Stormo") {
   flock_config.spawn_inf_edgeY_coeff = 0.f;
   flock_config.spawn_sup_edgeY_coeff = 1.f;
   flock_config.distV_amplitude = 2.f;
-  flock_config.distV_offset = 0.f;
   flock_config.predator_starting_position = boids_sim::Vector2D{500.f, 500.f};
   flock_config.predator_starting_velocity = boids_sim::Vector2D{0.f, 0.f};
 
@@ -132,7 +131,7 @@ TEST_CASE("Vincoli Configurazione Stormo") {
   flock_config.distV_amplitude = -5.f;
   flock_config.boids_num = -10;
 
-  flock_config.constrain();
+  flock_config.constrain(990.f, 715.f, 4.f);
 
   CHECK(flock_config.spawn_inf_edgeX_coeff == doctest::Approx(0.01f));
   CHECK(flock_config.spawn_sup_edgeX_coeff == doctest::Approx(0.99f));
@@ -195,5 +194,24 @@ TEST_CASE("Test Predatore") {
     boids_sim::Vector2D new_pos = test_predator.getPosition();
     boids_sim::Vector2D diff = new_pos.toroidal_minus(initial_pos, maxX, maxY);
     CHECK(diff.norm2() > 0.0001f);
+  }
+}
+
+TEST_CASE("Gestione Input Utente") {
+  SUBCASE("Input Valido") {
+    std::stringstream input("500\n");
+    std::stringstream output;
+    CHECK(boids_sim::get_valid_boids_number(input, output) == 500);
+  }
+  SUBCASE("Input Non Valido poi Valido") {
+    std::stringstream input("ciao\n\n10\n");
+    std::stringstream output;
+    CHECK(boids_sim::get_valid_boids_number(input, output) == 10);
+  }
+  SUBCASE("Input Interrotto (Throw)") {
+    std::stringstream input("");
+    std::stringstream output;
+    CHECK_THROWS(boids_sim::get_valid_boids_number(input, output));
+    CHECK_THROWS(boids_sim::get_valid_boids_number(input, output), "Input interrotto");
   }
 }
