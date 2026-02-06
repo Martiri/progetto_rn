@@ -1,11 +1,7 @@
 #ifndef SLIDER_HPP
 #define SLIDER_HPP
 #include <SFML/Graphics.hpp>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
 #include <string>
-#include <vector>
 
 namespace boids_sim {
 
@@ -18,9 +14,9 @@ class slider {
   float minValue, maxValue;
   bool isDragging;
   slider(float x, float y, float width, float min, float max,
-         float defaultvalue, sf::Font &font, std::string labelName);
-  void handleEvent(sf::Event &event, sf::RenderWindow &window);
-  void update(sf::RenderWindow &window);
+         float defaultvalue, const sf::Font &font, const std::string &labelName);
+  void handleEvent(const sf::Event &event, const sf::RenderWindow &window);
+  void update(const sf::RenderWindow &window);
   float getValue() const;
   void setValue(float value);
   void draw(sf::RenderWindow &window);

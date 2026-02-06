@@ -1,7 +1,6 @@
 #include "simgraphics.hpp"
 #include <cmath>
 #include <algorithm>
-#include <execution>
 
 namespace boids_sim {
 
@@ -25,7 +24,7 @@ void SimGraphics::update() {
                   const size_t vtx_i{i * 3};
                   const Vector2D pos{boid.getPosition()};
                   const Vector2D vel{boid.getVelocity()};
-                  const float vel_norm = std::sqrt(vel.norm2());
+                  const float vel_norm = vel.norm();
                   if (vel_norm <= 0.f) return;
                   float sin{vel.y / vel_norm};
                   float cos{vel.x / vel_norm};

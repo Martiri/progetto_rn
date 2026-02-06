@@ -4,6 +4,7 @@
 #include "flockconfiguration.hpp"
 #include "predator.hpp"
 #include "simvalues.hpp"
+#include <vector>
 
 namespace boids_sim {
 class flock {

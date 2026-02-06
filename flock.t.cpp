@@ -200,18 +200,15 @@ TEST_CASE("Test Predatore") {
 TEST_CASE("Gestione Input Utente") {
   SUBCASE("Input Valido") {
     std::stringstream input("500\n");
-    std::stringstream output;
-    CHECK(boids_sim::get_valid_boids_number(input, output) == 500);
+    CHECK(boids_sim::get_valid_boids_number(input) == 500);
   }
-  SUBCASE("Input Non Valido poi Valido") {
-    std::stringstream input("ciao\n\n10\n");
-    std::stringstream output;
-    CHECK(boids_sim::get_valid_boids_number(input, output) == 10);
+  SUBCASE("Input Non Valido (Throw)") {
+    std::stringstream input("ciao\n");
+    CHECK_THROWS(boids_sim::get_valid_boids_number(input));
   }
   SUBCASE("Input Interrotto (Throw)") {
     std::stringstream input("");
-    std::stringstream output;
-    CHECK_THROWS(boids_sim::get_valid_boids_number(input, output));
-    CHECK_THROWS(boids_sim::get_valid_boids_number(input, output), "Input interrotto");
+    CHECK_THROWS(boids_sim::get_valid_boids_number(input));
+    CHECK_THROWS_WITH(boids_sim::get_valid_boids_number(input), "Input interrotto");
   }
 }

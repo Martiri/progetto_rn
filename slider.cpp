@@ -1,4 +1,6 @@
 #include "slider.hpp"
+#include <iomanip>
+#include <sstream>
 
 namespace boids_sim {
 
@@ -10,7 +12,7 @@ void slider::updateUI() {
                         track.getPosition().y - 5);
 }
 slider::slider(float x, float y, float width, float min, float max,
-               float defaultvalue, sf::Font &font, std::string labelName)
+               float defaultvalue, const sf::Font &font, const std::string &labelName)
     : minValue(min), maxValue(max), isDragging(false) {
   if (min >= max) {
     throw std::runtime_error("Slider min value must be less than max value.");
@@ -49,7 +51,7 @@ slider::slider(float x, float y, float width, float min, float max,
   updateUI();
 }
 
-void slider::handleEvent(sf::Event &event, sf::RenderWindow &window) {
+void slider::handleEvent(const sf::Event &event, const sf::RenderWindow &window) {
   sf::Vector2f mousePos =
       window.mapPixelToCoords(sf::Mouse::getPosition(window));
 
@@ -65,7 +67,7 @@ void slider::handleEvent(sf::Event &event, sf::RenderWindow &window) {
   }
 }
 
-void slider::update(sf::RenderWindow &window) {
+void slider::update(const sf::RenderWindow &window) {
   if (isDragging) {
     sf::Vector2f mousePos =
         window.mapPixelToCoords(sf::Mouse::getPosition(window));

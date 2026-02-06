@@ -20,7 +20,7 @@ struct FlockConfiguration {
   void constrain(const float maxX, const float maxY, const float vmax);
 };
 
-int get_valid_boids_number(std::istream& is, std::ostream& os);
+int get_valid_boids_number(std::istream& is);
 
 };  // namespace boids_sim
 

@@ -1,7 +1,6 @@
 #ifndef SIMVALUES_HPP
 #define SIMVALUES_HPP
 
-#include <vector>
 
 namespace boids_sim {
 

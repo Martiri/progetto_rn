@@ -1,8 +1,6 @@
 #include <algorithm>
 #include <cmath>
-#include <vector>
 #include "simvalues.hpp"
-#include "flock.hpp"
 
 namespace boids_sim {
 

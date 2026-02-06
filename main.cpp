@@ -1,10 +1,6 @@
 #include <algorithm>
-#include <execution>
-#include "vector2d.hpp"
-#include "boid.hpp"
 #include "flock.hpp"
 #include "flockconfiguration.hpp"
-#include "predator.hpp"
 #include "simgraphics.hpp"
 #include "simvalues.hpp"
 #include "slider.hpp"
@@ -13,8 +9,8 @@
 
 int main() {
   try {
-    std::cout << "Numero iniziale dei boids:" << std::endl;
-    int boids_num = boids_sim::get_valid_boids_number(std::cin, std::cout);
+    std::cout << "Numero iniziale dei boids(valore intero positivo maggiore di 1):" << std::endl;
+    int boids_num = boids_sim::get_valid_boids_number(std::cin);
     boids_sim::SimValues sv = boids_sim::SimValues::StdValues();
     boids_sim::FlockConfiguration fc =
         boids_sim::FlockConfiguration::StdConfig(boids_num, sv.maxX, sv.maxY);

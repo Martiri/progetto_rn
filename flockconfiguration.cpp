@@ -2,7 +2,6 @@
 
 #include <algorithm>
 #include <cmath>
-#include <iostream>
 #include <sstream>
 #include <stdexcept>
 
@@ -46,20 +45,17 @@ void FlockConfiguration::constrain(const float maxX, const float maxY,
       std::clamp(predator_starting_position.y, 0.001f, maxY - 0.001f);
 }
 
-int get_valid_boids_number(std::istream& is, std::ostream& os) {
+int get_valid_boids_number(std::istream& is) {
   int boids_num;
   std::string line;
-  while (true) {
-    if (!std::getline(is, line)) throw std::runtime_error("Input interrotto");
-    std::stringstream ss(line);
-    if (ss >> boids_num) {
-      char c;
-      if (!(ss >> c) && boids_num > 1) {
-        return boids_num;
-      }
+  if (!std::getline(is, line)) throw std::runtime_error("Input interrotto");
+  std::stringstream ss(line);
+  if (ss >> boids_num) {
+    char c;
+    if (!(ss >> c) && boids_num > 1) {
+      return boids_num;
     }
-    os << "Per favore inserisca un numero intero valido" << std::endl;
-    os << "Riprovi:" << std::endl;
   }
+  throw std::runtime_error("Input non valido, va inserito un numero intero positivo maggiore di 1");
 }
 };  // namespace boids_sim
