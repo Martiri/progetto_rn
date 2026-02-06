@@ -1,5 +1,4 @@
 #include "boid.hpp"
-#include <algorithm>
 #include <cmath>
 
 
@@ -81,5 +80,4 @@ void boid::update_position(const float dt, const float maxX, const float maxY) {
     position_.y -= maxY;
   }
 }
-
 };  // namespace boids_sim

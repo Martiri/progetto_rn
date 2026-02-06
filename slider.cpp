@@ -1,7 +1,4 @@
 #include "slider.hpp"
-#include <iomanip>
-#include <sstream>
-#include <stdexcept>
 
 namespace boids_sim {
 
@@ -15,15 +12,9 @@ void slider::updateUI() {
 slider::slider(float x, float y, float width, float min, float max,
                float defaultvalue, sf::Font &font, std::string labelName)
     : minValue(min), maxValue(max), isDragging(false) {
-  if (min >= max) {
-    throw std::runtime_error("Slider min value must be less than max value.");
-  }
-  if (width <= 0.f) {
-    throw std::runtime_error("Slider width must be positive.");
-  }
   // Traccia (la linea di fondo)
   track.setSize(sf::Vector2f(width, 10));
-  track.setFillColor(sf::Color(70, 100, 70, 200));
+  track.setFillColor(sf::Color(70, 70, 70));
   track.setPosition(x, y);
 
   float percent = (defaultvalue - minValue) / (maxValue - minValue);
@@ -31,22 +22,20 @@ slider::slider(float x, float y, float width, float min, float max,
 
   // Manopola (il cursore mobile)
   knob.setSize(sf::Vector2f(15, 25));
-  knob.setFillColor(sf::Color(255, 255, 0, 210));
+  knob.setFillColor(sf::Color::White);
   knob.setOrigin(7.5f, 12.5f);
   knob.setPosition(StartX, y + 5);
 
   // Etichetta descrittiva
   label.setFont(font);
   label.setString(labelName);
-  label.setCharacterSize(15);
-  label.setStyle(sf::Text::Bold);
-  label.setFillColor(sf::Color(255, 0, 150));
+  label.setCharacterSize(14);
+  label.setFillColor(sf::Color(180, 180, 180));
   label.setPosition(x, y - 22);
 
   // Valore numerico
   valueText.setFont(font);
   valueText.setCharacterSize(14);
-  valueText.setStyle(sf::Text::Bold);
   valueText.setFillColor(sf::Color::Cyan);
 
   updateUI();

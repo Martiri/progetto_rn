@@ -1,13 +1,15 @@
 #include <algorithm>
 #include <cmath>
+#include <vector>
 #include "simvalues.hpp"
+#include "flock.hpp"
 
 namespace boids_sim {
 
-SimValues SimValues::StdValues(const float dt) {
+SimValues SimValues::StdValues() {
   SimValues sv{};
-  sv.dt = dt;
-  sv.s = 1.9f;
+  sv.dt = 1.f;
+  sv.s = 1.9;
   sv.a = 0.8f;
   sv.c = 0.7f;
   sv.e = 2.5f;
@@ -37,7 +39,6 @@ void SimValues::modify_a(const float _new) { a = _new; }
 void SimValues::modify_c(const float _new) { c = _new; }
 void SimValues::modify_e(const float _new) { e = _new; }
 void SimValues::modify_ch(const float _new) { ch = _new; }
-
 void SimValues::modify_ds(const float _new) {
   ds = _new;
   ds2 = ds * ds;
@@ -50,8 +51,6 @@ void SimValues::modify_predator_d(const float _new) {
   predator_d = _new;
   predator_d2 = predator_d * predator_d;
 }
-
-
 void SimValues::modify_vmax(const float _new) {
   if (dt != 0.f)
     vmax = std::clamp(_new, 0.f, std::min(maxX / dt, maxY / dt));

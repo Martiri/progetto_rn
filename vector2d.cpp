@@ -1,6 +1,5 @@
 #include "vector2d.hpp"
 #include <cmath>
-#include <cassert>
 
 namespace boids_sim {
 Vector2D Vector2D::operator+(const Vector2D other) const {
@@ -13,7 +12,6 @@ Vector2D Vector2D::operator*(const float scalar) const {
   return {x * scalar, y * scalar};
 }
 Vector2D Vector2D::operator/(const float scalar) const {
-  assert(scalar != 0.f);
   return {x / scalar, y / scalar};
 };
 Vector2D &Vector2D::operator+=(const Vector2D other) {
@@ -27,7 +25,6 @@ Vector2D &Vector2D::operator*=(const float scalar) {
   return *this;
 }
 Vector2D &Vector2D::operator/=(const float scalar) {
-  assert(scalar != 0.f);
   x /= scalar;
   y /= scalar;
   return *this;

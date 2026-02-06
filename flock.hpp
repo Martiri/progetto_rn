@@ -1,7 +1,7 @@
 #ifndef FLOCK_HPP
 #define FLOCK_HPP
 #include "vector2d.hpp"
-#include <vector>
+#include <cstddef>
 #include "flockconfiguration.hpp"
 #include "predator.hpp"
 #include "simvalues.hpp"

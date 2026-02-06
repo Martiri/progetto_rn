@@ -1,20 +1,20 @@
 #ifndef SIMVALUES_HPP
 #define SIMVALUES_HPP
 
-namespace boids_sim {
+#include <vector>
 
-class flock;
+namespace boids_sim {
 
 struct SimValues {
   float dt{1.f};
   float s{0.f}, a{0.f}, c{0.f}, e{0.f}, ch{0.f};
-  float ds{0.f}, escape_d{0.f}, predator_d{0.f},
-        ds2{0.f}, escape_d2{0.f}, predator_d2{0.f};
-  float vmax{0.f}, accmax{0.f}, predator_vmax{0.f}, predator_accmax{0.f};
-  const float d{55.f},maxX{990.f}, d2{3025.f}, maxY{715.f};
+  float ds{0.f}, escape_d{0.f}, predator_d{0.f}, ds2{0.f}, escape_d2{0.f},
+      predator_d2{0.f};
+  float vmax{4.f}, accmax{0.f}, predator_vmax{5.f}, predator_accmax{0.f};
+  const float d{55.f}, d2{3025.f}, maxX{990.f}, maxY{715.f};
 
   SimValues() = default;
-  static SimValues StdValues(const float dt);
+  static SimValues StdValues();
   void modify_dt(const float _new);
   void modify_s(const float _new);
   void modify_a(const float _new);
